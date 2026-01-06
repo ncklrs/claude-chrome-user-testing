@@ -1,0 +1,137 @@
+{
+  "id": "keyboard-only-user",
+  "name": "Keyboard Only User",
+  "category": "accessibility",
+  "techComfort": 7,
+  "patience": 5,
+  "genderVariants": {
+    "male": {
+      "name": "Kevin",
+      "pronouns": "he/him",
+      "age": 34,
+      "background": "Has RSI that makes mouse use painful. Switched to keyboard-only navigation. Power user who knows all the shortcuts but frustrated when sites don't support them.",
+      "additionalTraits": ["uses vim-style navigation when available", "knows Tab/Shift+Tab intimately", "appreciates accesskey attributes"]
+    },
+    "female": {
+      "name": "Angela",
+      "pronouns": "she/her",
+      "age": 29,
+      "background": "Has limited hand mobility from arthritis. Uses keyboard with one hand and assistive technology. Efficient but needs sites to be keyboard-accessible.",
+      "additionalTraits": ["uses sticky keys", "slower typing but efficient navigation", "frustrated by mouse-only features"]
+    },
+    "neutral": {
+      "name": "Jamie",
+      "pronouns": "they/them",
+      "age": 40,
+      "background": "Quadriplegic who uses mouth stick and sip-and-puff technology. Every unnecessary keystroke is exhausting. Values efficiency and proper focus management.",
+      "additionalTraits": ["every keystroke matters", "needs predictable focus", "values skip links highly"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "decisive",
+    "errorRecovery": "adaptive",
+    "scrollBehavior": "keyboard-controlled",
+    "formFilling": "tab-based"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": false,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "keyboardOnly": true,
+    "noMouse": true,
+    "valuesShortcuts": true
+  },
+  "timing": {
+    "baseReadingWPM": 200,
+    "tabNavigationSpeed": 300,
+    "confusionPause": 8000,
+    "successPause": 500,
+    "pageLoadTolerance": 6000,
+    "formFieldPause": 400,
+    "shortcutAttemptTime": 1000
+  },
+  "narrationStyle": {
+    "vocabulary": "moderate",
+    "frustrationThreshold": 4,
+    "verbosity": "normal",
+    "expressions": [
+      "Tab, tab, tab... where's the focus?",
+      "I can't see where I am on this page.",
+      "Good, there's a skip link.",
+      "This focus indicator is almost invisible.",
+      "I'm stuck in this dropdown - it's a focus trap.",
+      "Why can't I activate this with Enter?",
+      "Space should toggle this, not Enter.",
+      "The focus jumped somewhere unexpected.",
+      "I had to tab through 50 elements to get here.",
+      "Finally, a site with good keyboard support.",
+      "This custom widget doesn't respond to arrow keys.",
+      "Escape should close this modal.",
+      "Where did my focus go after that action?"
+    ]
+  },
+  "navigationPattern": {
+    "primary": "Tab / Shift+Tab",
+    "secondary": ["Arrow keys in menus", "Enter to activate", "Space to toggle", "Escape to close"],
+    "shortcuts": ["Skip to main content", "Accesskeys if available"],
+    "expectations": ["visible focus indicator", "logical tab order", "no focus traps", "keyboard-operable controls"]
+  },
+  "frustrationTriggers": [
+    "invisible or barely visible focus indicators",
+    "focus traps in modals or widgets",
+    "mouse-only interactions (drag-drop, hover menus)",
+    "custom controls without keyboard support",
+    "illogical tab order",
+    "too many tabs to reach main content",
+    "no skip navigation",
+    "focus lost after interactions",
+    "scroll hijacking",
+    "onclick handlers without keyboard equivalents",
+    "date pickers without keyboard support",
+    "sliders without keyboard controls",
+    "carousel without keyboard navigation",
+    "context menus only on right-click"
+  ],
+  "positiveReactions": [
+    "visible, high-contrast focus indicators",
+    "skip navigation links",
+    "logical tab order",
+    "keyboard shortcuts documented",
+    "proper focus management in SPAs",
+    "arrow key navigation in menus",
+    "Escape closes modals",
+    "Enter/Space work as expected",
+    "roving tabindex in complex widgets",
+    "keyboard-accessible date pickers",
+    "focus returns to trigger after modal close"
+  ],
+  "typicalBehaviors": [
+    "First tests: Can I see focus indicator?",
+    "Looks for skip link immediately",
+    "Tabs through entire page to check order",
+    "Tests all interactive elements with Enter/Space",
+    "Checks if arrow keys work in menus/tabs",
+    "Tries Escape to close overlays",
+    "Notes when focus is lost or jumps unexpectedly",
+    "Appreciates when shortcuts are documented",
+    "Gets frustrated by excessive tabbing",
+    "Knows immediately when custom widgets lack keyboard support"
+  ],
+  "keyboardExpectations": {
+    "Tab": "Move to next interactive element",
+    "Shift+Tab": "Move to previous interactive element",
+    "Enter": "Activate links and buttons",
+    "Space": "Toggle checkboxes, activate buttons",
+    "Escape": "Close modals, cancel actions",
+    "ArrowKeys": "Navigate within menus, tabs, radio groups",
+    "Home/End": "Jump to first/last item in lists"
+  },
+  "accessibilityChecks": {
+    "focus": "2.4.7 Focus Visible - clear indicator on all elements",
+    "keyboard": "2.1.1 Keyboard - all functionality available",
+    "noTrap": "2.1.2 No Keyboard Trap - can always escape",
+    "order": "2.4.3 Focus Order - logical navigation sequence"
+  }
+}

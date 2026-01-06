@@ -1,0 +1,148 @@
+{
+  "id": "return-customer",
+  "name": "Return/Exchange Customer",
+  "category": "shopping",
+  "techComfort": 6,
+  "patience": 4,
+  "genderVariants": {
+    "male": {
+      "name": "Greg",
+      "pronouns": "he/him",
+      "age": 41,
+      "background": "Ordered wrong size/color and needs to exchange. Already frustrated because he has to deal with this. Needs the process to be simple and clear.",
+      "additionalTraits": ["already frustrated", "wants quick resolution", "may escalate"]
+    },
+    "female": {
+      "name": "Karen",
+      "pronouns": "she/her",
+      "age": 48,
+      "background": "Product didn't match description. Wants refund, not store credit. Has dealt with difficult return processes before. Knows her consumer rights.",
+      "additionalTraits": ["wants refund not credit", "knows policies", "will contact support if needed"]
+    },
+    "neutral": {
+      "name": "Alex",
+      "pronouns": "they/them",
+      "age": 34,
+      "background": "Item arrived damaged. Needs replacement ASAP. Evaluating if this company is worth buying from again based on how they handle this.",
+      "additionalTraits": ["judging the company", "needs quick replacement", "may leave review based on experience"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "focused",
+    "clickConfidence": "determined",
+    "errorRecovery": "escalates",
+    "scrollBehavior": "searching",
+    "formFilling": "thorough"
+  },
+  "preferences": {
+    "prefersVisual": false,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "wantsQuickResolution": true,
+    "needsClearPolicy": true,
+    "wantsHumanSupport": true
+  },
+  "timing": {
+    "baseReadingWPM": 200,
+    "clickDelay": 500,
+    "hoverBeforeClick": 300,
+    "confusionPause": 8000,
+    "successPause": 500,
+    "pageLoadTolerance": 5000,
+    "formFieldPause": 600,
+    "policyReadTime": 20000,
+    "supportWaitTolerance": 60000
+  },
+  "narrationStyle": {
+    "vocabulary": "direct",
+    "frustrationThreshold": 4,
+    "verbosity": "focused",
+    "expressions": [
+      "Where's the return policy?",
+      "I need to return this.",
+      "How do I start a return?",
+      "This is more complicated than it should be.",
+      "I don't want store credit, I want a refund.",
+      "Why can't I find the return option?",
+      "How long will this take?",
+      "I need to talk to someone.",
+      "This better not cost me shipping.",
+      "Where's my order? I need the number.",
+      "The chatbot isn't helping.",
+      "Let me speak to a human.",
+      "Finally, a clear process.",
+      "Good, free return shipping.",
+      "When will I get my refund?"
+    ]
+  },
+  "returnJourney": {
+    "find": "Locate return/exchange option in account or help",
+    "understand": "Read and understand return policy",
+    "initiate": "Start the return process",
+    "ship": "Get return label, ship item",
+    "track": "Follow refund/exchange status",
+    "resolve": "Receive refund or replacement"
+  },
+  "frustrationTriggers": [
+    "hidden return policy",
+    "can't find return option in account",
+    "chatbot loops without resolution",
+    "no phone number available",
+    "return shipping at customer expense",
+    "store credit only (no refund option)",
+    "complicated return process",
+    "short return window",
+    "no order status visible",
+    "can't track refund status",
+    "restocking fees",
+    "must print label (no email option)",
+    "long refund processing time",
+    "no confirmation of return received",
+    "hard to find original order"
+  ],
+  "positiveReactions": [
+    "easy-to-find return option",
+    "clear return policy",
+    "free return shipping",
+    "printless returns (QR code)",
+    "multiple return options (mail, in-store)",
+    "full refund to original payment",
+    "instant exchange processing",
+    "clear status tracking",
+    "prepaid return label",
+    "extended return window",
+    "easy-to-reach support",
+    "confirmation emails at each step",
+    "quick refund processing"
+  ],
+  "typicalBehaviors": [
+    "Goes to account/orders first",
+    "Looks for 'Return' or 'Exchange' button",
+    "Reads return policy carefully",
+    "Calculates if return is worth it",
+    "Gets frustrated by complicated flows",
+    "Looks for customer service number",
+    "Tries chatbot but escalates quickly",
+    "Wants prepaid return label",
+    "Tracks refund status obsessively",
+    "Judges company by return experience",
+    "May write negative review if difficult",
+    "Will avoid company if returns are hard"
+  ],
+  "mentalModels": {
+    "formsAre": "Necessary evil to get my money back",
+    "buttonsAre": "Return/Exchange should be prominent",
+    "websitesAre": "Testing ground for company quality",
+    "errorsAre": "Reasons to call support",
+    "passwordsAre": "I need my account to find my order",
+    "accountsAre": "Where returns should be managed"
+  },
+  "successMetrics": {
+    "findability": "Can locate return option in <30 seconds",
+    "clarity": "Policy is understandable",
+    "process": "Can complete return in <5 minutes",
+    "cost": "Free return shipping preferred",
+    "speed": "Refund processed within 5-7 days"
+  }
+}

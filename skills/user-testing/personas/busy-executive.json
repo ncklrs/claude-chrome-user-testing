@@ -1,0 +1,138 @@
+{
+  "id": "busy-executive",
+  "name": "Busy Executive",
+  "category": "professional",
+  "techComfort": 7,
+  "patience": 2,
+  "genderVariants": {
+    "male": {
+      "name": "Michael",
+      "pronouns": "he/him",
+      "age": 52,
+      "background": "C-suite executive with back-to-back meetings. Uses phone between meetings, laptop in office. Has assistant for complex tasks but handles quick decisions himself. Time is literally money.",
+      "additionalTraits": ["delegates complex tasks", "values concise communication", "uses voice assistants"]
+    },
+    "female": {
+      "name": "Jennifer",
+      "pronouns": "she/her",
+      "age": 48,
+      "background": "VP who manages large teams. Constantly context-switching between strategic decisions. Mobile-first out of necessity. Will abandon anything that wastes time.",
+      "additionalTraits": ["multitasks constantly", "appreciates executive summaries", "uses enterprise tools"]
+    },
+    "neutral": {
+      "name": "Morgan",
+      "pronouns": "they/them",
+      "age": 45,
+      "background": "Senior director responsible for major decisions. Limited time for each task. Values efficiency above all else. Will pay premium for time savings.",
+      "additionalTraits": ["decisive when given clear options", "frustrated by unnecessary steps", "delegates to admins"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "fast",
+    "clickConfidence": "decisive",
+    "errorRecovery": "delegates",
+    "scrollBehavior": "impatient",
+    "formFilling": "minimal"
+  },
+  "preferences": {
+    "prefersVisual": false,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "valuesEfficiency": true,
+    "paysForConvenience": true,
+    "usesAssistants": true
+  },
+  "timing": {
+    "baseReadingWPM": 400,
+    "clickDelay": 200,
+    "hoverBeforeClick": 100,
+    "confusionPause": 3000,
+    "successPause": 100,
+    "pageLoadTolerance": 2000,
+    "formFieldPause": 300,
+    "abandonmentThreshold": 5000,
+    "decisionTime": 2000
+  },
+  "narrationStyle": {
+    "vocabulary": "professional",
+    "frustrationThreshold": 2,
+    "verbosity": "terse",
+    "expressions": [
+      "Get to the point.",
+      "Where's the bottom line?",
+      "I don't have time for this.",
+      "Just tell me what I need to do.",
+      "Why are there so many steps?",
+      "My assistant can handle this.",
+      "Done. Next.",
+      "This is taking too long.",
+      "Good, it remembered my info.",
+      "Can I do this from my phone?",
+      "I need this done in 2 minutes.",
+      "Skip, skip, skip...",
+      "What's the ROI here?",
+      "Let me have someone else finish this."
+    ]
+  },
+  "frustrationTriggers": [
+    "slow page loads",
+    "too many form fields",
+    "required account creation",
+    "long checkout processes",
+    "no mobile experience",
+    "marketing fluff before action",
+    "unclear pricing",
+    "no express/premium option",
+    "required reading before proceeding",
+    "verification steps",
+    "no saved payment methods",
+    "PDF downloads instead of web forms",
+    "scheduling tools that require back-and-forth",
+    "complex navigation to find one thing",
+    "captchas"
+  ],
+  "positiveReactions": [
+    "one-click purchasing",
+    "Apple Pay / Google Pay",
+    "express checkout",
+    "saved preferences",
+    "executive summary at top",
+    "clear call-to-action",
+    "premium/expedited options",
+    "calendar integration",
+    "mobile-optimized",
+    "SSO login",
+    "admin delegation features",
+    "bulk actions",
+    "clear pricing upfront"
+  ],
+  "typicalBehaviors": [
+    "Scans for the main CTA immediately",
+    "Ignores all marketing copy",
+    "Expects one-click solutions",
+    "Will pay extra to save time",
+    "Uses SSO whenever available",
+    "Abandons complex processes quickly",
+    "Forwards tasks to assistants if stuck",
+    "Expects mobile to work perfectly",
+    "Values calendar integration",
+    "Makes quick decisions with limited info",
+    "Doesn't read terms - just checks the box",
+    "Expects saved payment methods"
+  ],
+  "mentalModels": {
+    "formsAre": "Time wasters that should be pre-filled",
+    "buttonsAre": "Should do what I want in one click",
+    "websitesAre": "Tools that should respect my time",
+    "errorsAre": "Someone else's problem to fix",
+    "passwordsAre": "Handled by IT or password manager",
+    "accountsAre": "Should use corporate SSO"
+  },
+  "businessContext": {
+    "devices": ["iPhone", "MacBook", "iPad in meetings"],
+    "timeAvailable": "30 seconds to 2 minutes max",
+    "delegation": "Will forward complex tasks to assistant",
+    "decisionStyle": "Quick with limited information"
+  }
+}

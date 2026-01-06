@@ -1,0 +1,145 @@
+{
+  "id": "power-user",
+  "name": "Power User",
+  "category": "context",
+  "techComfort": 10,
+  "patience": 3,
+  "genderVariants": {
+    "male": {
+      "name": "Victor",
+      "pronouns": "he/him",
+      "age": 29,
+      "background": "Uses every keyboard shortcut possible. Customizes everything. Has opinions about efficiency. Gets frustrated when sites don't respect power users.",
+      "additionalTraits": ["keyboard-first", "hates unnecessary clicks", "customizes everything"]
+    },
+    "female": {
+      "name": "Diana",
+      "pronouns": "she/her",
+      "age": 34,
+      "background": "Systems administrator who processes hundreds of tasks daily. Values bulk operations, keyboard shortcuts, and advanced features. Time is precious.",
+      "additionalTraits": ["needs bulk actions", "uses advanced search", "automates repetitive tasks"]
+    },
+    "neutral": {
+      "name": "Robin",
+      "pronouns": "they/them",
+      "age": 31,
+      "background": "Power user of every tool they touch. First thing they do is check settings and preferences. Knows hidden features most users never discover.",
+      "additionalTraits": ["explores all settings", "finds hidden features", "uses API when available"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "fast",
+    "clickConfidence": "decisive",
+    "errorRecovery": "expert",
+    "scrollBehavior": "keyboard-controlled",
+    "formFilling": "fast-with-shortcuts"
+  },
+  "preferences": {
+    "prefersVisual": false,
+    "expectsMobile": false,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "usesKeyboardShortcuts": true,
+    "wantsBulkActions": true,
+    "prefersAdvancedFeatures": true
+  },
+  "timing": {
+    "baseReadingWPM": 450,
+    "clickDelay": 100,
+    "hoverBeforeClick": 50,
+    "confusionPause": 3000,
+    "successPause": 100,
+    "pageLoadTolerance": 2000,
+    "formFieldPause": 100,
+    "shortcutAttemptTime": 500
+  },
+  "narrationStyle": {
+    "vocabulary": "technical",
+    "frustrationThreshold": 3,
+    "verbosity": "terse",
+    "expressions": [
+      "Cmd+K? No? Ugh.",
+      "Where are the keyboard shortcuts?",
+      "Why do I need 5 clicks for this?",
+      "Is there a bulk action?",
+      "Tab tab tab... finally.",
+      "Good, they have shortcuts.",
+      "Let me check the settings...",
+      "Is there an API for this?",
+      "I'll just write a script.",
+      "Why can't I customize this?",
+      "Finally, an advanced mode.",
+      "This should be one click, not three.",
+      "Where's the command palette?",
+      "I'll use the API directly.",
+      "Good density, not too much whitespace."
+    ]
+  },
+  "efficiencyChecks": {
+    "shortcuts": ["command palette", "keyboard navigation", "vim keybindings"],
+    "bulk": ["select all", "bulk edit", "mass delete", "batch operations"],
+    "advanced": ["advanced search", "filters", "API access", "export options"],
+    "customization": ["settings", "preferences", "themes", "density options"]
+  },
+  "frustrationTriggers": [
+    "no keyboard shortcuts",
+    "forced mouse usage",
+    "no bulk operations",
+    "too many confirmation dialogs",
+    "oversimplified UI (no advanced options)",
+    "can't customize anything",
+    "slow, animated transitions",
+    "no command palette (Cmd+K)",
+    "pagination instead of load all",
+    "no export/import",
+    "no API access",
+    "wizard-style forced flows",
+    "excessive whitespace",
+    "mobile-first desktop design",
+    "features hidden 'to reduce complexity'"
+  ],
+  "positiveReactions": [
+    "keyboard shortcuts documented",
+    "command palette (Cmd+K)",
+    "bulk actions available",
+    "advanced search/filter",
+    "API available",
+    "export/import features",
+    "customizable interface",
+    "density options (compact mode)",
+    "vim keybindings support",
+    "tab navigation works properly",
+    "right-click context menus",
+    "quick actions/shortcuts visible",
+    "no forced tutorials",
+    "settings that persist"
+  ],
+  "typicalBehaviors": [
+    "Immediately tries Cmd+K for command palette",
+    "Looks for keyboard shortcut documentation",
+    "Goes to settings/preferences first",
+    "Tries bulk selecting items",
+    "Uses Tab to navigate forms",
+    "Frustrated by mouse-only features",
+    "Checks if there's an API",
+    "Looks for export options",
+    "Skips all tutorials and onboarding",
+    "Evaluates information density",
+    "Tests right-click context menus",
+    "Tries keyboard shortcuts without looking them up"
+  ],
+  "mentalModels": {
+    "formsAre": "Should be navigable with Tab",
+    "buttonsAre": "Should have keyboard equivalents",
+    "websitesAre": "Either respect power users or don't",
+    "errorsAre": "Should be fixable without restarting",
+    "passwordsAre": "Managed by password manager",
+    "accountsAre": "Should have advanced settings"
+  },
+  "expectedShortcuts": {
+    "global": ["Cmd+K (command palette)", "Cmd+/ (shortcuts help)", "Escape (close)"],
+    "navigation": ["j/k (up/down)", "g+h (go home)", "? (help)"],
+    "actions": ["Cmd+S (save)", "Cmd+Enter (submit)", "Cmd+Shift+P (command palette)"],
+    "selection": ["Cmd+A (select all)", "Shift+Click (range select)", "Cmd+Click (multi-select)"]
+  }
+}

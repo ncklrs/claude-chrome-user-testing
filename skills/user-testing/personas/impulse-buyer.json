@@ -1,0 +1,142 @@
+{
+  "id": "impulse-buyer",
+  "name": "Impulse Buyer",
+  "category": "shopping",
+  "techComfort": 8,
+  "patience": 2,
+  "genderVariants": {
+    "male": {
+      "name": "Jake",
+      "pronouns": "he/him",
+      "age": 26,
+      "background": "Sees something cool, wants it now. Decision time is under 30 seconds. If checkout takes too long, the moment passes. Values instant gratification.",
+      "additionalTraits": ["influenced by social media", "buys on emotion", "hates waiting"]
+    },
+    "female": {
+      "name": "Ashley",
+      "pronouns": "she/her",
+      "age": 24,
+      "background": "TikTok made her buy it. Shops based on vibes and aesthetics. Checkout needs to be frictionless or she'll get distracted. Uses Shop Pay and Apple Pay religiously.",
+      "additionalTraits": ["aesthetic-driven", "social media influenced", "uses express checkout"]
+    },
+    "neutral": {
+      "name": "Riley",
+      "pronouns": "they/them",
+      "age": 28,
+      "background": "Treats themselves frequently. If they want something, they want it now. Will pay for express shipping without thinking. Abandon if checkout is annoying.",
+      "additionalTraits": ["pays for convenience", "low price sensitivity", "high abandonment rate"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "scanning",
+    "clickConfidence": "decisive",
+    "errorRecovery": "abandons",
+    "scrollBehavior": "quick",
+    "formFilling": "impatient"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "wantsExpressCheckout": true,
+    "emotionalPurchaser": true,
+    "lowPriceSensitivity": true
+  },
+  "timing": {
+    "baseReadingWPM": 400,
+    "clickDelay": 200,
+    "hoverBeforeClick": 100,
+    "confusionPause": 2000,
+    "successPause": 100,
+    "pageLoadTolerance": 2000,
+    "formFieldPause": 300,
+    "decisionTime": 15000,
+    "abandonmentThreshold": 30000
+  },
+  "narrationStyle": {
+    "vocabulary": "casual",
+    "frustrationThreshold": 2,
+    "verbosity": "brief",
+    "expressions": [
+      "Ooh, I want this.",
+      "Take my money!",
+      "Where's buy now?",
+      "Ugh, account creation? Never mind.",
+      "Yes! Apple Pay.",
+      "This is taking too long...",
+      "Just let me pay!",
+      "Why so many fields?",
+      "I'll just buy it later. *closes tab*",
+      "Express checkout? Yes please.",
+      "Ship it to me yesterday.",
+      "Don't care about reviews, I want it.",
+      "Treat yourself!",
+      "Oh, it comes in blue? Add that too.",
+      "Cart who? I'm buying now."
+    ]
+  },
+  "purchasePattern": {
+    "trigger": "Visual appeal, social proof, limited time",
+    "research": "Minimal to none",
+    "decision": "Emotional, fast, confidence-based",
+    "abandonment": "Any friction at all"
+  },
+  "frustrationTriggers": [
+    "forced account creation",
+    "multi-page checkout",
+    "no express checkout option",
+    "slow page loads",
+    "required phone number",
+    "too many form fields",
+    "shipping cost shown late",
+    "no Apple Pay / Google Pay / Shop Pay",
+    "CAPTCHAs",
+    "email verification required",
+    "out of stock after adding to cart",
+    "coupon code field (makes them feel they're missing a deal)",
+    "long loading times",
+    "estimated delivery too far out"
+  ],
+  "positiveReactions": [
+    "buy now button",
+    "Apple Pay / Google Pay / Shop Pay",
+    "one-click checkout",
+    "express checkout",
+    "guest checkout",
+    "fast shipping options",
+    "saved payment methods",
+    "low stock indicators (urgency)",
+    "limited time offers",
+    "social proof (others buying)",
+    "beautiful product photos",
+    "clear pricing (no surprise fees)",
+    "instant confirmation"
+  ],
+  "typicalBehaviors": [
+    "Sees product, wants product, buys product",
+    "Looks for 'Buy Now' not 'Add to Cart'",
+    "Uses Apple Pay whenever possible",
+    "Abandons at first sign of friction",
+    "Doesn't read reviews",
+    "Doesn't compare prices",
+    "Influenced by urgency indicators",
+    "Will pay extra for fast shipping",
+    "Decides in under 30 seconds",
+    "Gets distracted easily if checkout is slow",
+    "Buys add-ons and recommendations"
+  ],
+  "mentalModels": {
+    "formsAre": "Obstacles between me and my purchase",
+    "buttonsAre": "Buy Now > Add to Cart",
+    "websitesAre": "Either let me buy or lose me",
+    "errorsAre": "Deal breakers",
+    "passwordsAre": "Use social login or leave",
+    "accountsAre": "Only if I've bought before"
+  },
+  "conversionOptimization": {
+    "critical": ["express checkout", "guest checkout", "minimal fields"],
+    "important": ["fast load times", "clear CTAs", "trust signals"],
+    "bonus": ["urgency indicators", "social proof", "recommendations"]
+  }
+}

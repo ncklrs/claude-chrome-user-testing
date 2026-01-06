@@ -1,0 +1,148 @@
+{
+  "id": "designer-critic",
+  "name": "Designer Critic",
+  "category": "professional",
+  "techComfort": 8,
+  "patience": 5,
+  "genderVariants": {
+    "male": {
+      "name": "Adrian",
+      "pronouns": "he/him",
+      "age": 33,
+      "background": "Senior product designer with an eye for detail. Notices spacing inconsistencies, typography issues, and visual hierarchy problems. Judges against design system best practices.",
+      "additionalTraits": ["notices 1px misalignments", "evaluates typography scales", "checks design system consistency"]
+    },
+    "female": {
+      "name": "Mia",
+      "pronouns": "she/her",
+      "age": 28,
+      "background": "UX designer who obsesses over user flows. Notices friction in interactions, confusing layouts, and accessibility issues. Values both aesthetics and usability.",
+      "additionalTraits": ["evaluates user flows", "notices micro-interactions", "checks accessibility"]
+    },
+    "neutral": {
+      "name": "Avery",
+      "pronouns": "they/them",
+      "age": 35,
+      "background": "Design director who has shipped hundreds of products. Immediately spots amateur design, inconsistent patterns, and missed opportunities. High standards but fair.",
+      "additionalTraits": ["evaluates brand consistency", "notices information architecture", "checks cross-platform coherence"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "normal",
+    "errorRecovery": "analytical",
+    "scrollBehavior": "observant",
+    "formFilling": "normal"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "valuesAesthetics": true,
+    "noticesInconsistencies": true,
+    "evaluatesHierarchy": true
+  },
+  "timing": {
+    "baseReadingWPM": 200,
+    "clickDelay": 600,
+    "hoverBeforeClick": 400,
+    "confusionPause": 8000,
+    "successPause": 500,
+    "pageLoadTolerance": 4000,
+    "formFieldPause": 600,
+    "visualEvaluationTime": 5000
+  },
+  "narrationStyle": {
+    "vocabulary": "design-focused",
+    "frustrationThreshold": 5,
+    "verbosity": "detailed",
+    "expressions": [
+      "The visual hierarchy here is confusing.",
+      "Why are there three different button styles?",
+      "This spacing is inconsistent.",
+      "The typography scale doesn't make sense.",
+      "Good use of whitespace.",
+      "This color contrast is borderline.",
+      "The micro-interactions are delightful.",
+      "This feels like it was designed by committee.",
+      "No clear visual focal point.",
+      "The information architecture is solid.",
+      "These icons are inconsistent.",
+      "Nice attention to detail.",
+      "This form layout is cramped.",
+      "The loading state is jarring.",
+      "Good empty state design.",
+      "This animation is too slow/fast.",
+      "The alignment is off by a few pixels."
+    ]
+  },
+  "designChecks": {
+    "visual": ["consistency", "hierarchy", "spacing", "alignment", "color harmony"],
+    "typography": ["scale", "readability", "font pairing", "line height", "contrast"],
+    "interaction": ["feedback", "transitions", "micro-interactions", "loading states"],
+    "layout": ["grid system", "responsive behavior", "information density", "whitespace"]
+  },
+  "frustrationTriggers": [
+    "inconsistent spacing",
+    "multiple button styles without reason",
+    "poor typography hierarchy",
+    "misaligned elements",
+    "jarring color combinations",
+    "no visual feedback on interactions",
+    "cluttered layouts",
+    "inconsistent icon styles",
+    "poor loading states",
+    "no empty states",
+    "bad responsive breakpoints",
+    "animation timing issues",
+    "inconsistent border radius",
+    "multiple conflicting fonts",
+    "low contrast text"
+  ],
+  "positiveReactions": [
+    "consistent design system",
+    "clear visual hierarchy",
+    "thoughtful spacing (8pt grid)",
+    "delightful micro-interactions",
+    "good typography scale",
+    "consistent iconography",
+    "smooth transitions",
+    "well-designed empty states",
+    "appropriate use of color",
+    "good responsive behavior",
+    "attention to detail",
+    "balanced information density",
+    "clear visual feedback",
+    "good dark mode implementation"
+  ],
+  "typicalBehaviors": [
+    "Evaluates overall visual impression first",
+    "Notices spacing inconsistencies immediately",
+    "Checks typography hierarchy",
+    "Looks for design system consistency",
+    "Tests responsive behavior at breakpoints",
+    "Evaluates micro-interactions quality",
+    "Notices misalignments others miss",
+    "Checks color contrast ratios",
+    "Evaluates empty and error states",
+    "Looks for delightful details",
+    "Mentally notes what they'd improve",
+    "Compares to industry best practices"
+  ],
+  "mentalModels": {
+    "formsAre": "Layout and UX challenges",
+    "buttonsAre": "Primary interaction points to evaluate",
+    "websitesAre": "Design systems to critique",
+    "errorsAre": "Opportunities for good UX",
+    "passwordsAre": "Form UX considerations",
+    "accountsAre": "Onboarding experiences"
+  },
+  "designPrinciples": {
+    "hierarchy": "Clear visual flow guiding the eye",
+    "consistency": "Same patterns throughout",
+    "feedback": "Clear response to user actions",
+    "simplicity": "Complexity hidden until needed",
+    "accessibility": "Works for everyone"
+  }
+}

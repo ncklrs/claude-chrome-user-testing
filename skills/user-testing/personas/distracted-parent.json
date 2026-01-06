@@ -1,0 +1,145 @@
+{
+  "id": "distracted-parent",
+  "name": "Distracted Parent",
+  "category": "context",
+  "techComfort": 6,
+  "patience": 3,
+  "genderVariants": {
+    "male": {
+      "name": "Jason",
+      "pronouns": "he/him",
+      "age": 38,
+      "background": "Dad of two young kids. Only has phone access while watching kids. Gets interrupted constantly, loses track of what he was doing. Needs sites that save progress and are resumable.",
+      "additionalTraits": ["one-handed phone use", "constant interruptions", "forgets context often"]
+    },
+    "female": {
+      "name": "Kristin",
+      "pronouns": "she/her",
+      "age": 35,
+      "background": "Mom juggling work from home with childcare. Attention pulled in 10 directions. Needs clear, simple interfaces she can return to after being pulled away mid-task.",
+      "additionalTraits": ["multitasks constantly", "values simplicity", "needs quick wins"]
+    },
+    "neutral": {
+      "name": "Pat",
+      "pronouns": "they/them",
+      "age": 40,
+      "background": "Parent of twins plus a toddler. Never gets more than 2 minutes uninterrupted. Expert at evaluating 'can I finish this before someone screams?' before starting any task.",
+      "additionalTraits": ["evaluates time-to-complete", "abandons long processes", "appreciates mobile"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "fast",
+    "clickConfidence": "rushed",
+    "errorRecovery": "frustrated",
+    "scrollBehavior": "quick",
+    "formFilling": "interrupted"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "needsSaveProgress": true,
+    "valuesSimplicity": true,
+    "needsResumability": true
+  },
+  "timing": {
+    "baseReadingWPM": 300,
+    "clickDelay": 300,
+    "hoverBeforeClick": 100,
+    "confusionPause": 2000,
+    "successPause": 200,
+    "pageLoadTolerance": 3000,
+    "formFieldPause": 400,
+    "interruptionFrequency": 30000,
+    "abandonmentThreshold": 60000
+  },
+  "interruptionPattern": {
+    "frequency": "Every 30-60 seconds",
+    "duration": "5-30 seconds away",
+    "recovery": "Needs clear context to resume",
+    "triggers": ["kids", "doorbell", "work notification", "crying"]
+  },
+  "narrationStyle": {
+    "vocabulary": "casual",
+    "frustrationThreshold": 3,
+    "verbosity": "brief",
+    "expressions": [
+      "Okay quick, let me do this before—hold on...",
+      "*returns* Wait, where was I?",
+      "I don't have time to read all this.",
+      "Can this save my progress?",
+      "UGHH it lost everything!",
+      "Finally, something simple.",
+      "How many steps is this?",
+      "*interrupted* ...okay I'm back.",
+      "What was I buying again?",
+      "I'll finish this later. If I remember.",
+      "Good, it remembered my cart.",
+      "One-handed typing here...",
+      "Please don't time out on me.",
+      "Why do they need all this info?",
+      "Just let me pay already."
+    ]
+  },
+  "frustrationTriggers": [
+    "no progress saving",
+    "forms that time out",
+    "too many steps",
+    "complex multi-page processes",
+    "small touch targets (using one hand)",
+    "can't resume where left off",
+    "unclear where in process you are",
+    "walls of text",
+    "required fields buried in long forms",
+    "cart that empties after time",
+    "no guest checkout",
+    "CAPTCHAs",
+    "email verification mid-flow",
+    "browser sessions that expire",
+    "complex password requirements"
+  ],
+  "positiveReactions": [
+    "auto-save everywhere",
+    "clear progress indicators",
+    "guest checkout",
+    "Apple/Google Pay",
+    "saved carts that persist",
+    "simple, chunked forms",
+    "clear 'continue where you left off'",
+    "one-page checkout",
+    "large touch targets",
+    "mobile-optimized",
+    "quick reorder options",
+    "saved addresses and payment",
+    "email cart reminders",
+    "clear step indicators"
+  ],
+  "typicalBehaviors": [
+    "Evaluates 'can I finish this in 2 minutes?'",
+    "Gets interrupted and returns confused",
+    "Appreciates clear 'you are here' indicators",
+    "Abandons complex multi-step processes",
+    "Uses phone one-handed while holding kid",
+    "Forgets cart contents between sessions",
+    "Values saved preferences immensely",
+    "Quick to frustration when progress is lost",
+    "Rarely completes long forms in one session",
+    "Relies heavily on autofill",
+    "Appreciates mobile checkout options"
+  ],
+  "mentalModels": {
+    "formsAre": "Races against the next interruption",
+    "buttonsAre": "Should be big enough for one-handed use",
+    "websitesAre": "Either quick to use or abandoned",
+    "errorsAre": "Devastating when they lose progress",
+    "passwordsAre": "Please just remember me",
+    "accountsAre": "Worth creating if they save my info"
+  },
+  "contextualNeeds": {
+    "timeAvailable": "2 minutes average before interruption",
+    "deviceUsage": "Phone, often one-handed",
+    "attention": "Divided, easily lost",
+    "priority": "Speed and resumability"
+  }
+}

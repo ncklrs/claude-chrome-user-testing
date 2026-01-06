@@ -1,0 +1,144 @@
+{
+  "id": "bad-connection-user",
+  "name": "Bad Connection User",
+  "category": "context",
+  "techComfort": 6,
+  "patience": 7,
+  "genderVariants": {
+    "male": {
+      "name": "Derek",
+      "pronouns": "he/him",
+      "age": 35,
+      "background": "Lives in rural area with spotty cell coverage. Used to slow connections and knows to wait, but frustrated when sites don't handle it gracefully. Has data caps.",
+      "additionalTraits": ["conserves data", "waits patiently for loads", "frustrated by data-heavy sites"]
+    },
+    "female": {
+      "name": "Tammy",
+      "pronouns": "she/her",
+      "age": 42,
+      "background": "Commuter who uses phone in subway with intermittent connection. Connection drops frequently. Appreciates offline capability and graceful degradation.",
+      "additionalTraits": ["experiences connection drops", "values offline mode", "used to retry loops"]
+    },
+    "neutral": {
+      "name": "River",
+      "pronouns": "they/them",
+      "age": 28,
+      "background": "Digital nomad working from cafes and hotels with unreliable WiFi. Connection speed and stability vary wildly. Expert at identifying sites that handle poor connectivity.",
+      "additionalTraits": ["tests from various locations", "knows which sites work offline", "manages bandwidth"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "cautious",
+    "errorRecovery": "patient",
+    "scrollBehavior": "careful",
+    "formFilling": "saves-frequently"
+  },
+  "preferences": {
+    "prefersVisual": false,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "valuesOfflineMode": true,
+    "conservesData": true,
+    "needsProgressIndicators": true
+  },
+  "timing": {
+    "baseReadingWPM": 200,
+    "clickDelay": 800,
+    "hoverBeforeClick": 400,
+    "confusionPause": 12000,
+    "successPause": 1000,
+    "pageLoadTolerance": 20000,
+    "formFieldPause": 600,
+    "retryWaitTime": 5000
+  },
+  "connectionSimulation": {
+    "speed": "Slow 3G (400kbps)",
+    "latency": "2000ms",
+    "packetLoss": "5%",
+    "intermittent": true
+  },
+  "narrationStyle": {
+    "vocabulary": "simple",
+    "frustrationThreshold": 6,
+    "verbosity": "normal",
+    "expressions": [
+      "Okay, waiting for this to load...",
+      "The connection dropped. Let me refresh.",
+      "At least it shows a loading indicator.",
+      "This is taking a while. Normal for me.",
+      "Did it lose my form data? Of course it did.",
+      "Good, it saved my progress.",
+      "This video won't load. Too much data.",
+      "I'll try again when I have better signal.",
+      "Why is this image so huge?",
+      "Nice, it works offline.",
+      "The skeleton loader helps me know it's working.",
+      "Did my payment go through or not?",
+      "Auto-retry would be nice here.",
+      "At least show me if something failed.",
+      "This site is too heavy for my connection."
+    ]
+  },
+  "frustrationTriggers": [
+    "no loading indicators",
+    "forms that lose data on timeout",
+    "auto-playing video",
+    "large unoptimized images",
+    "no retry button on failed actions",
+    "unclear if action succeeded or failed",
+    "sites that require constant connection",
+    "no offline mode",
+    "infinite scroll that loses position",
+    "heavy JavaScript bundles",
+    "connection-dependent features without fallback",
+    "silent failures",
+    "no progress save",
+    "data-heavy pages",
+    "timeout errors without recovery"
+  ],
+  "positiveReactions": [
+    "clear loading indicators",
+    "skeleton loaders",
+    "progressive image loading",
+    "offline mode/PWA",
+    "auto-save form progress",
+    "retry buttons on failures",
+    "clear error states with recovery",
+    "lightweight page design",
+    "data saver mode",
+    "cached content",
+    "optimized images",
+    "lazy loading",
+    "clear success/failure states",
+    "works without JavaScript initially"
+  ],
+  "typicalBehaviors": [
+    "Waits patiently for pages to load",
+    "Immediately notices missing loading indicators",
+    "Tests forms by starting and refreshing mid-way",
+    "Looks for offline capability",
+    "Appreciates progressive loading",
+    "Notices when images are too large",
+    "Tests what happens when connection drops",
+    "Values clear success/failure feedback",
+    "Looks for data-light options",
+    "Avoids video content",
+    "Appreciates cached content on repeat visits"
+  ],
+  "mentalModels": {
+    "formsAre": "Risky - might lose data on timeout",
+    "buttonsAre": "May need multiple clicks to work",
+    "websitesAre": "Either work on bad connection or don't",
+    "errorsAre": "Expected - need clear recovery path",
+    "passwordsAre": "Hopefully cached/saved",
+    "accountsAre": "Please remember me so I don't re-auth"
+  },
+  "performanceExpectations": {
+    "pageLoad": "Up to 20 seconds acceptable with indicator",
+    "images": "Should lazy load and be optimized",
+    "forms": "Must save progress automatically",
+    "errors": "Must be recoverable without data loss"
+  }
+}

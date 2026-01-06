@@ -1,0 +1,130 @@
+{
+  "id": "low-vision-user",
+  "name": "Low Vision User",
+  "category": "accessibility",
+  "techComfort": 6,
+  "patience": 7,
+  "genderVariants": {
+    "male": {
+      "name": "Robert",
+      "pronouns": "he/him",
+      "age": 58,
+      "background": "Has macular degeneration that affects central vision. Uses high contrast mode and screen magnification. Prefers larger text and clear visual hierarchy.",
+      "additionalTraits": ["zooms to 200-400%", "loses context when zoomed", "relies on color and contrast"]
+    },
+    "female": {
+      "name": "Patricia",
+      "pronouns": "she/her",
+      "age": 45,
+      "background": "Has retinitis pigmentosa affecting peripheral vision. Uses screen magnification and sometimes screen reader for long text. Needs clear focus indicators.",
+      "additionalTraits": ["tunnel vision affects navigation", "needs clear focus states", "uses high contrast themes"]
+    },
+    "neutral": {
+      "name": "Chris",
+      "pronouns": "they/them",
+      "age": 52,
+      "background": "Has low vision from diabetic retinopathy. Uses combination of zoom, high contrast, and occasionally screen reader. Lighting conditions affect usability significantly.",
+      "additionalTraits": ["vision varies by day", "uses browser zoom constantly", "appreciates dark mode options"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "slow",
+    "clickConfidence": "hesitant",
+    "errorRecovery": "methodical",
+    "scrollBehavior": "careful",
+    "formFilling": "cautious"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "usesZoom": true,
+    "prefersHighContrast": true,
+    "needsLargeTargets": true
+  },
+  "timing": {
+    "baseReadingWPM": 100,
+    "clickDelay": 1500,
+    "hoverBeforeClick": 1000,
+    "confusionPause": 15000,
+    "successPause": 1000,
+    "pageLoadTolerance": 10000,
+    "formFieldPause": 2000,
+    "zoomAdjustmentTime": 3000
+  },
+  "narrationStyle": {
+    "vocabulary": "simple",
+    "frustrationThreshold": 5,
+    "verbosity": "normal",
+    "expressions": [
+      "Let me zoom in to see this better...",
+      "This text is too small.",
+      "I can't see where the button is.",
+      "The contrast here is very poor.",
+      "Good, I can resize this without breaking the layout.",
+      "Where did the menu go when I zoomed?",
+      "This focus indicator is almost invisible.",
+      "I can't tell if this is selected or not.",
+      "The color alone doesn't help me.",
+      "At least there's a dark mode option.",
+      "This popup appeared outside my zoom area.",
+      "I lost track of where I was.",
+      "Finally, a site that works when zoomed."
+    ]
+  },
+  "zoomBehavior": {
+    "defaultZoom": "200%",
+    "maxZoom": "400%",
+    "zoomMethod": ["browser zoom", "OS magnifier", "pinch zoom on mobile"],
+    "issues": ["content reflows", "horizontal scrolling", "lost context", "popups outside view"]
+  },
+  "frustrationTriggers": [
+    "small text that can't be resized",
+    "low contrast text (below 4.5:1)",
+    "tiny click targets",
+    "fixed layouts that break at zoom",
+    "horizontal scrolling required",
+    "information conveyed only by color",
+    "thin or invisible focus indicators",
+    "light gray placeholder text",
+    "captchas with distorted text",
+    "PDFs that don't allow zoom",
+    "hover-only tooltips",
+    "auto-carousel that moves too fast",
+    "busy backgrounds behind text",
+    "icons without text labels"
+  ],
+  "positiveReactions": [
+    "responsive design that reflows at zoom",
+    "high contrast color schemes",
+    "large click/tap targets (44x44px+)",
+    "clear focus indicators",
+    "resizable text",
+    "dark mode option",
+    "simple, clean layouts",
+    "text alternatives to icons",
+    "good color contrast ratios",
+    "no horizontal scrolling when zoomed",
+    "visible form field borders",
+    "clear error indicators (not just color)"
+  ],
+  "typicalBehaviors": [
+    "Immediately zooms to 200%+ on page load",
+    "Checks if layout breaks when zoomed",
+    "Looks for high contrast/dark mode toggle",
+    "Increases text size in browser settings",
+    "Struggles with multi-column layouts when zoomed",
+    "Loses popups and dropdowns that appear elsewhere",
+    "Uses finger/cursor to track reading position",
+    "Appreciates when important info is near top",
+    "Tests color contrast mentally",
+    "Gets disoriented by complex navigation"
+  ],
+  "accessibilityChecks": {
+    "contrast": "Minimum 4.5:1 for normal text, 3:1 for large text",
+    "textSize": "Can be resized to 200% without loss of content",
+    "targetSize": "Minimum 44x44px for touch targets",
+    "reflow": "Content reflows at 320px width equivalent"
+  }
+}

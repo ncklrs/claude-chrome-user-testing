@@ -1,31 +1,155 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "categories": {
+    "generational": {
+      "description": "Personas based on generational differences in technology adoption",
+      "personas": ["boomer-tech-averse", "boomer-tech-friendly", "millennial-tech-skeptic", "genz-digital-native", "genalpha-tablet-kid"]
+    },
+    "accessibility": {
+      "description": "Personas representing users with different accessibility needs",
+      "personas": ["screen-reader-user", "low-vision-user", "keyboard-only-user", "cognitive-adhd-user"]
+    },
+    "professional": {
+      "description": "Personas representing different professional perspectives",
+      "personas": ["busy-executive", "developer-critic", "designer-critic", "support-agent"]
+    },
+    "context": {
+      "description": "Personas representing different usage contexts",
+      "personas": ["bad-connection-user", "distracted-parent", "non-native-english", "power-user"]
+    },
+    "shopping": {
+      "description": "Personas representing different shopping behaviors",
+      "personas": ["comparison-shopper", "impulse-buyer", "return-customer", "gift-buyer"]
+    }
+  },
   "personas": [
     {
       "id": "boomer-tech-averse",
+      "category": "generational",
       "file": "boomer-tech-averse.json",
       "summary": "Cautious user who needs explicit instructions and reads everything carefully"
     },
     {
       "id": "boomer-tech-friendly",
+      "category": "generational",
       "file": "boomer-tech-friendly.json",
       "summary": "Experienced user who prefers familiar patterns, active on social media"
     },
     {
       "id": "millennial-tech-skeptic",
+      "category": "generational",
       "file": "millennial-tech-skeptic.json",
-      "summary": "Mobile-first user skeptical of dark patterns, values privacy and transparency"
+      "summary": "Mobile-first user skeptical of dark patterns, values privacy"
     },
     {
       "id": "genz-digital-native",
+      "category": "generational",
       "file": "genz-digital-native.json",
       "summary": "Fast-moving user who skips instructions and expects instant feedback"
     },
     {
       "id": "genalpha-tablet-kid",
+      "category": "generational",
       "file": "genalpha-tablet-kid.json",
       "summary": "Touch-first user who thinks visually and expects gamification"
+    },
+    {
+      "id": "screen-reader-user",
+      "category": "accessibility",
+      "file": "screen-reader-user.json",
+      "summary": "Blind user navigating via screen reader, tests WCAG compliance"
+    },
+    {
+      "id": "low-vision-user",
+      "category": "accessibility",
+      "file": "low-vision-user.json",
+      "summary": "User with limited vision who zooms and needs high contrast"
+    },
+    {
+      "id": "keyboard-only-user",
+      "category": "accessibility",
+      "file": "keyboard-only-user.json",
+      "summary": "User who navigates entirely by keyboard, tests focus and tab order"
+    },
+    {
+      "id": "cognitive-adhd-user",
+      "category": "accessibility",
+      "file": "cognitive-adhd-user.json",
+      "summary": "User with ADHD who gets distracted and overwhelmed easily"
+    },
+    {
+      "id": "busy-executive",
+      "category": "professional",
+      "file": "busy-executive.json",
+      "summary": "Time-strapped leader who needs efficiency and express options"
+    },
+    {
+      "id": "developer-critic",
+      "category": "professional",
+      "file": "developer-critic.json",
+      "summary": "Technical user who evaluates implementation quality and performance"
+    },
+    {
+      "id": "designer-critic",
+      "category": "professional",
+      "file": "designer-critic.json",
+      "summary": "Design expert who evaluates aesthetics, hierarchy, and consistency"
+    },
+    {
+      "id": "support-agent",
+      "category": "professional",
+      "file": "support-agent.json",
+      "summary": "Support professional who tests help flows and self-service"
+    },
+    {
+      "id": "bad-connection-user",
+      "category": "context",
+      "file": "bad-connection-user.json",
+      "summary": "User on slow/unreliable connection, tests offline and loading states"
+    },
+    {
+      "id": "distracted-parent",
+      "category": "context",
+      "file": "distracted-parent.json",
+      "summary": "Constantly interrupted user who needs progress saving and resumability"
+    },
+    {
+      "id": "non-native-english",
+      "category": "context",
+      "file": "non-native-english.json",
+      "summary": "ESL user who struggles with idioms and cultural references"
+    },
+    {
+      "id": "power-user",
+      "category": "context",
+      "file": "power-user.json",
+      "summary": "Expert user who wants keyboard shortcuts and advanced features"
+    },
+    {
+      "id": "comparison-shopper",
+      "category": "shopping",
+      "file": "comparison-shopper.json",
+      "summary": "Methodical researcher who compares specs, prices, and reviews"
+    },
+    {
+      "id": "impulse-buyer",
+      "category": "shopping",
+      "file": "impulse-buyer.json",
+      "summary": "Emotional buyer who needs frictionless express checkout"
+    },
+    {
+      "id": "return-customer",
+      "category": "shopping",
+      "file": "return-customer.json",
+      "summary": "Customer returning/exchanging, tests return flow and support access"
+    },
+    {
+      "id": "gift-buyer",
+      "category": "shopping",
+      "file": "gift-buyer.json",
+      "summary": "Gift purchaser who needs wrapping, messaging, and different shipping"
     }
   ],
-  "defaultPersona": "millennial-tech-skeptic"
+  "defaultPersona": "millennial-tech-skeptic",
+  "totalPersonas": 21
 }

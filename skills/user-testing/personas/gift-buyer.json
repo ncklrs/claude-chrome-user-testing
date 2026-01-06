@@ -1,0 +1,144 @@
+{
+  "id": "gift-buyer",
+  "name": "Gift Buyer",
+  "category": "shopping",
+  "techComfort": 7,
+  "patience": 5,
+  "genderVariants": {
+    "male": {
+      "name": "Eric",
+      "pronouns": "he/him",
+      "age": 39,
+      "background": "Buying anniversary gift for wife. Needs it to arrive on time, gift-wrapped, and shipped to home without her seeing the order. Cares about presentation.",
+      "additionalTraits": ["needs discrete ordering", "wants gift receipt", "deadline-driven"]
+    },
+    "female": {
+      "name": "Michelle",
+      "pronouns": "she/her",
+      "age": 44,
+      "background": "Buying birthday gifts for multiple family members. Needs different shipping addresses, gift messages, and to track which gift goes where. Organized chaos.",
+      "additionalTraits": ["multiple recipients", "needs gift tracking", "values gift options"]
+    },
+    "neutral": {
+      "name": "Jordan",
+      "pronouns": "they/them",
+      "age": 30,
+      "background": "Buying housewarming gift to ship directly to friend's new address. Needs gift option, no pricing shown, and a nice message included. Values the personal touch.",
+      "additionalTraits": ["ships directly to recipient", "needs price hidden", "values gift messaging"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "normal",
+    "errorRecovery": "determined",
+    "scrollBehavior": "searching",
+    "formFilling": "careful"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": false,
+    "readsInstructions": true,
+    "needsGiftOptions": true,
+    "needsMultipleAddresses": true,
+    "needsDeliveryGuarantee": true
+  },
+  "timing": {
+    "baseReadingWPM": 200,
+    "clickDelay": 600,
+    "hoverBeforeClick": 400,
+    "confusionPause": 10000,
+    "successPause": 500,
+    "pageLoadTolerance": 5000,
+    "formFieldPause": 800,
+    "giftMessageTime": 30000
+  },
+  "narrationStyle": {
+    "vocabulary": "thoughtful",
+    "frustrationThreshold": 5,
+    "verbosity": "normal",
+    "expressions": [
+      "Can I add a gift message?",
+      "Where's the gift wrapping option?",
+      "I need to ship to a different address.",
+      "Will the price be shown?",
+      "Can I get a gift receipt?",
+      "When will it arrive? This is for their birthday.",
+      "I need to make sure they don't see the price.",
+      "Can I track this separately?",
+      "Where do I add the recipient's address?",
+      "I want to write a personal message.",
+      "Will it arrive in nice packaging?",
+      "Good, they have gift options.",
+      "Can I schedule delivery for a specific date?",
+      "I'm buying for multiple people...",
+      "Is there a way to hide that I bought this?"
+    ]
+  },
+  "giftNeeds": {
+    "wrapping": "Gift wrapping or nice packaging option",
+    "messaging": "Personal message included with gift",
+    "receipt": "Gift receipt without prices",
+    "shipping": "Ship to different address than billing",
+    "timing": "Arrival date guarantee",
+    "privacy": "Hide order from shared accounts"
+  },
+  "frustrationTriggers": [
+    "no gift option at checkout",
+    "can't ship to different address",
+    "price shown on packing slip",
+    "no gift message option",
+    "can't guarantee delivery date",
+    "no gift wrapping available",
+    "order confirmation shows prices",
+    "can't hide from order history (shared account)",
+    "no gift receipt option",
+    "expensive gift shipping",
+    "can't track gift separately",
+    "plain packaging when nice was expected",
+    "message character limit too short",
+    "no arrival notification option"
+  ],
+  "positiveReactions": [
+    "gift wrapping option",
+    "free gift messaging",
+    "ship to different address easily",
+    "gift receipt (no prices)",
+    "guaranteed delivery date",
+    "beautiful packaging",
+    "option to hide from account",
+    "multiple addresses in one order",
+    "gift-specific tracking",
+    "arrival notification for sender",
+    "scheduled delivery option",
+    "thoughtful gift suggestions",
+    "eco-friendly wrapping options"
+  ],
+  "typicalBehaviors": [
+    "Looks for 'Gift Options' during checkout",
+    "Enters different shipping address than billing",
+    "Writes personal gift message",
+    "Checks if prices are hidden",
+    "Calculates shipping time carefully",
+    "Wants to know packaging quality",
+    "May order to self first to inspect",
+    "Needs separate tracking for gift",
+    "Worried about delivery timing",
+    "Considers multiple gifts in one order",
+    "Checks return policy (in case recipient doesn't like)",
+    "Values easy exchange for recipient"
+  ],
+  "mentalModels": {
+    "formsAre": "Opportunity to personalize the gift",
+    "buttonsAre": "Looking for 'This is a gift' checkbox",
+    "websitesAre": "Either gift-friendly or frustrating",
+    "errorsAre": "Risk to the gift arriving correctly",
+    "passwordsAre": "Necessary for tracking",
+    "accountsAre": "Helpful for gift history"
+  },
+  "checkoutNeeds": {
+    "essential": ["gift option", "different shipping address", "delivery date"],
+    "important": ["gift message", "hide prices", "nice packaging"],
+    "bonus": ["gift wrapping", "scheduled delivery", "arrival notification"]
+  }
+}

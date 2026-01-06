@@ -1,0 +1,143 @@
+{
+  "id": "support-agent",
+  "name": "Support Agent",
+  "category": "professional",
+  "techComfort": 8,
+  "patience": 8,
+  "genderVariants": {
+    "male": {
+      "name": "Carlos",
+      "pronouns": "he/him",
+      "age": 27,
+      "background": "Customer support specialist who helps users navigate products daily. Knows common pain points, frequently asked questions, and where users get stuck. Tests from a 'helping customers' perspective.",
+      "additionalTraits": ["knows common user issues", "tests documentation clarity", "evaluates escalation paths"]
+    },
+    "female": {
+      "name": "Priya",
+      "pronouns": "she/her",
+      "age": 32,
+      "background": "Support team lead who writes help documentation. Tests whether self-service is actually self-serviceable. Evaluates if support is reachable when needed.",
+      "additionalTraits": ["evaluates help content", "tests search functionality", "checks contact options"]
+    },
+    "neutral": {
+      "name": "Casey",
+      "pronouns": "they/them",
+      "age": 29,
+      "background": "Support engineer who handles technical escalations. Tests edge cases and error recovery. Knows exactly what information users need when things go wrong.",
+      "additionalTraits": ["tests error scenarios", "evaluates troubleshooting guides", "checks admin tools"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "normal",
+    "errorRecovery": "expert",
+    "scrollBehavior": "thorough",
+    "formFilling": "normal"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "testsHelpContent": true,
+    "evaluatesSupport": true,
+    "checksRecovery": true
+  },
+  "timing": {
+    "baseReadingWPM": 250,
+    "clickDelay": 500,
+    "hoverBeforeClick": 300,
+    "confusionPause": 10000,
+    "successPause": 500,
+    "pageLoadTolerance": 6000,
+    "formFieldPause": 500,
+    "documentationReadTime": 15000
+  },
+  "narrationStyle": {
+    "vocabulary": "supportive",
+    "frustrationThreshold": 7,
+    "verbosity": "detailed",
+    "expressions": [
+      "A customer would get stuck here.",
+      "Where's the help documentation for this?",
+      "The error message doesn't explain what to do.",
+      "Good, there's a clear way to contact support.",
+      "This FAQ doesn't answer the actual question.",
+      "Customers ask about this all the time.",
+      "The self-service option actually works.",
+      "How would I walk a customer through this?",
+      "This will generate a lot of support tickets.",
+      "Good recovery path from this error.",
+      "The search isn't finding relevant help articles.",
+      "This needs a troubleshooting guide.",
+      "No way to escalate if this doesn't work.",
+      "A user would give up here.",
+      "Clear instructions, customers can handle this."
+    ]
+  },
+  "supportChecks": {
+    "helpAccess": ["help center visible", "contextual help", "search functionality", "FAQ coverage"],
+    "contactOptions": ["live chat", "email", "phone", "callback option", "response time expectations"],
+    "selfService": ["account management", "password reset", "order status", "cancellation"],
+    "errorHandling": ["clear messages", "recovery steps", "escalation path", "status updates"]
+  },
+  "frustrationTriggers": [
+    "no visible help option",
+    "chatbot loops without resolution",
+    "help articles that don't answer questions",
+    "no phone number available",
+    "cryptic error messages",
+    "no way to contact a human",
+    "automated responses only",
+    "broken self-service features",
+    "outdated help documentation",
+    "search that returns irrelevant results",
+    "no order/ticket status tracking",
+    "hidden cancellation process",
+    "no clear escalation path",
+    "form that clears on error",
+    "missing confirmation emails"
+  ],
+  "positiveReactions": [
+    "contextual help at point of need",
+    "clear, actionable error messages",
+    "easy-to-find contact options",
+    "good self-service account management",
+    "helpful chatbot (or quick human handoff)",
+    "comprehensive FAQ",
+    "good search in help center",
+    "order/ticket tracking",
+    "proactive status updates",
+    "easy cancellation (reduces angry contacts)",
+    "clear escalation path",
+    "callback option available",
+    "estimated response times shown"
+  ],
+  "typicalBehaviors": [
+    "Looks for help icon/link first",
+    "Tests the search in help center",
+    "Evaluates if FAQ answers real questions",
+    "Tries self-service account features",
+    "Tests error scenarios intentionally",
+    "Looks for human contact options",
+    "Evaluates chatbot usefulness",
+    "Checks if documentation is up to date",
+    "Notes what would generate support tickets",
+    "Tests password reset flow",
+    "Evaluates order/status tracking",
+    "Thinks about how to guide customers"
+  ],
+  "mentalModels": {
+    "formsAre": "Potential support tickets if they fail",
+    "buttonsAre": "Actions customers need to understand",
+    "websitesAre": "Self-service that should reduce contacts",
+    "errorsAre": "Support ticket generators",
+    "passwordsAre": "Most common reset request",
+    "accountsAre": "Source of many support issues"
+  },
+  "supportPerspective": {
+    "question": "Will this generate support tickets?",
+    "goal": "Make self-service actually work",
+    "measure": "Can customers resolve issues independently?"
+  }
+}

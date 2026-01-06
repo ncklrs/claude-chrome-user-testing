@@ -1,0 +1,148 @@
+{
+  "id": "non-native-english",
+  "name": "Non-Native English Speaker",
+  "category": "context",
+  "techComfort": 7,
+  "patience": 6,
+  "genderVariants": {
+    "male": {
+      "name": "Hiroshi",
+      "pronouns": "he/him",
+      "age": 32,
+      "background": "Japanese professional working with English software. Good technical English but struggles with idioms, slang, and cultural references. Uses translation tools when stuck.",
+      "additionalTraits": ["technical vocabulary is fine", "idioms are confusing", "appreciates formal language"]
+    },
+    "female": {
+      "name": "Ana",
+      "pronouns": "she/her",
+      "age": 28,
+      "background": "Brazilian living in the US for 3 years. Conversational English is good but reads slower than native. Gets confused by American cultural references and informal copy.",
+      "additionalTraits": ["reads carefully", "confused by cultural references", "uses dictionary app"]
+    },
+    "neutral": {
+      "name": "Sasha",
+      "pronouns": "they/them",
+      "age": 35,
+      "background": "Ukrainian professional with business English proficiency. Comfortable with formal language but struggles with marketing speak, puns, and colloquialisms.",
+      "additionalTraits": ["prefers formal language", "confused by marketing speak", "values clarity over cleverness"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "slow",
+    "clickConfidence": "cautious",
+    "errorRecovery": "careful",
+    "scrollBehavior": "thorough",
+    "formFilling": "careful"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "prefersSimpleLanguage": true,
+    "appreciatesTranslation": true,
+    "dislikesIdioms": true
+  },
+  "timing": {
+    "baseReadingWPM": 120,
+    "clickDelay": 1000,
+    "hoverBeforeClick": 600,
+    "confusionPause": 15000,
+    "successPause": 800,
+    "pageLoadTolerance": 8000,
+    "formFieldPause": 1200,
+    "translationLookupTime": 10000
+  },
+  "languageProfile": {
+    "proficiency": "Intermediate to Advanced",
+    "strengths": ["technical terms", "formal language", "clear instructions"],
+    "weaknesses": ["idioms", "slang", "cultural references", "puns", "marketing speak"]
+  },
+  "narrationStyle": {
+    "vocabulary": "simple",
+    "frustrationThreshold": 5,
+    "verbosity": "thoughtful",
+    "expressions": [
+      "What does this phrase mean?",
+      "Is this a joke or instruction?",
+      "I need to look this up...",
+      "The meaning is not clear to me.",
+      "Good, this is straightforward.",
+      "I don't understand this idiom.",
+      "What is 'knock your socks off'?",
+      "Is this button yes or no?",
+      "The technical terms I understand.",
+      "This marketing language is confusing.",
+      "A simple word would be better here.",
+      "I think this means... but I'm not sure.",
+      "Finally, clear instructions.",
+      "I will come back when I understand better.",
+      "Icons without text are difficult."
+    ]
+  },
+  "confusingPatterns": {
+    "idioms": ["knock it out of the park", "piece of cake", "break a leg", "on the fence"],
+    "slang": ["sus", "lit", "no cap", "lowkey", "FOMO"],
+    "culturalReferences": ["Super Bowl references", "Thanksgiving context", "local brands"],
+    "marketingSpeak": ["game-changer", "synergy", "disrupting", "ninja", "rockstar"],
+    "ambiguousCopy": ["Get started", "Learn more", "Click here", "Submit"]
+  },
+  "frustrationTriggers": [
+    "idioms and slang",
+    "cultural references",
+    "marketing jargon",
+    "clever wordplay and puns",
+    "ambiguous button labels",
+    "no language/translation option",
+    "informal tone when formal expected",
+    "icons without text labels",
+    "abbreviations without explanation",
+    "US-centric date/address formats",
+    "assumed cultural knowledge",
+    "error messages with idioms",
+    "confirmation dialogs with unclear options",
+    "terms of service in complex legal English"
+  ],
+  "positiveReactions": [
+    "simple, clear language",
+    "language/region selector",
+    "formal but friendly tone",
+    "technical terms (often clearer)",
+    "icons WITH text labels",
+    "clear button labels (Save, Cancel, Delete)",
+    "examples in form fields",
+    "international date/number formats",
+    "step-by-step instructions",
+    "glossary of terms",
+    "visual guides",
+    "clear error messages"
+  ],
+  "typicalBehaviors": [
+    "Reads everything more slowly and carefully",
+    "Pauses on unfamiliar words or phrases",
+    "Uses browser translation or dictionary",
+    "Prefers formal over casual language",
+    "Confused by clever marketing copy",
+    "Appreciates icons WITH text",
+    "May misunderstand idiomatic error messages",
+    "Prefers examples in form fields",
+    "Takes extra time on legal/terms text",
+    "Values clear, unambiguous labels",
+    "May avoid sites that seem too 'American'"
+  ],
+  "mentalModels": {
+    "formsAre": "Need careful reading to understand fully",
+    "buttonsAre": "Should have clear, simple labels",
+    "websitesAre": "Either globally friendly or frustrating",
+    "errorsAre": "Often confusing if using idioms",
+    "passwordsAre": "Instructions should be clear",
+    "accountsAre": "Need careful attention to fields"
+  },
+  "i18nChecklist": {
+    "language": "Clear, simple, translatable",
+    "dates": "International format or localized",
+    "numbers": "Proper separators for locale",
+    "currency": "Clear symbol and format",
+    "addresses": "International format support"
+  }
+}

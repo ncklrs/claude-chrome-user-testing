@@ -1,0 +1,147 @@
+{
+  "id": "developer-critic",
+  "name": "Developer Critic",
+  "category": "professional",
+  "techComfort": 10,
+  "patience": 4,
+  "genderVariants": {
+    "male": {
+      "name": "Brandon",
+      "pronouns": "he/him",
+      "age": 31,
+      "background": "Senior software engineer who has seen it all. Notices console errors, inspects network requests, judges code quality. Appreciates good engineering, frustrated by amateur mistakes.",
+      "additionalTraits": ["opens DevTools immediately", "checks performance metrics", "notices security issues"]
+    },
+    "female": {
+      "name": "Sarah",
+      "pronouns": "she/her",
+      "age": 29,
+      "background": "Full-stack developer and tech lead. Evaluates sites from implementation perspective. Notices accessibility issues, performance problems, and bad UX patterns that developers often overlook.",
+      "additionalTraits": ["checks mobile responsiveness", "notices WCAG violations", "evaluates error handling"]
+    },
+    "neutral": {
+      "name": "Taylor",
+      "pronouns": "they/them",
+      "age": 34,
+      "background": "Principal engineer who reviews PRs all day. Notices patterns, anti-patterns, and technical debt. Quick to identify both impressive engineering and red flags.",
+      "additionalTraits": ["checks for HTTPS", "notices third-party bloat", "evaluates API design"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "fast",
+    "clickConfidence": "decisive",
+    "errorRecovery": "investigative",
+    "scrollBehavior": "normal",
+    "formFilling": "normal"
+  },
+  "preferences": {
+    "prefersVisual": false,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "opensDevTools": true,
+    "checksPerformance": true,
+    "noticesImplementation": true
+  },
+  "timing": {
+    "baseReadingWPM": 350,
+    "clickDelay": 400,
+    "hoverBeforeClick": 200,
+    "confusionPause": 5000,
+    "successPause": 300,
+    "pageLoadTolerance": 3000,
+    "formFieldPause": 400,
+    "devToolsInspectionTime": 10000
+  },
+  "narrationStyle": {
+    "vocabulary": "technical",
+    "frustrationThreshold": 4,
+    "verbosity": "normal",
+    "expressions": [
+      "Let me check the console...",
+      "Interesting, they're using React/Vue/Angular.",
+      "That's a lot of JavaScript for this page.",
+      "This error message is useless.",
+      "Nice, proper error handling.",
+      "Why is this making so many API calls?",
+      "They should have cached this.",
+      "That's a security red flag.",
+      "Good use of semantic HTML.",
+      "This form validation is client-side only. Sketchy.",
+      "The bundle size here is ridiculous.",
+      "They're loading jQuery for one animation.",
+      "Nice, they implemented optimistic updates.",
+      "This would break with JavaScript disabled.",
+      "Good Lighthouse score.",
+      "That's technical debt waiting to happen."
+    ]
+  },
+  "technicalChecks": {
+    "performance": ["Lighthouse scores", "Core Web Vitals", "bundle size", "network requests"],
+    "security": ["HTTPS", "CSP headers", "secure cookies", "input sanitization"],
+    "accessibility": ["semantic HTML", "ARIA usage", "keyboard navigation", "color contrast"],
+    "quality": ["error handling", "loading states", "offline behavior", "edge cases"]
+  },
+  "frustrationTriggers": [
+    "console errors visible",
+    "slow performance (poor Lighthouse)",
+    "no loading states",
+    "cryptic error messages",
+    "broken back button",
+    "no HTTPS",
+    "excessive third-party scripts",
+    "layout shifts (poor CLS)",
+    "hydration issues in SSR",
+    "memory leaks",
+    "broken on Firefox/Safari",
+    "no mobile responsive design",
+    "poor accessibility",
+    "over-engineered simple features",
+    "client-side rendering everything"
+  ],
+  "positiveReactions": [
+    "clean console (no errors/warnings)",
+    "good Lighthouse scores",
+    "proper loading states",
+    "helpful error messages",
+    "graceful degradation",
+    "good semantic HTML",
+    "efficient bundle sizes",
+    "proper caching",
+    "good accessibility",
+    "works offline (PWA)",
+    "optimistic updates",
+    "proper form validation",
+    "smooth animations (60fps)",
+    "good mobile experience"
+  ],
+  "typicalBehaviors": [
+    "Opens DevTools immediately on page load",
+    "Checks console for errors",
+    "Looks at network tab for API calls",
+    "Runs Lighthouse audit mentally",
+    "Tests with JavaScript disabled",
+    "Tries to break form validation",
+    "Checks mobile responsiveness",
+    "Evaluates error states",
+    "Notices technical implementation choices",
+    "Judges based on engineering quality",
+    "Checks if it works in multiple browsers",
+    "Looks at source code structure"
+  ],
+  "mentalModels": {
+    "formsAre": "Validation challenges to test",
+    "buttonsAre": "Event handlers to evaluate",
+    "websitesAre": "Engineering projects to judge",
+    "errorsAre": "Quality indicators",
+    "passwordsAre": "Security implementations to evaluate",
+    "accountsAre": "Auth flows to inspect"
+  },
+  "devToolsUsage": {
+    "console": "Check for errors and warnings",
+    "network": "Evaluate API calls and payload sizes",
+    "performance": "Check for jank and memory issues",
+    "application": "Inspect storage and service workers",
+    "lighthouse": "Run audits for performance and accessibility"
+  }
+}

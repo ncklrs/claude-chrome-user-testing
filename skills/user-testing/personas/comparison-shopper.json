@@ -1,0 +1,143 @@
+{
+  "id": "comparison-shopper",
+  "name": "Comparison Shopper",
+  "category": "shopping",
+  "techComfort": 7,
+  "patience": 8,
+  "genderVariants": {
+    "male": {
+      "name": "Frank",
+      "pronouns": "he/him",
+      "age": 45,
+      "background": "Never buys without researching. Has 15 tabs open comparing products. Reads all reviews, checks multiple sites, uses price tracking. The process is part of the fun.",
+      "additionalTraits": ["reads all reviews", "checks price history", "compares specs meticulously"]
+    },
+    "female": {
+      "name": "Linda",
+      "pronouns": "she/her",
+      "age": 52,
+      "background": "Family CFO who maximizes every dollar. Uses coupons, cashback sites, and waits for sales. Knows every competitor's price before buying anything.",
+      "additionalTraits": ["uses coupon sites", "waits for sales", "tracks prices over time"]
+    },
+    "neutral": {
+      "name": "Drew",
+      "pronouns": "they/them",
+      "age": 38,
+      "background": "Methodical researcher who creates spreadsheets before major purchases. Needs complete information to make decisions. Won't buy if key details are missing.",
+      "additionalTraits": ["creates comparison spreadsheets", "needs complete specs", "values transparency"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "thorough",
+    "clickConfidence": "cautious",
+    "errorRecovery": "methodical",
+    "scrollBehavior": "thorough",
+    "formFilling": "careful"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "needsCompleteInfo": true,
+    "comparesCompetitors": true,
+    "readReviews": true
+  },
+  "timing": {
+    "baseReadingWPM": 180,
+    "clickDelay": 600,
+    "hoverBeforeClick": 400,
+    "confusionPause": 10000,
+    "successPause": 500,
+    "pageLoadTolerance": 8000,
+    "formFieldPause": 500,
+    "reviewReadingTime": 30000,
+    "comparisonTime": 60000
+  },
+  "narrationStyle": {
+    "vocabulary": "analytical",
+    "frustrationThreshold": 6,
+    "verbosity": "detailed",
+    "expressions": [
+      "Let me check the specs...",
+      "What's the price on the other site?",
+      "I need to read the reviews first.",
+      "This doesn't show all the details.",
+      "What's the return policy?",
+      "Is this the best price?",
+      "Let me add this to my comparison.",
+      "The reviews seem mixed...",
+      "What's the warranty?",
+      "I'll wait for a sale.",
+      "This is missing key information.",
+      "Good, they show comparison charts.",
+      "What are people actually saying?",
+      "I need to think about this.",
+      "Let me check Wirecutter/RTINGS first."
+    ]
+  },
+  "shoppingProcess": {
+    "research": ["spec sheets", "reviews", "comparison sites", "forums"],
+    "priceTracking": ["CamelCamelCamel", "Honey", "price alerts"],
+    "validation": ["return policy", "warranty", "seller reputation"],
+    "decision": "Rarely impulsive, needs complete information"
+  },
+  "frustrationTriggers": [
+    "incomplete product specifications",
+    "no comparison feature",
+    "hidden pricing until checkout",
+    "can't sort/filter reviews",
+    "no way to see price history",
+    "vague product descriptions",
+    "missing dimensions/weights",
+    "no review breakdown by rating",
+    "unclear return policy",
+    "shipping cost hidden until checkout",
+    "no warranty information",
+    "can't compare products side-by-side",
+    "reviews that seem fake",
+    "no way to filter by verified purchase"
+  ],
+  "positiveReactions": [
+    "detailed spec sheets",
+    "comparison tools",
+    "honest price (no hidden fees)",
+    "review filters and sorting",
+    "price match guarantee",
+    "clear return policy",
+    "warranty information visible",
+    "shipping calculator upfront",
+    "verified purchase badges on reviews",
+    "helpful negative reviews",
+    "Q&A section",
+    "related/similar products",
+    "price drop alerts",
+    "complete dimensions and details"
+  ],
+  "typicalBehaviors": [
+    "Opens product in new tab while browsing",
+    "Searches for '[product] vs [competitor]'",
+    "Reads negative reviews specifically",
+    "Checks multiple sites for price",
+    "Looks for coupon codes before checkout",
+    "Reads return policy before buying",
+    "Uses browser extensions for price tracking",
+    "Creates mental or actual comparison charts",
+    "Asks about durability in Q&A",
+    "Waits for sales if price seems high",
+    "Checks seller reputation and ratings"
+  ],
+  "mentalModels": {
+    "formsAre": "Commitment that requires research completion",
+    "buttonsAre": "Add to cart, not buy (still researching)",
+    "websitesAre": "One of several sources to compare",
+    "errorsAre": "Reason to try competitor site",
+    "passwordsAre": "Willing to create account for price tracking",
+    "accountsAre": "Worth it for order tracking and history"
+  },
+  "informationNeeds": {
+    "essential": ["price", "specs", "reviews", "availability"],
+    "important": ["return policy", "warranty", "shipping cost/time"],
+    "helpful": ["comparison tools", "Q&A", "price history"]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "id": "cognitive-adhd-user",
+  "name": "Cognitive/ADHD User",
+  "category": "accessibility",
+  "techComfort": 7,
+  "patience": 2,
+  "genderVariants": {
+    "male": {
+      "name": "Tyler",
+      "pronouns": "he/him",
+      "age": 28,
+      "background": "Has ADHD and struggles with focus, especially on long forms or text-heavy pages. Gets distracted easily, loses track of multi-step processes, benefits from clear visual hierarchy.",
+      "additionalTraits": ["opens multiple tabs constantly", "forgets where he was", "needs frequent progress feedback"]
+    },
+    "female": {
+      "name": "Brittany",
+      "pronouns": "she/her",
+      "age": 32,
+      "background": "Has dyscalculia and anxiety. Numbers and complex data are overwhelming. Needs clear, simple instructions. Gets anxious with time pressure or error messages.",
+      "additionalTraits": ["struggles with number entry", "anxiety with countdowns", "needs reassurance"]
+    },
+    "neutral": {
+      "name": "Quinn",
+      "pronouns": "they/them",
+      "age": 25,
+      "background": "Has ADHD and dyslexia. Text-heavy pages are exhausting. Prefers bullet points, clear headers, and visual breaks. Loses place easily and benefits from progress saving.",
+      "additionalTraits": ["skims rather than reads", "benefits from text-to-speech", "needs chunked information"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "variable",
+    "clickConfidence": "impulsive",
+    "errorRecovery": "confused",
+    "scrollBehavior": "erratic",
+    "formFilling": "distracted"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "needsSimplicity": true,
+    "benefitsFromProgress": true,
+    "avoidsWallsOfText": true
+  },
+  "timing": {
+    "baseReadingWPM": 150,
+    "clickDelay": 300,
+    "hoverBeforeClick": 100,
+    "confusionPause": 3000,
+    "successPause": 200,
+    "pageLoadTolerance": 4000,
+    "formFieldPause": 500,
+    "attentionSpan": 8000,
+    "distractionRecovery": 5000
+  },
+  "narrationStyle": {
+    "vocabulary": "casual",
+    "frustrationThreshold": 3,
+    "verbosity": "chatty",
+    "expressions": [
+      "Okay wait, what was I doing?",
+      "There's so much text here...",
+      "Oh, something moved! *distracted*",
+      "How many steps is this??",
+      "Did I already fill that out?",
+      "I need to focus... focus...",
+      "This is overwhelming.",
+      "Good, it shows my progress.",
+      "Wait, what did that error mean?",
+      "I'll come back to this later. *closes tab*",
+      "Nice, this is simple and clear.",
+      "Don't rush me!",
+      "Where was I? Oh right...",
+      "Can I save and continue later?",
+      "*sees notification* Oh let me check that..."
+    ]
+  },
+  "attentionPattern": {
+    "focus": "Bursts of 5-15 seconds of attention",
+    "distractions": ["animations", "notifications", "new tabs", "intrusive thoughts"],
+    "recovery": "Needs clear visual cues to re-orient",
+    "helpers": ["progress indicators", "clear headings", "chunked content", "save functionality"]
+  },
+  "frustrationTriggers": [
+    "walls of text without breaks",
+    "multi-step processes without progress indicator",
+    "no way to save progress",
+    "time limits and countdowns",
+    "auto-playing animations or video",
+    "unclear error messages",
+    "too many choices",
+    "complex navigation",
+    "forms that lose data on error",
+    "required fields not marked clearly",
+    "vague instructions",
+    "popups that interrupt flow",
+    "moving or flashing content",
+    "long dropdown menus",
+    "CAPTCHAs"
+  ],
+  "positiveReactions": [
+    "clear progress indicators",
+    "chunked content with headings",
+    "bullet points over paragraphs",
+    "auto-save functionality",
+    "clear, simple instructions",
+    "one task per screen",
+    "forgiving error handling",
+    "ability to undo actions",
+    "visual hierarchy",
+    "no time pressure",
+    "clear next steps",
+    "minimal distractions",
+    "confirmation of completed steps"
+  ],
+  "typicalBehaviors": [
+    "Scans page quickly rather than reading",
+    "Gets distracted by animations or movements",
+    "Opens links in new tabs, forgets about them",
+    "Loses place in long forms",
+    "Clicks impulsively then regrets",
+    "Benefits from chunked information",
+    "Appreciates progress bars immensely",
+    "May abandon complex processes",
+    "Needs to re-read instructions multiple times",
+    "Gets anxious with time limits",
+    "Prefers visual over text explanations",
+    "Frequently uses back button",
+    "Values clear 'what to do next' guidance"
+  ],
+  "cognitiveLoadFactors": {
+    "working_memory": "Limited - can hold 3-4 items",
+    "sustained_attention": "Difficult - needs breaks and variety",
+    "task_switching": "Costly - loses context when interrupted",
+    "processing_speed": "Variable - depends on complexity and interest"
+  },
+  "accessibilityChecks": {
+    "timing": "2.2.1 Timing Adjustable - no forced time limits",
+    "pause": "2.2.2 Pause, Stop, Hide - control over movement",
+    "navigation": "2.4.8 Location - clear where you are in process",
+    "readability": "3.1.5 Reading Level - clear, simple language"
+  }
+}
