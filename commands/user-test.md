@@ -16,6 +16,7 @@ Parse the following from `$ARGUMENTS`:
 - `--verbose` (optional): Extra detailed narration
 - `--stripe` (optional): Enable Stripe checkout testing mode
 - `--card <scenario>` (optional): Stripe test card scenario (default: success). Options: success, decline, insufficient, expired, 3ds-required, etc. See `skills/stripe-checkout/test-cards.json` for full list.
+- `--email <email>` (optional): Email address to use for forms and checkout (default: test@example.com)
 
 ## Available Personas
 

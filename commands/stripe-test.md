@@ -14,6 +14,7 @@ Parse the following from `$ARGUMENTS`:
 - `--persona <id>` (optional): Persona to use (default: impulse-buyer)
 - `--gender <m|f|n>` (optional): Gender variant
 - `--card <scenario>` (optional): Test card scenario (default: success)
+- `--email <email>` (optional): Email for checkout (default: test@example.com)
 - `--tasks <tasks>` (optional): Tasks to perform before checkout
 
 ## Test Card Scenarios

@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "user-testing-agent",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Persona-based user testing agent with 21+ realistic user archetypes, custom persona wizard, screenshot annotations, WCAG audit mode, and Stripe checkout testing. Simulates Boomers, Millennials, Gen Z, Gen Alpha, accessibility users, and more to find UX issues before real users do.",
   "owner": {
     "name": "Nick Jensen",
@@ -11,7 +11,7 @@
     {
       "name": "user-testing-agent",
       "description": "Persona-based user testing with Chrome automation. 21+ personas, custom wizard, screenshot annotations, WCAG audit, and Stripe checkout testing.",
-      "version": "1.5.0",
+      "version": "1.5.1",
       "source": "./",
       "category": "testing"
     }

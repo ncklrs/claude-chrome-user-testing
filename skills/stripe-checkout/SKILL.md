@@ -24,8 +24,8 @@ Always use these unless testing specific scenarios:
 - **Expiry**: 12/34 (any future date works)
 - **CVC**: 123 (or 1234 for Amex)
 - **ZIP**: 12345
-- **Name**: Test User
-- **Email**: test@example.com
+- **Name**: Test User (or persona's name)
+- **Email**: Use `--email` flag value, or default to test@example.com
 
 ## Stripe Form Detection
 
