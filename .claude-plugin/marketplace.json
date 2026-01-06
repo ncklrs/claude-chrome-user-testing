@@ -7,81 +7,13 @@
     "name": "Nick Jensen",
     "github": "ncklrs"
   },
-  "repository": "https://github.com/ncklrs/claude-chrome-user-testing",
-  "license": "MIT",
-  "keywords": [
-    "user-testing",
-    "ux",
-    "accessibility",
-    "wcag",
-    "personas",
-    "e2e-testing",
-    "chrome-automation",
-    "usability",
-    "a11y"
-  ],
-  "categories": [
-    "testing",
-    "accessibility",
-    "productivity"
-  ],
   "plugins": [
     {
       "name": "user-testing-agent",
       "description": "Persona-based user testing with Chrome automation. 21 personas across 5 categories: generational, accessibility, professional, context, and shopping.",
       "version": "1.1.0",
-      "source": ".",
-      "category": "testing",
-      "features": [
-        "21 realistic user personas with gender variants",
-        "Accessibility testing (screen reader, low vision, keyboard-only, ADHD)",
-        "Dark pattern detection",
-        "Realistic timing and behavioral simulation",
-        "First-person narration during testing",
-        "Comprehensive reports with prioritized findings",
-        "Chrome browser integration via claude --chrome"
-      ],
-      "requirements": {
-        "claude-code": ">=2.0.73",
-        "chrome-extension": ">=1.0.36"
-      }
+      "source": "./",
+      "category": "testing"
     }
-  ],
-  "personas": {
-    "total": 21,
-    "variants": 63,
-    "categories": {
-      "generational": [
-        "boomer-tech-averse",
-        "boomer-tech-friendly",
-        "millennial-tech-skeptic",
-        "genz-digital-native",
-        "genalpha-tablet-kid"
-      ],
-      "accessibility": [
-        "screen-reader-user",
-        "low-vision-user",
-        "keyboard-only-user",
-        "cognitive-adhd-user"
-      ],
-      "professional": [
-        "busy-executive",
-        "developer-critic",
-        "designer-critic",
-        "support-agent"
-      ],
-      "context": [
-        "bad-connection-user",
-        "distracted-parent",
-        "non-native-english",
-        "power-user"
-      ],
-      "shopping": [
-        "comparison-shopper",
-        "impulse-buyer",
-        "return-customer",
-        "gift-buyer"
-      ]
-    }
-  }
+  ]
 }
