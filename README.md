@@ -24,11 +24,25 @@ A Claude Code plugin that simulates realistic user personas for UX testing. The 
 
 ### Installation
 
+**Option 1: Via Marketplace (Recommended)**
+
+In Claude Code, run:
+```
+/plugins
+```
+
+Then select "Add Marketplace" and enter:
+```
+ncklrs/claude-chrome-user-testing
+```
+
+**Option 2: Manual Clone**
+
 ```bash
-# Option 1: Clone to personal plugins
+# Clone to personal plugins
 git clone https://github.com/ncklrs/claude-chrome-user-testing.git ~/.claude/plugins/user-testing-agent
 
-# Option 2: Add to project
+# Or add to a specific project
 git clone https://github.com/ncklrs/claude-chrome-user-testing.git .claude/plugins/user-testing-agent
 ```
 
