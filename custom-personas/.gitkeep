@@ -1,0 +1,9 @@
+# Custom Personas Directory
+
+This directory contains user-created custom personas.
+
+Use `/user-test-create-persona` to generate new personas, or manually create
+JSON files following the schema in `skills/persona-generator/SKILL.md`.
+
+Custom personas can be used with:
+  /user-test --url https://example.com --persona your-custom-persona-id

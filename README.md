@@ -11,6 +11,7 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 ## Features
 
 - **21 Personas** across 5 categories with male/female/neutral variants (63 total personalities)
+- **Custom Persona Wizard** to create your own personas from natural language descriptions
 - **Accessibility Testing** with screen reader, low vision, keyboard-only, and cognitive personas
 - **Realistic Timing** based on research into how different users interact with technology
 - **First-Person Narration** that stays in character throughout testing
@@ -74,6 +75,33 @@ With specific tasks:
 With gender variant:
 ```
 /user-test --url https://app.example.com --persona screen-reader-user --gender f
+```
+
+### Create Custom Personas
+
+Create your own personas using the AI-assisted wizard:
+
+```
+/user-test-create-persona
+```
+
+Describe your target user in natural language:
+
+```
+"A healthcare worker in their 40s who is forced to use the software by their
+employer. They're busy, interrupted constantly, and just want to get through
+required tasks quickly."
+```
+
+The wizard generates a complete persona with:
+- Three gender variants with appropriate names and backgrounds
+- Realistic timing patterns based on the description
+- Frustration triggers and positive reactions
+- First-person expressions for narration
+
+Then use your custom persona:
+```
+/user-test --url https://example.com --persona healthcare-worker-rushed
 ```
 
 ## Available Personas
@@ -396,7 +424,7 @@ Quick steps:
 
 - [ ] CI/CD integration with headless mode
 - [ ] A/B testing comparison reports
-- [ ] Custom persona creation wizard
+- [x] Custom persona creation wizard
 - [ ] Screenshot annotation
 - [ ] Session recording export
 - [ ] Multi-persona parallel testing

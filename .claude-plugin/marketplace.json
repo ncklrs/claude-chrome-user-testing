@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "user-testing-agent",
-  "version": "1.1.0",
-  "description": "Persona-based user testing agent with 21 realistic user archetypes. Simulates Boomers, Millennials, Gen Z, Gen Alpha, accessibility users, and more to find UX issues before real users do.",
+  "version": "1.2.0",
+  "description": "Persona-based user testing agent with 21+ realistic user archetypes and custom persona wizard. Simulates Boomers, Millennials, Gen Z, Gen Alpha, accessibility users, and more to find UX issues before real users do.",
   "owner": {
     "name": "Nick Jensen",
     "github": "ncklrs"
@@ -10,8 +10,8 @@
   "plugins": [
     {
       "name": "user-testing-agent",
-      "description": "Persona-based user testing with Chrome automation. 21 personas across 5 categories: generational, accessibility, professional, context, and shopping.",
-      "version": "1.1.0",
+      "description": "Persona-based user testing with Chrome automation. 21+ personas across 5 categories plus custom persona wizard.",
+      "version": "1.2.0",
       "source": "./",
       "category": "testing"
     }

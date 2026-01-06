@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-01-06
+
+### Added
+- **Custom Persona Creation Wizard** (`/user-test-create-persona`)
+  - AI-assisted generation from natural language descriptions
+  - Automatic smart defaults based on description keywords
+  - Three gender variants generated automatically
+  - Realistic timing patterns, expressions, and behaviors
+  - Save to plugin directory or project directory
+
+- **Persona Generator Skill** (`skills/persona-generator/SKILL.md`)
+  - Complete schema reference
+  - Trait correlation guidelines
+  - Name generation by persona type
+  - Validation rules
+
+- **Custom Personas Support**
+  - Custom personas directory (`custom-personas/`)
+  - Project-level custom personas (`.claude/custom-personas/`)
+  - Automatic lookup in `/user-test` command
+
+### Changed
+- Updated `/user-test` command to search for custom personas
+- Added all 21 personas to command documentation
+
 ## [1.1.0] - 2025-01-06
 
 ### Added

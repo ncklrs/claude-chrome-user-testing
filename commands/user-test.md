@@ -17,6 +17,9 @@ Parse the following from `$ARGUMENTS`:
 
 ## Available Personas
 
+### Built-in Personas (21)
+
+**Generational**:
 | ID | Description |
 |----|-------------|
 | `boomer-tech-averse` | Cautious, reads everything, needs explicit instructions |
@@ -24,6 +27,46 @@ Parse the following from `$ARGUMENTS`:
 | `millennial-tech-skeptic` | Mobile-first, skeptical of dark patterns, values privacy |
 | `genz-digital-native` | Fast, skips instructions, expects instant feedback |
 | `genalpha-tablet-kid` | Touch-first, visual learner, expects gamification |
+
+**Accessibility**:
+| ID | Description |
+|----|-------------|
+| `screen-reader-user` | Blind user navigating via screen reader, tests WCAG compliance |
+| `low-vision-user` | User with limited vision who zooms and needs high contrast |
+| `keyboard-only-user` | User who navigates entirely by keyboard |
+| `cognitive-adhd-user` | User with ADHD who gets distracted easily |
+
+**Professional**:
+| ID | Description |
+|----|-------------|
+| `busy-executive` | Time-strapped leader who needs efficiency |
+| `developer-critic` | Technical user who evaluates implementation quality |
+| `designer-critic` | Design expert who evaluates aesthetics and consistency |
+| `support-agent` | Support professional who tests help flows |
+
+**Context**:
+| ID | Description |
+|----|-------------|
+| `bad-connection-user` | User on slow/unreliable connection |
+| `distracted-parent` | Constantly interrupted user |
+| `non-native-english` | ESL user who struggles with idioms |
+| `power-user` | Expert user who wants shortcuts and advanced features |
+
+**Shopping**:
+| ID | Description |
+|----|-------------|
+| `comparison-shopper` | Methodical researcher who compares everything |
+| `impulse-buyer` | Fast buyer who needs frictionless checkout |
+| `return-customer` | Customer returning/exchanging, tests return flows |
+| `gift-buyer` | Gift purchaser who needs wrapping and messaging |
+
+### Custom Personas
+
+You can also use custom personas created with `/user-test-create-persona`.
+
+Custom personas are loaded from:
+1. `custom-personas/` directory in this plugin
+2. `.claude/custom-personas/` in the current project
 
 ## Pre-Flight Checklist
 
@@ -35,7 +78,11 @@ Before beginning the test, verify:
 2. **URL Accessibility**: Navigate to target URL and verify it loads
    - If failed, report the error and stop
 
-3. **Persona Loading**: Load the specified persona configuration from `skills/user-testing/personas/<persona-id>.json`
+3. **Persona Loading**: Load the specified persona configuration
+   - First, check `skills/user-testing/personas/<persona-id>.json` (built-in)
+   - If not found, check `custom-personas/<persona-id>.json` (plugin custom)
+   - If not found, check `.claude/custom-personas/<persona-id>.json` (project custom)
+   - If still not found, inform user and suggest `/user-test-create-persona`
    - Apply gender variant if specified
    - Initialize timing patterns from persona config
 
