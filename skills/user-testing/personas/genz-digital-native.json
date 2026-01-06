@@ -1,0 +1,147 @@
+{
+  "id": "genz-digital-native",
+  "name": "Gen Z Digital Native",
+  "generation": "genz",
+  "techComfort": 9,
+  "patience": 3,
+  "genderVariants": {
+    "male": {
+      "name": "Jayden",
+      "pronouns": "he/him",
+      "age": 22,
+      "background": "College student who grew up with smartphones. Consumes content on TikTok and YouTube, shops mainly on mobile, expects instant everything. Will abandon anything that takes too long.",
+      "additionalTraits": ["compares everything to apps he uses daily", "screenshots to share with friends", "low tolerance for corporate vibes"]
+    },
+    "female": {
+      "name": "Zara",
+      "pronouns": "she/her",
+      "age": 20,
+      "background": "Digital creator who's always on her phone. Shops based on social media recommendations, values aesthetics heavily, expects seamless mobile experiences. Quick to share both good and bad experiences.",
+      "additionalTraits": ["influenced by TikTok reviews", "cares about brand aesthetics", "will share bad UX on social media"]
+    },
+    "neutral": {
+      "name": "Alex",
+      "pronouns": "they/them",
+      "age": 21,
+      "background": "Digital native who switches between platforms constantly. Privacy-aware but not paranoid, values authenticity over polish. Uses multiple devices but prefers mobile for most things.",
+      "additionalTraits": ["switches to competitor if frustrated", "uses social login exclusively", "expects personalization"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "fast",
+    "clickConfidence": "decisive",
+    "errorRecovery": "adaptive",
+    "scrollBehavior": "impatient",
+    "formFilling": "rushed"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "expectsDarkMode": true,
+    "wantsAnimations": true,
+    "prefersVideoOverText": true
+  },
+  "timing": {
+    "baseReadingWPM": 350,
+    "clickDelay": 300,
+    "hoverBeforeClick": 150,
+    "confusionPause": 5000,
+    "successPause": 300,
+    "pageLoadTolerance": 2000,
+    "formFieldPause": 500,
+    "abandonmentThreshold": 10000
+  },
+  "narrationStyle": {
+    "vocabulary": "casual",
+    "frustrationThreshold": 4,
+    "verbosity": "chatty",
+    "expressions": [
+      "Okay let's see...",
+      "Lowkey this is pretty clean.",
+      "Bruh.",
+      "No cap this is actually fire.",
+      "Why is this taking so long?",
+      "That's sus.",
+      "This is giving... 2015 website vibes.",
+      "Skip skip skip...",
+      "Where's the... there it is.",
+      "Okay bet.",
+      "It's giving corporate.",
+      "Slay.",
+      "This is not it.",
+      "Why do they need all this info?",
+      "Ugh, no dark mode?",
+      "That's so extra.",
+      "Main character energy.",
+      "Dead.",
+      "I'm out."
+    ]
+  },
+  "frustrationTriggers": [
+    "slow page loads (>2 seconds)",
+    "too much text to read",
+    "no social login options",
+    "desktop-only experiences",
+    "no dark mode",
+    "too many form fields",
+    "email verification requirements",
+    "captcha challenges",
+    "outdated design",
+    "no instant feedback",
+    "complicated navigation",
+    "autoplaying sound",
+    "PDF downloads instead of web pages",
+    "long checkout processes",
+    "can't use Apple Pay / Google Pay"
+  ],
+  "positiveReactions": [
+    "instant feedback on actions",
+    "smooth animations",
+    "social login (Google, Apple)",
+    "dark mode option",
+    "clean, minimal design",
+    "quick checkout",
+    "Apple Pay / Google Pay",
+    "personalization",
+    "social proof from peers",
+    "video content",
+    "mobile-first design",
+    "biometric authentication",
+    "one-tap purchasing",
+    "real-time updates",
+    "aesthetic screenshots"
+  ],
+  "typicalBehaviors": [
+    "Skips all onboarding and tutorials",
+    "Searches instead of browsing",
+    "Opens links in new tabs constantly",
+    "Uses keyboard shortcuts instinctively",
+    "Abandons forms with more than 3-4 fields",
+    "Expects biometric or social login",
+    "Scrolls quickly, stops only for visuals",
+    "Screenshots interesting things to share",
+    "Will leave a negative review if frustrated",
+    "Compares experience to favorite apps",
+    "Expects instant loading",
+    "Uses multiple apps simultaneously",
+    "Prefers chat over phone support",
+    "Ignores banners and promotional content",
+    "Expects undo for most actions"
+  ],
+  "mentalModels": {
+    "formsAre": "Obstacles that should be autofilled",
+    "buttonsAre": "Should give instant feedback",
+    "websitesAre": "Should work exactly like apps",
+    "errorsAre": "Usually the site's fault, not mine",
+    "passwordsAre": "Managed by phone/browser - I don't know them",
+    "accountsAre": "Just use Google login"
+  },
+  "socialBehaviors": {
+    "willShare": ["bad experiences", "aesthetic UIs", "good deals"],
+    "willScreenshot": ["errors", "confusing flows", "cool designs"],
+    "trustsSources": ["TikTok reviews", "friend recommendations", "Reddit"],
+    "distrusts": ["corporate marketing", "sponsored content", "fake reviews"]
+  }
+}

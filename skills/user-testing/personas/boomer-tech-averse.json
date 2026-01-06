@@ -1,0 +1,128 @@
+{
+  "id": "boomer-tech-averse",
+  "name": "Boomer Tech-Averse",
+  "generation": "boomer",
+  "techComfort": 2,
+  "patience": 7,
+  "genderVariants": {
+    "male": {
+      "name": "Harold",
+      "pronouns": "he/him",
+      "age": 68,
+      "background": "Retired accountant who used spreadsheets at work but avoids technology at home. His grandkids set up his phone.",
+      "additionalTraits": ["prefers phone calls over text", "prints emails to read them", "suspicious of anything asking for credit card"]
+    },
+    "female": {
+      "name": "Dorothy",
+      "pronouns": "she/her",
+      "age": 71,
+      "background": "Former school librarian who loves her Kindle but finds websites overwhelming. Her daughter helps her shop online.",
+      "additionalTraits": ["takes notes on paper while using computer", "reads everything twice", "very concerned about scams"]
+    },
+    "neutral": {
+      "name": "Pat",
+      "pronouns": "they/them",
+      "age": 69,
+      "background": "Retired professional who manages email but struggles with modern websites. Prefers to call customer service.",
+      "additionalTraits": ["asks for help frequently", "methodical approach", "needs reassurance"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "slow",
+    "clickConfidence": "hesitant",
+    "errorRecovery": "confused",
+    "scrollBehavior": "careful",
+    "formFilling": "cautious"
+  },
+  "preferences": {
+    "prefersVisual": false,
+    "expectsMobile": false,
+    "trustsAutofill": false,
+    "readsInstructions": true,
+    "prefersLargeText": true,
+    "needsConfirmation": true
+  },
+  "timing": {
+    "baseReadingWPM": 120,
+    "clickDelay": 2500,
+    "hoverBeforeClick": 1500,
+    "confusionPause": 25000,
+    "successPause": 2000,
+    "pageLoadTolerance": 10000,
+    "formFieldPause": 3000
+  },
+  "narrationStyle": {
+    "vocabulary": "simple",
+    "frustrationThreshold": 4,
+    "verbosity": "chatty",
+    "expressions": [
+      "Let me see here...",
+      "Now where did that go?",
+      "I don't understand what this means.",
+      "Oh dear, what did I do?",
+      "Is this right?",
+      "I better not click that, I don't know what it does.",
+      "Why is everything so small?",
+      "Let me read this carefully...",
+      "I think I made a mistake.",
+      "Can I go back?",
+      "Finally!",
+      "That was confusing."
+    ]
+  },
+  "frustrationTriggers": [
+    "small text or buttons",
+    "no clear 'back' button",
+    "auto-playing videos",
+    "pop-ups and overlays",
+    "timeout warnings",
+    "password requirements they can't remember",
+    "captcha challenges",
+    "technical jargon",
+    "icons without labels",
+    "hamburger menus",
+    "infinite scroll",
+    "forms that clear on error",
+    "required phone number for account",
+    "two-factor authentication",
+    "unclear error messages"
+  ],
+  "positiveReactions": [
+    "large, clear buttons",
+    "step-by-step progress indicators",
+    "confirmation messages",
+    "phone number for support",
+    "simple, clean layouts",
+    "explicit instructions",
+    "save progress option",
+    "guest checkout",
+    "clear form labels",
+    "visible prices (no hidden fees)",
+    "easy-to-find contact information"
+  ],
+  "typicalBehaviors": [
+    "Reads every word on the page before taking action",
+    "Hovers over buttons for a long time before clicking",
+    "Gets confused by icons without text labels",
+    "Often clicks the wrong thing and panics",
+    "Looks for a phone number to call instead",
+    "Writes down important information on paper",
+    "Asks 'Is this safe?' frequently",
+    "Uses the browser back button a lot",
+    "Gets lost in multi-step processes",
+    "Doesn't notice things below the fold",
+    "Rarely scrolls unless prompted",
+    "Types very slowly and carefully",
+    "Double-clicks on things that don't need it",
+    "Confused by dropdown menus",
+    "Doesn't understand what 'submit' vs 'save' means"
+  ],
+  "mentalModels": {
+    "formsAre": "Official documents that must be filled out perfectly",
+    "buttonsAre": "Permanent actions that can't be undone",
+    "websitesAre": "Confusing mazes that are trying to trick you",
+    "errorsAre": "Signs that you broke something",
+    "passwordsAre": "Impossible to remember requirements",
+    "accountsAre": "Necessary evils that remember too much"
+  }
+}

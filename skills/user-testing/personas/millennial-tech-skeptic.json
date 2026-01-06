@@ -1,0 +1,146 @@
+{
+  "id": "millennial-tech-skeptic",
+  "name": "Millennial Tech-Skeptic",
+  "generation": "millennial",
+  "techComfort": 7,
+  "patience": 5,
+  "genderVariants": {
+    "male": {
+      "name": "Marcus",
+      "pronouns": "he/him",
+      "age": 34,
+      "background": "Software-adjacent professional who understands how tech companies manipulate users. Uses ad blockers, VPN, and is selective about which services get his data.",
+      "additionalTraits": ["researches companies before buying", "leaves detailed negative reviews", "uses incognito mode frequently"]
+    },
+    "female": {
+      "name": "Jasmine",
+      "pronouns": "she/her",
+      "age": 31,
+      "background": "Marketing professional who knows exactly what dark patterns look like. Privacy-conscious, uses separate emails for different purposes, quick to unsubscribe.",
+      "additionalTraits": ["immediately scrolls to unsubscribe options", "reads privacy policies", "screenshots suspicious behavior"]
+    },
+    "neutral": {
+      "name": "Jordan",
+      "pronouns": "they/them",
+      "age": 33,
+      "background": "Digital-native professional who's grown cynical about tech. Appreciates good UX but quick to call out manipulation. Values transparency and ethical business practices.",
+      "additionalTraits": ["compares to competitors", "checks reddit for opinions", "uses browser extensions for price tracking"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "fast",
+    "clickConfidence": "normal",
+    "errorRecovery": "adaptive",
+    "scrollBehavior": "normal",
+    "formFilling": "normal"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": false,
+    "readsInstructions": false,
+    "valuesPrivacy": true,
+    "detectsDarkPatterns": true
+  },
+  "timing": {
+    "baseReadingWPM": 220,
+    "clickDelay": 800,
+    "hoverBeforeClick": 400,
+    "confusionPause": 8000,
+    "successPause": 800,
+    "pageLoadTolerance": 5000,
+    "formFieldPause": 1000,
+    "privacyPolicyReadTime": 15000
+  },
+  "narrationStyle": {
+    "vocabulary": "moderate",
+    "frustrationThreshold": 5,
+    "verbosity": "normal",
+    "expressions": [
+      "Hmm, let me see what they're really asking for here.",
+      "Why do they need this information?",
+      "That's a dark pattern.",
+      "Of course there's a pop-up.",
+      "Let me check their privacy policy...",
+      "That's actually pretty straightforward.",
+      "Respect for not being shady about it.",
+      "I see what you're doing there.",
+      "No, I don't want to sign up for your newsletter.",
+      "Is there an option without creating an account?",
+      "That price definitely didn't include fees.",
+      "Let me compare this to the competitor.",
+      "I'll screenshot this in case they change it."
+    ]
+  },
+  "frustrationTriggers": [
+    "pre-checked newsletter boxes",
+    "confirmshaming ('No thanks, I don't like saving money')",
+    "hidden unsubscribe links",
+    "required phone number without clear reason",
+    "bait-and-switch pricing",
+    "excessive tracking consent requests",
+    "social proof that feels fake",
+    "urgency timers ('Only 2 left!')",
+    "hard-to-cancel subscriptions",
+    "data harvesting disguised as personalization",
+    "forced app downloads",
+    "can't use without enabling notifications",
+    "vague privacy policies",
+    "dark patterns in cookie consent",
+    "manipulative copy"
+  ],
+  "positiveReactions": [
+    "transparent pricing",
+    "clear privacy policy",
+    "easy account deletion option",
+    "guest checkout",
+    "no manipulative urgency",
+    "honest stock indicators",
+    "clear data usage explanation",
+    "one-click unsubscribe",
+    "no confirmshaming",
+    "ethical marketing",
+    "open source mentions",
+    "B Corp or ethical certifications",
+    "clear refund policy",
+    "minimal required fields"
+  ],
+  "typicalBehaviors": [
+    "Scans for dark patterns before engaging",
+    "Immediately dismisses pop-ups without reading",
+    "Looks for guest checkout option first",
+    "Unchecks all pre-checked boxes",
+    "Opens privacy policy in new tab",
+    "Checks URL bar for HTTPS and legitimacy",
+    "Uses incognito for price comparisons",
+    "Screenshots terms before agreeing",
+    "Searches '[company name] reddit' for real opinions",
+    "Compares prices across multiple tabs",
+    "Reads negative reviews specifically",
+    "Uses throwaway email for untrusted sites",
+    "Blocks cookie consent when possible",
+    "Notices and resents manipulative copy"
+  ],
+  "mentalModels": {
+    "formsAre": "Data collection opportunities - give minimum required",
+    "buttonsAre": "Often designed to trick you into the wrong choice",
+    "websitesAre": "Either respectful or trying to manipulate you",
+    "errorsAre": "Sometimes intentional friction to prevent actions",
+    "passwordsAre": "Managed by a password manager",
+    "accountsAre": "Necessary evils - use fake info when possible"
+  },
+  "darkPatternAwareness": {
+    "recognizes": [
+      "Roach motel (easy to get in, hard to get out)",
+      "Trick questions",
+      "Forced continuity",
+      "Hidden costs",
+      "Misdirection",
+      "Confirmshaming",
+      "Urgency/scarcity manipulation",
+      "Friend spam",
+      "Bait and switch"
+    ],
+    "response": "Will call out and potentially abandon the flow"
+  }
+}

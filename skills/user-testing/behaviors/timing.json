@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "description": "Timing configuration for realistic user interaction simulation",
+
+  "readingSpeed": {
+    "description": "Words per minute by persona reading speed trait",
+    "slow": 120,
+    "medium": 180,
+    "fast": 350,
+    "modifiers": {
+      "technicalJargon": 1.5,
+      "legalText": 2.0,
+      "simpleInstructions": 0.8,
+      "familiarContent": 0.6,
+      "skimming": 0.3
+    }
+  },
+
+  "interactionDelays": {
+    "description": "Base delays in milliseconds for different actions",
+    "click": {
+      "hesitant": { "min": 2000, "max": 3500 },
+      "normal": { "min": 600, "max": 1200 },
+      "decisive": { "min": 200, "max": 500 }
+    },
+    "formField": {
+      "cautious": { "min": 1500, "max": 3000 },
+      "normal": { "min": 600, "max": 1200 },
+      "rushed": { "min": 200, "max": 600 }
+    },
+    "typing": {
+      "slow": { "charDelay": 200, "variance": 100 },
+      "normal": { "charDelay": 80, "variance": 40 },
+      "fast": { "charDelay": 30, "variance": 20 }
+    },
+    "scroll": {
+      "careful": { "pauseBetween": 2000, "scrollAmount": "small" },
+      "normal": { "pauseBetween": 800, "scrollAmount": "medium" },
+      "impatient": { "pauseBetween": 200, "scrollAmount": "large" }
+    }
+  },
+
+  "decisionMaking": {
+    "description": "Time to make decisions before taking action",
+    "lowConfidence": { "min": 3000, "max": 8000 },
+    "mediumConfidence": { "min": 1000, "max": 3000 },
+    "highConfidence": { "min": 300, "max": 1000 },
+    "highStakesModifier": 2.0
+  },
+
+  "confusion": {
+    "description": "Behavior when user is confused",
+    "initialPause": {
+      "lowPatience": { "min": 3000, "max": 6000 },
+      "mediumPatience": { "min": 6000, "max": 12000 },
+      "highPatience": { "min": 12000, "max": 25000 }
+    },
+    "visualScanTime": { "min": 2000, "max": 5000 },
+    "backtrackingDelay": { "min": 1000, "max": 3000 },
+    "abandonmentThreshold": {
+      "lowPatience": 8000,
+      "mediumPatience": 20000,
+      "highPatience": 45000
+    }
+  },
+
+  "pageLoad": {
+    "description": "Tolerance for page loading times",
+    "expectations": {
+      "genalpha": { "acceptable": 2000, "frustrating": 4000, "abandonment": 6000 },
+      "genz": { "acceptable": 2000, "frustrating": 4000, "abandonment": 8000 },
+      "millennial": { "acceptable": 3000, "frustrating": 6000, "abandonment": 12000 },
+      "boomer": { "acceptable": 5000, "frustrating": 10000, "abandonment": 20000 }
+    }
+  },
+
+  "success": {
+    "description": "Pause after successful actions",
+    "acknowledgment": {
+      "minimal": { "min": 200, "max": 500 },
+      "normal": { "min": 800, "max": 1500 },
+      "celebratory": { "min": 1500, "max": 3000 }
+    }
+  },
+
+  "variance": {
+    "description": "Random variance to apply to all timings for realism",
+    "multiplierRange": { "min": 0.8, "max": 1.2 },
+    "note": "All timings should be multiplied by a random value in this range"
+  },
+
+  "contextModifiers": {
+    "description": "Modifiers based on context",
+    "firstTimeOnPage": 1.5,
+    "familiarElement": 0.7,
+    "afterError": 2.0,
+    "complexForm": 1.3,
+    "highStakesAction": 1.8,
+    "repeatedAction": 0.6,
+    "distractionPresent": 1.4
+  },
+
+  "calculations": {
+    "readingTime": "formula: (wordCount / baseReadingWPM) * 60 * 1000 * modifier * variance",
+    "clickTime": "formula: baseDelay * contextModifier * variance",
+    "totalInteractionTime": "formula: readingTime + decisionTime + actionTime + feedbackTime"
+  }
+}

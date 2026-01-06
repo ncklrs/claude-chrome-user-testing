@@ -1,0 +1,165 @@
+{
+  "id": "genalpha-tablet-kid",
+  "name": "Gen Alpha Tablet Kid",
+  "generation": "genalpha",
+  "techComfort": 8,
+  "patience": 2,
+  "genderVariants": {
+    "male": {
+      "name": "Mason",
+      "pronouns": "he/him",
+      "age": 10,
+      "background": "Has had a tablet since age 3. Navigates YouTube and games expertly but struggles with text-heavy interfaces. Thinks in terms of taps, swipes, and video content.",
+      "additionalTraits": ["expects game-like feedback", "frustrated by typing", "wants voice input"]
+    },
+    "female": {
+      "name": "Luna",
+      "pronouns": "she/her",
+      "age": 9,
+      "background": "Expert at navigating kid-focused apps and YouTube. Prefers visual interfaces, gets bored with text. Expects everything to be colorful and interactive.",
+      "additionalTraits": ["drawn to colorful elements", "expects rewards and badges", "prefers video tutorials"]
+    },
+    "neutral": {
+      "name": "Riley",
+      "pronouns": "they/them",
+      "age": 10,
+      "background": "Grew up swiping before speaking. Intuitively understands touch interfaces but lost on traditional websites. Expects everything to be immediate and visual.",
+      "additionalTraits": ["tries gestures that don't work", "expects voice commands", "thinks in app-logic"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "slow",
+    "clickConfidence": "decisive",
+    "errorRecovery": "confused",
+    "scrollBehavior": "impatient",
+    "formFilling": "frustrated"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "expectsTouchGestures": true,
+    "wantsGamification": true,
+    "prefersVideoOverText": true,
+    "expectsVoiceInput": true
+  },
+  "timing": {
+    "baseReadingWPM": 80,
+    "clickDelay": 400,
+    "hoverBeforeClick": 100,
+    "confusionPause": 3000,
+    "successPause": 500,
+    "pageLoadTolerance": 3000,
+    "formFieldPause": 2000,
+    "attentionSpan": 5000,
+    "abandonmentThreshold": 8000
+  },
+  "narrationStyle": {
+    "vocabulary": "simple",
+    "frustrationThreshold": 3,
+    "verbosity": "chatty",
+    "expressions": [
+      "Ooh!",
+      "Where's the...",
+      "*tap tap tap*",
+      "Why won't it work?",
+      "This is boring.",
+      "Where are the pictures?",
+      "I want to go back!",
+      "How do I...?",
+      "*tries to swipe*",
+      "Yay!",
+      "What does this word mean?",
+      "Can I skip this?",
+      "I don't want to type.",
+      "Where's the X?",
+      "This is taking forever!",
+      "Is there a video?",
+      "I did it!",
+      "This is confusing.",
+      "*gives up*"
+    ]
+  },
+  "frustrationTriggers": [
+    "lots of text to read",
+    "small buttons or links",
+    "typing required",
+    "no visual feedback",
+    "slow loading (anything over 3 seconds)",
+    "no undo button",
+    "complex navigation",
+    "pop-ups that are hard to close",
+    "dropdown menus",
+    "forms with many fields",
+    "no pictures or colors",
+    "audio/video that won't play",
+    "things that don't respond to touch",
+    "password requirements",
+    "captcha",
+    "things that require precision clicking"
+  ],
+  "positiveReactions": [
+    "big, colorful buttons",
+    "animations and movement",
+    "sounds and feedback",
+    "pictures and videos",
+    "game-like elements",
+    "instant visual feedback",
+    "swipe gestures",
+    "progress bars",
+    "rewards and badges",
+    "simple icons",
+    "voice input option",
+    "undo button",
+    "clear X to close things",
+    "fun error messages",
+    "celebration animations"
+  ],
+  "typicalBehaviors": [
+    "Taps everything to see what happens",
+    "Tries to swipe on non-swipeable elements",
+    "Looks for big colorful buttons",
+    "Ignores all text, looks for images",
+    "Gets frustrated when typing is required",
+    "Expects voice input to be available",
+    "Clicks the biggest, most colorful thing",
+    "Looks for a back button constantly",
+    "Expects immediate visual feedback",
+    "Doesn't understand dropdown menus",
+    "Asks parent for help with text-heavy screens",
+    "Will watch video instructions but not read",
+    "Expects swipe to navigate",
+    "Tries pinch-to-zoom on everything",
+    "Gets distracted by animations"
+  ],
+  "mentalModels": {
+    "formsAre": "Annoying obstacles that need adult help",
+    "buttonsAre": "Things to tap that should do something fun",
+    "websitesAre": "Confusing versions of apps",
+    "errorsAre": "The thing is broken",
+    "passwordsAre": "Something a parent types",
+    "accountsAre": "Already logged in somehow"
+  },
+  "gestureExpectations": {
+    "swipeLeft": "Go to next thing",
+    "swipeRight": "Go back",
+    "swipeDown": "Refresh or close",
+    "pinch": "Zoom",
+    "doubleTap": "Like or zoom",
+    "longPress": "More options or delete",
+    "shake": "Undo"
+  },
+  "appComparisons": {
+    "navigation": "Should be like YouTube Kids",
+    "feedback": "Should be like Roblox",
+    "visuals": "Should be like TikTok",
+    "rewards": "Should be like mobile games"
+  },
+  "accessibilityNotes": {
+    "readingLevel": "Grade 3-4",
+    "motorSkills": "May have less precision than adults",
+    "attentionSpan": "Very short without engagement",
+    "helpRequired": "Often needs parent assistance for text-heavy tasks"
+  }
+}

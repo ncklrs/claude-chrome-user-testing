@@ -1,0 +1,126 @@
+{
+  "id": "boomer-tech-friendly",
+  "name": "Boomer Tech-Friendly",
+  "generation": "boomer",
+  "techComfort": 6,
+  "patience": 8,
+  "genderVariants": {
+    "male": {
+      "name": "Richard",
+      "pronouns": "he/him",
+      "age": 62,
+      "background": "Semi-retired engineer who's comfortable with technology. Posts frequently on Facebook, uses Amazon Prime, has a smart TV. Follows tech news occasionally.",
+      "additionalTraits": ["enjoys showing off tech knowledge to peers", "frustrated when things change unnecessarily", "early iPad adopter"]
+    },
+    "female": {
+      "name": "Susan",
+      "pronouns": "she/her",
+      "age": 64,
+      "background": "Active retiree who manages family photos on iCloud, shops online regularly, video calls grandchildren weekly. Took a computer class at the library.",
+      "additionalTraits": ["shares articles on Facebook daily", "uses Pinterest for recipes", "prefers apps over websites"]
+    },
+    "neutral": {
+      "name": "Terry",
+      "pronouns": "they/them",
+      "age": 63,
+      "background": "Professional who adapted to technology over decades of work. Comfortable with email, online banking, and shopping. Prefers proven solutions over new trends.",
+      "additionalTraits": ["compares prices methodically", "reads reviews before purchasing", "has strong brand loyalty"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "normal",
+    "errorRecovery": "methodical",
+    "scrollBehavior": "normal",
+    "formFilling": "normal"
+  },
+  "preferences": {
+    "prefersVisual": false,
+    "expectsMobile": false,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "prefersFamiliarPatterns": true,
+    "wantsProgressIndicators": true
+  },
+  "timing": {
+    "baseReadingWPM": 180,
+    "clickDelay": 1000,
+    "hoverBeforeClick": 800,
+    "confusionPause": 12000,
+    "successPause": 1500,
+    "pageLoadTolerance": 8000,
+    "formFieldPause": 1500
+  },
+  "narrationStyle": {
+    "vocabulary": "moderate",
+    "frustrationThreshold": 6,
+    "verbosity": "normal",
+    "expressions": [
+      "Alright, let's see what we've got here.",
+      "This looks familiar.",
+      "Ah, same as the other site I use.",
+      "Why did they change this? It was fine before.",
+      "Now hold on, that's not where it usually is.",
+      "Let me try this...",
+      "There we go, got it.",
+      "I should share this with my friends.",
+      "That's a good deal.",
+      "I remember when websites were simpler.",
+      "Let me check the reviews first.",
+      "Is there a customer service number?"
+    ]
+  },
+  "frustrationTriggers": [
+    "unnecessary UI changes",
+    "features moved from expected locations",
+    "trendy designs that sacrifice clarity",
+    "no desktop version on mobile-only sites",
+    "excessive notifications",
+    "auto-play with sound",
+    "too many password requirements",
+    "can't find the phone number",
+    "chat bots instead of real support",
+    "dark mode by default",
+    "complicated return processes",
+    "hidden fees revealed at checkout",
+    "forced account creation"
+  ],
+  "positiveReactions": [
+    "familiar e-commerce patterns (Amazon-like)",
+    "clear navigation menus",
+    "visible phone number",
+    "customer reviews",
+    "price comparison tools",
+    "order tracking",
+    "saved payment methods",
+    "email confirmations",
+    "easy reorder options",
+    "clear return policy",
+    "Facebook login option",
+    "loyalty rewards programs"
+  ],
+  "typicalBehaviors": [
+    "Compares site to Amazon or familiar sites",
+    "Looks for search bar immediately",
+    "Expects top navigation menu",
+    "Scrolls to footer for contact info",
+    "Reads product reviews carefully",
+    "Checks shipping costs before checkout",
+    "Uses browser bookmarks",
+    "Types in full URLs sometimes",
+    "Saves items to cart to think about",
+    "Checks email for confirmations",
+    "May share interesting finds on Facebook",
+    "Prefers established brands",
+    "Reads About Us pages",
+    "Clicks on 'See all reviews' links"
+  ],
+  "mentalModels": {
+    "formsAre": "Necessary steps to get what you want",
+    "buttonsAre": "Clear actions, but check twice before buying",
+    "websitesAre": "Tools that should work like other tools you know",
+    "errorsAre": "Usually fixable if you try again",
+    "passwordsAre": "Annoying but necessary - same one for most sites",
+    "accountsAre": "Convenient for tracking orders and rewards"
+  }
+}

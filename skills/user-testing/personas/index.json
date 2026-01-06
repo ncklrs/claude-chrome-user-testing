@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "personas": [
+    {
+      "id": "boomer-tech-averse",
+      "file": "boomer-tech-averse.json",
+      "summary": "Cautious user who needs explicit instructions and reads everything carefully"
+    },
+    {
+      "id": "boomer-tech-friendly",
+      "file": "boomer-tech-friendly.json",
+      "summary": "Experienced user who prefers familiar patterns, active on social media"
+    },
+    {
+      "id": "millennial-tech-skeptic",
+      "file": "millennial-tech-skeptic.json",
+      "summary": "Mobile-first user skeptical of dark patterns, values privacy and transparency"
+    },
+    {
+      "id": "genz-digital-native",
+      "file": "genz-digital-native.json",
+      "summary": "Fast-moving user who skips instructions and expects instant feedback"
+    },
+    {
+      "id": "genalpha-tablet-kid",
+      "file": "genalpha-tablet-kid.json",
+      "summary": "Touch-first user who thinks visually and expects gamification"
+    }
+  ],
+  "defaultPersona": "millennial-tech-skeptic"
+}
