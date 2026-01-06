@@ -74,10 +74,88 @@ With specific tasks:
 /user-test --url https://shop.example.com --persona boomer-tech-averse --tasks "find product, add to cart, checkout"
 ```
 
-With gender variant:
+With gender variant and custom email:
 ```
-/user-test --url https://app.example.com --persona screen-reader-user --gender f
+/user-test --url https://app.example.com --persona screen-reader-user --gender f --email myemail@test.com
 ```
+
+## Command Reference
+
+### /user-test
+
+Main user testing command with all options:
+
+```
+/user-test --url <url> --persona <id> [options]
+
+Required:
+  --url <url>           Target URL to test
+  --persona <id>        Persona to embody (see Available Personas)
+
+Optional:
+  --tasks <tasks>       Comma-separated tasks to perform
+  --gender <m|f|n>      Gender variant (male/female/neutral)
+  --email <email>       Email for forms (default: test@example.com)
+  --verbose             Extra detailed narration
+  --stripe              Enable Stripe checkout testing
+  --card <scenario>     Stripe test card (default: success)
+```
+
+### /stripe-test
+
+Dedicated Stripe checkout testing:
+
+```
+/stripe-test --url <url> [options]
+
+Required:
+  --url <url>           Checkout page URL
+
+Optional:
+  --persona <id>        Persona to use (default: impulse-buyer)
+  --gender <m|f|n>      Gender variant
+  --card <scenario>     Test card scenario (default: success)
+  --email <email>       Email for checkout (default: test@example.com)
+  --tasks <tasks>       Pre-checkout tasks
+```
+
+### /wcag-audit
+
+WCAG 2.1 accessibility audit:
+
+```
+/wcag-audit --url <url> [options]
+
+Required:
+  --url <url>           URL to audit
+
+Optional:
+  --level <a|aa>        Conformance level (default: aa)
+  --format <format>     Output: summary | detailed | json
+  --save <filename>     Save report to file
+  --annotate            Screenshot violations
+```
+
+### /annotate
+
+Manual screenshot annotation:
+
+```
+/annotate --element <selector> [options]
+
+Required:
+  --element <selector>  CSS selector for element
+
+Optional:
+  --label <text>        Annotation label
+  --type <type>         box | highlight | callout
+  --color <color>       red | orange | green | blue
+  --style <style>       solid | dashed
+```
+
+### /user-test-create-persona
+
+AI-assisted custom persona creation wizard (interactive).
 
 ### Create Custom Personas
 
@@ -158,24 +236,34 @@ Level AA: 68% (15/22 passed)
 Test payment flows with any persona using official Stripe test cards:
 
 ```
-/stripe-test --url https://shop.example.com/checkout --card success
+/stripe-test --url https://shop.example.com/checkout --card success --email myemail@test.com
 ```
 
 Or add Stripe testing to regular user tests:
 
 ```
-/user-test --url https://shop.example.com --persona impulse-buyer --stripe --card decline
+/user-test --url https://shop.example.com --persona impulse-buyer --stripe --card decline --email myemail@test.com
 ```
 
 **Available test cards:**
 
-| Scenario | Description |
-|----------|-------------|
-| `success` | Payment succeeds |
-| `decline` | Generic decline |
-| `insufficient` | Insufficient funds |
-| `3ds-required` | 3D Secure authentication |
-| `amex` | American Express |
+| Scenario | Card | Description |
+|----------|------|-------------|
+| `success` | 4242...4242 | Payment succeeds |
+| `decline` | 4000...0002 | Generic decline |
+| `insufficient` | 4000...9995 | Insufficient funds |
+| `expired` | 4000...0069 | Expired card |
+| `cvc-fail` | 4000...0127 | CVC check fails |
+| `3ds-required` | 4000...3155 | 3D Secure required |
+| `3ds-optional` | 4000...3220 | 3D Secure optional |
+| `fraud-high` | 4100...0019 | High fraud risk |
+| `mastercard` | 5555...4444 | Mastercard |
+| `amex` | 3782...0005 | American Express |
+
+**Full e-commerce flow with Stripe:**
+```
+/user-test --url https://shop.example.com --persona comparison-shopper --tasks "find product, add to cart, checkout" --stripe --card success --email buyer@test.com
+```
 
 Reports include a **Payment Experience** section with:
 - Checkout type detection (hosted vs embedded)
@@ -419,25 +507,52 @@ After testing, the agent generates a comprehensive report:
 /user-test --url https://example.com --persona screen-reader-user --tasks "navigate to contact form, submit inquiry"
 ```
 
-### Test E-commerce Flow
+### Test E-commerce with Stripe
 
 ```
-/user-test --url https://shop.example.com --persona impulse-buyer --tasks "find product, checkout"
+/user-test --url https://shop.example.com --persona impulse-buyer --tasks "find product, add to cart, checkout" --stripe --card success --email test@mycompany.com
+```
+
+### Test Checkout Error Handling
+
+```
+/stripe-test --url https://shop.example.com/checkout --persona boomer-tech-averse --card decline --email test@mycompany.com
+```
+
+### Test 3D Secure Flow
+
+```
+/stripe-test --url https://shop.example.com/checkout --card 3ds-required --email test@mycompany.com
 ```
 
 ### Test Under Bad Conditions
 
 ```
-/user-test --url https://example.com --persona bad-connection-user --tasks "complete signup"
+/user-test --url https://example.com --persona bad-connection-user --tasks "complete signup" --email slow-user@test.com
+```
+
+### Run WCAG Audit with Annotations
+
+```
+/wcag-audit --url https://example.com --annotate --save accessibility-report.md
 ```
 
 ### Compare Multiple Personas
 
 Run the same flow with different personas:
 ```
-/user-test --url https://example.com --persona boomer-tech-averse --tasks "sign up"
-/user-test --url https://example.com --persona genz-digital-native --tasks "sign up"
-/user-test --url https://example.com --persona screen-reader-user --tasks "sign up"
+/user-test --url https://example.com --persona boomer-tech-averse --tasks "sign up" --email harold@test.com
+/user-test --url https://example.com --persona genz-digital-native --tasks "sign up" --email zara@test.com
+/user-test --url https://example.com --persona screen-reader-user --tasks "sign up" --email david@test.com
+```
+
+### Full Checkout Comparison
+
+Test the same checkout with different user types:
+```
+/stripe-test --url https://shop.example.com/checkout --persona impulse-buyer --card success
+/stripe-test --url https://shop.example.com/checkout --persona comparison-shopper --card success
+/stripe-test --url https://shop.example.com/checkout --persona boomer-tech-averse --card success
 ```
 
 ## Plugin Structure
@@ -519,6 +634,7 @@ Quick steps:
 - [ ] Session recording export
 - [ ] Multi-persona parallel testing
 - [x] WCAG audit mode with compliance scoring
+- [x] Stripe checkout testing with test cards
 
 ## License
 
