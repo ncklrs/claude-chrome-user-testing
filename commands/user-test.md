@@ -14,6 +14,8 @@ Parse the following from `$ARGUMENTS`:
 - `--tasks <tasks>` (optional): Comma-separated list of tasks to perform
 - `--gender <m|f|n>` (optional): Gender variant (male/female/neutral), defaults to neutral
 - `--verbose` (optional): Extra detailed narration
+- `--stripe` (optional): Enable Stripe checkout testing mode
+- `--card <scenario>` (optional): Stripe test card scenario (default: success). Options: success, decline, insufficient, expired, 3ds-required, etc. See `skills/stripe-checkout/test-cards.json` for full list.
 
 ## Available Personas
 
@@ -188,9 +190,49 @@ Throughout testing, maintain first-person narration in the persona's voice:
 - **Timeout**: React based on persona patience level
 - **JavaScript Errors**: Note in report but continue if possible
 
+## Stripe Checkout Testing
+
+When `--stripe` flag is used, enable Stripe checkout testing mode:
+
+### How It Works
+
+1. **Load Stripe Skill**: Reference `skills/stripe-checkout/SKILL.md` for guidance
+2. **Load Test Card**: Get card data from `skills/stripe-checkout/test-cards.json` based on `--card` scenario
+3. **Detect Stripe**: Identify if page uses Stripe (hosted or embedded Elements)
+4. **Payment Narration**: Use payment-specific expressions from the skill
+5. **Auto-Fill Card**: Fill card details quickly (not character-by-character)
+6. **Report Section**: Include "Payment Experience" section in final report
+
+### Test Card Scenarios
+
+| Scenario | Result |
+|----------|--------|
+| `success` | Payment succeeds |
+| `decline` | Generic decline |
+| `insufficient` | Insufficient funds |
+| `3ds-required` | Triggers 3D Secure |
+| `amex` | American Express card |
+
+See `skills/stripe-checkout/test-cards.json` for complete list.
+
+### Stripe Testing Example
+
+```
+/user-test --url https://shop.example.com --persona impulse-buyer --tasks "add item to cart, checkout" --stripe --card success
+```
+
+This will:
+1. Navigate as impulse-buyer persona
+2. Add item to cart
+3. Proceed to checkout
+4. Auto-fill Stripe form with success test card
+5. Complete payment and verify confirmation
+6. Generate report with Payment Experience section
+
 ## Example Usage
 
 ```
 /user-test --url https://example.com/signup --persona genz-digital-native --tasks "create account, browse products"
 /user-test --url https://myapp.com --persona boomer-tech-averse --gender f --verbose
+/user-test --url https://shop.example.com --persona comparison-shopper --stripe --card decline --tasks "find product, checkout"
 ```

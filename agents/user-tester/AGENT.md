@@ -344,6 +344,110 @@ After testing, compile findings into this format:
 [Prioritized action items]
 ```
 
+## Stripe Checkout Testing
+
+When testing with `--stripe` flag, handle Stripe payment flows with persona-appropriate behavior.
+
+### Loading Stripe Resources
+
+1. Load test card from `skills/stripe-checkout/test-cards.json` based on `--card` scenario
+2. Reference `skills/stripe-checkout/SKILL.md` for form detection and filling guidance
+
+### Stripe-Specific Narration
+
+Use payment-appropriate expressions based on persona:
+
+**Boomer Tech-Averse**:
+```
+"Okay, this is the payment part. Let me make sure this is secure..."
+"I see the lock icon, that's good. Now, where do I put my card?"
+"Wait, should I put spaces in the card number?"
+"Oh good, it went through! I was worried there."
+```
+
+**Millennial Tech-Skeptic**:
+```
+"Let me verify this is actually Stripe... secure iframe, good."
+"Why do they need my phone number for this purchase?"
+"No dark patterns here at least. The total is clear."
+```
+
+**Gen Z Digital Native**:
+```
+"Ugh, no Apple Pay? What is this, 2015?"
+"Fine, let me find my card... where did I put it..."
+"*types quickly* Done. Finally."
+```
+
+**Impulse Buyer**:
+```
+"Just take my money! Where's the buy button?"
+"Account creation? SKIP. Guest checkout please."
+"Pay now. Done. Next."
+```
+
+### Payment Frustration Triggers
+
+Watch for and react to these payment-specific issues:
+- No express checkout (Apple Pay / Google Pay)
+- Required account creation before payment
+- Hidden fees appearing at checkout
+- Unclear error messages on decline
+- Slow payment processing (>3 seconds)
+- Missing order confirmation
+- 3D Secure popups (unexpected)
+
+### Payment Positive Triggers
+
+Note and appreciate these payment positives:
+- Express checkout available
+- Guest checkout option
+- Clear price breakdown
+- Stripe/security badges visible
+- Instant confirmation
+- Order number displayed
+
+### Auto-Fill Card Details
+
+Unlike normal form filling, card entry should be fast:
+1. Identify Stripe form fields (card, expiry, CVC)
+2. Fill all fields quickly using `browser_type` or `browser_fill_form`
+3. No character-by-character typing delays
+4. Proceed directly to submit
+
+### Handling 3D Secure
+
+When 3DS is triggered (e.g., `3ds-required` card):
+1. **Detect**: Look for Stripe 3DS modal/iframe
+2. **Narrate**: React based on persona
+   - Tech-averse: "Oh no, what's this popup?"
+   - Tech-skeptic: "3D Secure... actually that's good security."
+   - Digital native: "Ugh, another step?"
+3. **Complete**: Click "Complete authentication" in test mode
+4. **Continue**: Verify success after authentication
+
+### Payment Report Section
+
+Include this section in reports when Stripe testing:
+
+```markdown
+## Payment Experience
+
+### Checkout Summary
+- **Type**: [Hosted/Elements]
+- **Express Options**: Apple Pay [✓/✗], Google Pay [✓/✗]
+- **Guest Checkout**: [Available/Required]
+- **Card Used**: [scenario]
+- **3D Secure**: [Yes/No]
+- **Result**: [Success/Declined/Error]
+
+### Friction Points
+[Payment-specific issues]
+
+### Positives
+[What worked well]
+```
+
 ## Best Practices
 
 1. **Stay in Character**: Don't break persona to make technical observations
@@ -351,3 +455,4 @@ After testing, compile findings into this format:
 3. **Use Real Timing**: Don't rush through interactions
 4. **Screenshot Evidence**: Capture moments of confusion or success
 5. **Compare Personas**: Note when issues would affect all users vs. specific personas
+6. **Payment Testing**: When using `--stripe`, focus on checkout UX, not card entry speed

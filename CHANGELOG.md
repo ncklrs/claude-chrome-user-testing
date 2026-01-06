@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2025-01-06
+
+### Added
+- **Stripe Checkout Testing** (`/stripe-test` command)
+  - Test payment flows with any persona using official Stripe test cards
+  - 18 test card scenarios: success, decline, insufficient funds, 3DS, fraud, etc.
+  - Auto-fill card details for fast checkout testing
+  - Detects Stripe Hosted Checkout and embedded Elements
+  - Payment-specific persona narration
+
+- **Stripe Flag on /user-test** (`--stripe --card <scenario>`)
+  - Add Stripe testing to any user test session
+  - Integrates with existing persona workflows
+
+- **Stripe Checkout Skill** (`skills/stripe-checkout/`)
+  - Complete test card data (`test-cards.json`)
+  - Form detection and filling guidance
+  - 3D Secure handling
+  - Payment Experience report section
+
+### Changed
+- Updated user-tester agent with Stripe-specific narration
+- Reports include Payment Experience section when using Stripe testing
+
 ## [1.4.0] - 2025-01-06
 
 ### Added

@@ -14,6 +14,7 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 - **Custom Persona Wizard** to create your own personas from natural language descriptions
 - **Screenshot Annotations** with visual markers highlighting issues on captured screenshots
 - **WCAG Audit Mode** with compliance scoring against WCAG 2.1 Level A and AA criteria
+- **Stripe Checkout Testing** with official test cards for payment flow testing
 - **Accessibility Testing** with screen reader, low vision, keyboard-only, and cognitive personas
 - **Realistic Timing** based on research into how different users interact with technology
 - **First-Person Narration** that stays in character throughout testing
@@ -151,6 +152,36 @@ COMPLIANCE SCORE: 78% (C)
 Level A:  85% (28/33 passed)
 Level AA: 68% (15/22 passed)
 ```
+
+### Stripe Checkout Testing
+
+Test payment flows with any persona using official Stripe test cards:
+
+```
+/stripe-test --url https://shop.example.com/checkout --card success
+```
+
+Or add Stripe testing to regular user tests:
+
+```
+/user-test --url https://shop.example.com --persona impulse-buyer --stripe --card decline
+```
+
+**Available test cards:**
+
+| Scenario | Description |
+|----------|-------------|
+| `success` | Payment succeeds |
+| `decline` | Generic decline |
+| `insufficient` | Insufficient funds |
+| `3ds-required` | 3D Secure authentication |
+| `amex` | American Express |
+
+Reports include a **Payment Experience** section with:
+- Checkout type detection (hosted vs embedded)
+- Express checkout availability (Apple Pay / Google Pay)
+- Payment friction points
+- Security perception
 
 ## Available Personas
 
@@ -416,16 +447,27 @@ user-testing-agent/
 ├── .claude-plugin/
 │   └── plugin.json              # Plugin manifest
 ├── commands/
-│   └── user-test.md             # /user-test command
+│   ├── user-test.md             # /user-test command
+│   ├── stripe-test.md           # /stripe-test command
+│   ├── wcag-audit.md            # /wcag-audit command
+│   └── annotate.md              # /annotate command
 ├── agents/
 │   └── user-tester/
 │       └── AGENT.md             # Core testing agent
 ├── skills/
-│   └── user-testing/
-│       ├── SKILL.md             # Skill definition
-│       ├── personas/            # 21 persona JSON files
-│       ├── behaviors/           # Timing configuration
-│       └── templates/           # Report templates
+│   ├── user-testing/
+│   │   ├── SKILL.md             # Skill definition
+│   │   ├── personas/            # 21 persona JSON files
+│   │   ├── behaviors/           # Timing configuration
+│   │   └── templates/           # Report templates
+│   ├── stripe-checkout/
+│   │   ├── SKILL.md             # Stripe testing guidance
+│   │   └── test-cards.json      # Official test card data
+│   ├── wcag-auditor/
+│   │   ├── SKILL.md             # WCAG audit skill
+│   │   └── criteria.json        # WCAG 2.1 criteria
+│   └── screenshot-annotator/
+│       └── SKILL.md             # Annotation guidance
 ├── CONTRIBUTING.md              # How to add personas
 ├── CHANGELOG.md                 # Version history
 ├── LICENSE                      # MIT

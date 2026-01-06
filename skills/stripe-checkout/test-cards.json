@@ -1,0 +1,152 @@
+{
+  "version": "2024.1",
+  "description": "Stripe test card numbers for checkout testing",
+  "cards": {
+    "success": {
+      "number": "4242424242424242",
+      "brand": "Visa",
+      "description": "Successful payment",
+      "outcome": "Payment succeeds"
+    },
+    "decline": {
+      "number": "4000000000000002",
+      "brand": "Visa",
+      "description": "Generic decline",
+      "outcome": "Card declined"
+    },
+    "insufficient": {
+      "number": "4000000000009995",
+      "brand": "Visa",
+      "description": "Insufficient funds",
+      "outcome": "Card declined - insufficient funds"
+    },
+    "lost": {
+      "number": "4000000000009987",
+      "brand": "Visa",
+      "description": "Lost card",
+      "outcome": "Card declined - lost card"
+    },
+    "stolen": {
+      "number": "4000000000009979",
+      "brand": "Visa",
+      "description": "Stolen card",
+      "outcome": "Card declined - stolen card"
+    },
+    "expired": {
+      "number": "4000000000000069",
+      "brand": "Visa",
+      "description": "Expired card",
+      "outcome": "Card declined - expired"
+    },
+    "cvc-fail": {
+      "number": "4000000000000127",
+      "brand": "Visa",
+      "description": "CVC check fails",
+      "outcome": "Card declined - incorrect CVC"
+    },
+    "processing-error": {
+      "number": "4000000000000119",
+      "brand": "Visa",
+      "description": "Processing error",
+      "outcome": "Processing error occurred"
+    },
+    "3ds-required": {
+      "number": "4000002500003155",
+      "brand": "Visa",
+      "description": "3D Secure authentication required",
+      "outcome": "Requires 3DS challenge, then succeeds"
+    },
+    "3ds-optional": {
+      "number": "4000000000003220",
+      "brand": "Visa",
+      "description": "3D Secure optional",
+      "outcome": "3DS available but not required"
+    },
+    "fraud-high": {
+      "number": "4100000000000019",
+      "brand": "Visa",
+      "description": "High fraud risk",
+      "outcome": "Blocked by Radar as highest risk"
+    },
+    "visa-debit": {
+      "number": "4000056655665556",
+      "brand": "Visa Debit",
+      "description": "Visa debit card",
+      "outcome": "Payment succeeds (debit)"
+    },
+    "mastercard": {
+      "number": "5555555555554444",
+      "brand": "Mastercard",
+      "description": "Mastercard credit",
+      "outcome": "Payment succeeds"
+    },
+    "amex": {
+      "number": "378282246310005",
+      "brand": "American Express",
+      "description": "American Express",
+      "outcome": "Payment succeeds",
+      "cvcLength": 4
+    },
+    "discover": {
+      "number": "6011111111111117",
+      "brand": "Discover",
+      "description": "Discover card",
+      "outcome": "Payment succeeds"
+    },
+    "diners": {
+      "number": "3056930009020004",
+      "brand": "Diners Club",
+      "description": "Diners Club",
+      "outcome": "Payment succeeds"
+    },
+    "jcb": {
+      "number": "3566002020360505",
+      "brand": "JCB",
+      "description": "JCB card",
+      "outcome": "Payment succeeds"
+    },
+    "unionpay": {
+      "number": "6200000000000005",
+      "brand": "UnionPay",
+      "description": "UnionPay card",
+      "outcome": "Payment succeeds"
+    }
+  },
+  "defaults": {
+    "expiry": {
+      "month": "12",
+      "year": "34",
+      "formatted": "12/34"
+    },
+    "cvc": "123",
+    "cvcAmex": "1234",
+    "zip": "12345",
+    "name": "Test User"
+  },
+  "testEmails": {
+    "success": "test@example.com",
+    "dispute": "dispute@stripe.com"
+  },
+  "scenarios": {
+    "happy-path": {
+      "description": "Complete successful checkout",
+      "card": "success",
+      "expectedOutcome": "Order confirmation page"
+    },
+    "decline-recovery": {
+      "description": "Test error handling on decline",
+      "card": "decline",
+      "expectedOutcome": "Clear error message, ability to retry"
+    },
+    "3ds-flow": {
+      "description": "Test 3D Secure authentication flow",
+      "card": "3ds-required",
+      "expectedOutcome": "3DS modal, then success"
+    },
+    "card-variety": {
+      "description": "Test different card brands",
+      "cards": ["visa-debit", "mastercard", "amex"],
+      "expectedOutcome": "All brands accepted"
+    }
+  }
+}
