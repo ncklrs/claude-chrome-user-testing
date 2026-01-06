@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2025-01-06
+
+### Added
+- **WCAG Audit Mode** (`/wcag-audit` command)
+  - Automated accessibility audits against WCAG 2.1 criteria
+  - Level A and AA compliance checking (~23 success criteria)
+  - Compliance scoring with letter grades (A-F)
+  - Multiple output formats: summary, detailed, JSON
+  - Remediation guidance with code examples
+  - Optional screenshot annotations for violations
+
+- **WCAG Auditor Skill** (`skills/wcag-auditor/`)
+  - Complete WCAG 2.1 criteria reference
+  - Check implementations using Playwright browser tools
+  - Scoring logic and grade calculation
+  - Severity classification (Critical/Major/Minor)
+
+- **Criteria Database** (`skills/wcag-auditor/criteria.json`)
+  - Machine-readable WCAG criteria definitions
+  - Selectors for automated checking
+  - Remediation guidance per criterion
+
+### Changed
+- Updated README with WCAG audit documentation
+- Marked WCAG audit as complete in roadmap
+
 ## [1.3.0] - 2025-01-06
 
 ### Added

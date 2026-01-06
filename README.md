@@ -13,11 +13,11 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 - **21 Personas** across 5 categories with male/female/neutral variants (63 total personalities)
 - **Custom Persona Wizard** to create your own personas from natural language descriptions
 - **Screenshot Annotations** with visual markers highlighting issues on captured screenshots
+- **WCAG Audit Mode** with compliance scoring against WCAG 2.1 Level A and AA criteria
 - **Accessibility Testing** with screen reader, low vision, keyboard-only, and cognitive personas
 - **Realistic Timing** based on research into how different users interact with technology
 - **First-Person Narration** that stays in character throughout testing
 - **Dark Pattern Detection** especially with the Millennial Tech-Skeptic persona
-- **WCAG Compliance Testing** with accessibility-focused personas
 - **Comprehensive Reports** with prioritized findings and recommendations
 - **Chrome Integration** via `claude --chrome` for testing real websites
 
@@ -122,6 +122,35 @@ Manual annotations during testing:
 ```
 
 Annotated screenshots make reports more actionable by showing exactly where users struggled.
+
+### WCAG Audit Mode
+
+Run automated accessibility audits against WCAG 2.1 criteria:
+
+```
+/wcag-audit --url https://example.com
+```
+
+The audit checks ~50 success criteria across Level A and AA, including:
+- Alt text on images
+- Color contrast ratios (4.5:1 minimum)
+- Keyboard accessibility
+- Form labels and error handling
+- Focus visibility
+- Semantic HTML structure
+
+**Output includes**:
+- Compliance score with letter grade (A-F)
+- Issues by severity (Critical/Major/Minor)
+- Specific violation locations
+- Remediation guidance with examples
+
+```
+COMPLIANCE SCORE: 78% (C)
+────────────────────────
+Level A:  85% (28/33 passed)
+Level AA: 68% (15/22 passed)
+```
 
 ## Available Personas
 
@@ -447,7 +476,7 @@ Quick steps:
 - [x] Screenshot annotation
 - [ ] Session recording export
 - [ ] Multi-persona parallel testing
-- [ ] WCAG audit mode with compliance scoring
+- [x] WCAG audit mode with compliance scoring
 
 ## License
 
