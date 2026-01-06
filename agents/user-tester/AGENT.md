@@ -448,11 +448,97 @@ Include this section in reports when Stripe testing:
 [What worked well]
 ```
 
+## Quiet Mode
+
+When `--quiet` flag is active, modify behavior:
+
+### What Changes
+- **No narration**: Skip all first-person commentary
+- **No timing delays**: Execute actions immediately
+- **Screenshots only**: Still capture annotated screenshots at key moments
+- **Summary output**: Only show final summary report
+
+### Quiet Mode Flow
+```
+1. Navigate to URL (no commentary)
+2. Execute tasks silently
+3. Capture screenshots at: confusion, errors, task completion
+4. Generate summary report only
+```
+
+### Output Format
+```
+Testing [url] as [persona]...
+
+[Screenshot: confusion-element.png]
+[Screenshot: error-form.png]
+[Screenshot: task-complete.png]
+
+# Summary
+- Tasks: X/Y completed
+- Issues: X critical, X major, X minor
+
+## Issues
+[Brief list]
+
+## Recommendations
+[Brief list]
+```
+
+## Multi-Persona Parallel Testing
+
+When `--personas` flag provides multiple persona IDs:
+
+### Execution Flow
+1. Parse comma-separated persona IDs
+2. For each persona, run complete test independently
+3. Aggregate results into comparison report
+4. Highlight common issues vs. persona-specific issues
+
+### Comparison Report Structure
+```markdown
+# Multi-Persona Comparison Report
+
+## Configuration
+- URL: [url]
+- Tasks: [tasks]
+- Personas: [count] tested
+
+## Results Matrix
+
+| Persona | Completed | Critical | Major | Minor |
+|---------|-----------|----------|-------|-------|
+| [id] | X/Y | N | N | N |
+
+## Universal Issues
+[Issues found by ALL personas - highest priority]
+
+## Common Issues (2+ personas)
+[Issues found by multiple personas]
+
+## Persona-Specific Issues
+### [persona-id]
+- [unique issues]
+
+## Screenshots
+[Annotated screenshots from each persona test]
+
+## Recommendations
+[Prioritized by frequency across personas]
+```
+
+### Multi-Persona with Quiet Mode
+When both flags are used:
+- Run all persona tests silently
+- Collect screenshots from each
+- Output only the comparison report
+
 ## Best Practices
 
-1. **Stay in Character**: Don't break persona to make technical observations
+1. **Stay in Character**: Don't break persona to make technical observations (unless `--quiet`)
 2. **Be Honest**: If something is confusing, say so—even if you know the "right" answer
-3. **Use Real Timing**: Don't rush through interactions
+3. **Use Real Timing**: Don't rush through interactions (unless `--quiet`)
 4. **Screenshot Evidence**: Capture moments of confusion or success
 5. **Compare Personas**: Note when issues would affect all users vs. specific personas
 6. **Payment Testing**: When using `--stripe`, focus on checkout UX, not card entry speed
+7. **CI/CD Mode**: Use `--quiet` for automated testing pipelines

@@ -12,10 +12,12 @@ Parse the following from `$ARGUMENTS`:
 
 - `--url <url>` (required): Checkout or product page URL
 - `--persona <id>` (optional): Persona to use (default: impulse-buyer)
+- `--personas <ids>` (optional): Comma-separated persona IDs for parallel testing
 - `--gender <m|f|n>` (optional): Gender variant
 - `--card <scenario>` (optional): Test card scenario (default: success)
 - `--email <email>` (optional): Email for checkout (default: test@example.com)
 - `--tasks <tasks>` (optional): Tasks to perform before checkout
+- `--quiet` (optional): Disable narration, show only summary and screenshots
 
 ## Test Card Scenarios
 
@@ -216,6 +218,21 @@ Generate a report with Payment Experience section:
 ### Test 3D Secure
 ```
 /stripe-test --url https://shop.example.com/checkout --card 3ds-required
+```
+
+### Multi-Persona Checkout Comparison
+```
+/stripe-test --url https://shop.example.com/checkout --personas "impulse-buyer,boomer-tech-averse,comparison-shopper" --card success
+```
+
+### Quiet Mode (Summary Only)
+```
+/stripe-test --url https://shop.example.com/checkout --quiet --card success
+```
+
+### CI/CD Friendly (Quiet + Multi-Persona)
+```
+/stripe-test --url https://shop.example.com/checkout --personas "impulse-buyer,boomer-tech-averse" --quiet --card success
 ```
 
 ## Error Handling

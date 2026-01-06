@@ -10,10 +10,12 @@ You are initiating a persona-based user testing session. This command orchestrat
 
 Parse the following from `$ARGUMENTS`:
 - `--url <url>` (required): Target URL to test
-- `--persona <id>` (required): Persona to embody (see available personas below)
+- `--persona <id>` (required unless --personas used): Single persona to embody
+- `--personas <ids>` (optional): Comma-separated persona IDs for parallel testing (e.g., "boomer-tech-averse,genz-digital-native,impulse-buyer")
 - `--tasks <tasks>` (optional): Comma-separated list of tasks to perform
 - `--gender <m|f|n>` (optional): Gender variant (male/female/neutral), defaults to neutral
 - `--verbose` (optional): Extra detailed narration
+- `--quiet` (optional): Disable narration, show only summary report and annotated screenshots
 - `--stripe` (optional): Enable Stripe checkout testing mode
 - `--card <scenario>` (optional): Stripe test card scenario (default: success). Options: success, decline, insufficient, expired, 3ds-required, etc. See `skills/stripe-checkout/test-cards.json` for full list.
 - `--email <email>` (optional): Email address to use for forms and checkout (default: test@example.com)
@@ -230,10 +232,103 @@ This will:
 5. Complete payment and verify confirmation
 6. Generate report with Payment Experience section
 
+## Multi-Persona Parallel Testing
+
+When `--personas` flag is used, run the same test with multiple personas in parallel:
+
+### How It Works
+
+1. Parse comma-separated persona IDs
+2. For each persona, run the complete test flow independently
+3. Collect results from all persona tests
+4. Generate a comparison report showing differences
+
+### Comparison Report Format
+
+```markdown
+# Multi-Persona Comparison Report
+
+## Test Configuration
+- **URL**: [url]
+- **Tasks**: [tasks]
+- **Personas Tested**: [count]
+
+## Results Overview
+
+| Persona | Tasks Completed | Critical Issues | Major Issues | Time |
+|---------|-----------------|-----------------|--------------|------|
+| boomer-tech-averse | 2/3 | 1 | 2 | 4:32 |
+| genz-digital-native | 3/3 | 0 | 1 | 1:15 |
+| impulse-buyer | 3/3 | 0 | 0 | 0:48 |
+
+## Common Issues (Found by Multiple Personas)
+- [Issue found by 2+ personas]
+
+## Persona-Specific Issues
+
+### boomer-tech-averse
+- [Issues unique to this persona]
+
+### genz-digital-native
+- [Issues unique to this persona]
+
+## Recommendations
+[Prioritized based on how many personas encountered each issue]
+```
+
+### Multi-Persona Example
+
+```
+/user-test --url https://shop.example.com --personas "boomer-tech-averse,genz-digital-native,impulse-buyer" --tasks "find product, checkout" --stripe --card success
+```
+
+## Quiet Mode
+
+When `--quiet` flag is used, disable first-person narration:
+
+### Behavior
+- No persona commentary or narration
+- Tests run silently
+- Only outputs:
+  - Annotated screenshots at key moments
+  - Final summary report
+- Faster execution, less output
+
+### Use Cases
+- CI/CD integration
+- Batch testing
+- When you only need the report
+
+### Quiet Mode Example
+
+```
+/user-test --url https://example.com --persona genz-digital-native --tasks "sign up" --quiet
+```
+
+Output:
+```
+Testing https://example.com as genz-digital-native...
+
+[Screenshot: confusion-signup-form.png]
+[Screenshot: task-complete-signup.png]
+
+# Summary Report
+- Tasks: 1/1 completed
+- Issues: 0 critical, 1 major, 2 minor
+- Time: 1:23
+
+## Major Issues
+1. Form has 8 fields - exceeds attention threshold
+
+## Recommendations
+1. Reduce signup form to essential fields only
+```
+
 ## Example Usage
 
 ```
 /user-test --url https://example.com/signup --persona genz-digital-native --tasks "create account, browse products"
 /user-test --url https://myapp.com --persona boomer-tech-averse --gender f --verbose
 /user-test --url https://shop.example.com --persona comparison-shopper --stripe --card decline --tasks "find product, checkout"
+/user-test --url https://example.com --personas "boomer-tech-averse,genz-digital-native,screen-reader-user" --tasks "sign up" --quiet
 ```

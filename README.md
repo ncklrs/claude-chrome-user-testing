@@ -11,6 +11,8 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 ## Features
 
 - **21 Personas** across 5 categories with male/female/neutral variants (63 total personalities)
+- **Multi-Persona Parallel Testing** to compare experiences across user types simultaneously
+- **Quiet Mode** for CI/CD integration with summary-only output
 - **Custom Persona Wizard** to create your own personas from natural language descriptions
 - **Screenshot Annotations** with visual markers highlighting issues on captured screenshots
 - **WCAG Audit Mode** with compliance scoring against WCAG 2.1 Level A and AA criteria
@@ -90,13 +92,15 @@ Main user testing command with all options:
 
 Required:
   --url <url>           Target URL to test
-  --persona <id>        Persona to embody (see Available Personas)
+  --persona <id>        Single persona (or use --personas)
 
 Optional:
+  --personas <ids>      Comma-separated IDs for parallel testing
   --tasks <tasks>       Comma-separated tasks to perform
   --gender <m|f|n>      Gender variant (male/female/neutral)
   --email <email>       Email for forms (default: test@example.com)
   --verbose             Extra detailed narration
+  --quiet               Summary only, no narration (CI/CD friendly)
   --stripe              Enable Stripe checkout testing
   --card <scenario>     Stripe test card (default: success)
 ```
@@ -113,10 +117,12 @@ Required:
 
 Optional:
   --persona <id>        Persona to use (default: impulse-buyer)
+  --personas <ids>      Comma-separated IDs for parallel testing
   --gender <m|f|n>      Gender variant
   --card <scenario>     Test card scenario (default: success)
   --email <email>       Email for checkout (default: test@example.com)
   --tasks <tasks>       Pre-checkout tasks
+  --quiet               Summary only, no narration
 ```
 
 ### /wcag-audit
@@ -270,6 +276,44 @@ Reports include a **Payment Experience** section with:
 - Express checkout availability (Apple Pay / Google Pay)
 - Payment friction points
 - Security perception
+
+### Multi-Persona Parallel Testing
+
+Test the same flow with multiple personas simultaneously:
+
+```
+/user-test --url https://example.com --personas "boomer-tech-averse,genz-digital-native,screen-reader-user" --tasks "sign up"
+```
+
+Generates a **comparison report** showing:
+- Results matrix across all personas
+- Universal issues (found by all)
+- Common issues (found by 2+)
+- Persona-specific issues
+- Recommendations prioritized by frequency
+
+**Checkout comparison:**
+```
+/stripe-test --url https://shop.example.com/checkout --personas "impulse-buyer,comparison-shopper,boomer-tech-averse" --card success
+```
+
+### Quiet Mode (CI/CD Friendly)
+
+Disable narration for automated testing:
+
+```
+/user-test --url https://example.com --persona genz-digital-native --tasks "sign up" --quiet
+```
+
+**Output:**
+- No first-person commentary
+- Annotated screenshots at key moments
+- Summary report only
+
+**Combine with multi-persona for batch testing:**
+```
+/user-test --url https://example.com --personas "boomer-tech-averse,genz-digital-native" --tasks "checkout" --quiet --stripe
+```
 
 ## Available Personas
 
@@ -627,12 +671,12 @@ Quick steps:
 
 ## Future Roadmap
 
-- [ ] CI/CD integration with headless mode
+- [x] CI/CD integration with quiet mode
 - [ ] A/B testing comparison reports
 - [x] Custom persona creation wizard
 - [x] Screenshot annotation
 - [ ] Session recording export
-- [ ] Multi-persona parallel testing
+- [x] Multi-persona parallel testing
 - [x] WCAG audit mode with compliance scoring
 - [x] Stripe checkout testing with test cards
 
