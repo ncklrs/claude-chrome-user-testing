@@ -2,6 +2,12 @@
 
 A Claude Code plugin that simulates realistic user personas for UX testing. The agent embodies different user archetypes with authentic behaviors, timing patterns, and frustration triggers to identify usability issues before real users encounter them.
 
+## Demo
+
+Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hesitation, careful reading, and first-person narration:
+
+![User Testing Agent Demo - Barbara navigating a website](assets/demo.jpeg)
+
 ## Features
 
 - **21 Personas** across 5 categories with male/female/neutral variants (63 total personalities)
