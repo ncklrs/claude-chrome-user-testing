@@ -12,6 +12,7 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 
 - **21 Personas** across 5 categories with male/female/neutral variants (63 total personalities)
 - **Custom Persona Wizard** to create your own personas from natural language descriptions
+- **Screenshot Annotations** with visual markers highlighting issues on captured screenshots
 - **Accessibility Testing** with screen reader, low vision, keyboard-only, and cognitive personas
 - **Realistic Timing** based on research into how different users interact with technology
 - **First-Person Narration** that stays in character throughout testing
@@ -103,6 +104,24 @@ Then use your custom persona:
 ```
 /user-test --url https://example.com --persona healthcare-worker-rushed
 ```
+
+### Screenshot Annotations
+
+Screenshots are automatically annotated to highlight issues:
+
+| Trigger | Annotation | Color |
+|---------|------------|-------|
+| Confusion | Dashed box | Red |
+| Error | Solid box | Red |
+| Frustration | Highlight | Orange |
+| Task Complete | Solid box | Green |
+
+Manual annotations during testing:
+```
+/annotate --element "#submit-btn" --label "Hard to find"
+```
+
+Annotated screenshots make reports more actionable by showing exactly where users struggled.
 
 ## Available Personas
 
@@ -425,7 +444,7 @@ Quick steps:
 - [ ] CI/CD integration with headless mode
 - [ ] A/B testing comparison reports
 - [x] Custom persona creation wizard
-- [ ] Screenshot annotation
+- [x] Screenshot annotation
 - [ ] Session recording export
 - [ ] Multi-persona parallel testing
 - [ ] WCAG audit mode with compliance scoring

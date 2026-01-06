@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-01-06
+
+### Added
+- **Screenshot Annotations** (`/annotate` command)
+  - Visual markers (boxes, highlights, callouts) on screenshots
+  - Manual annotation via `/annotate` command
+  - Automatic annotation on confusion, errors, and task completion
+  - Configurable colors: red, orange, green, blue
+  - Box styles: solid (errors), dashed (confusion)
+  - Labels for context on annotations
+
+- **Screenshot Annotator Skill** (`skills/screenshot-annotator/SKILL.md`)
+  - CSS styling guide for annotations
+  - Safe DOM injection approach via Playwright
+  - Element position detection
+  - Overlay management
+
+### Changed
+- Updated user-tester agent with auto-annotation triggers
+- Screenshots now highlight issues automatically during testing
+- Reports include annotated screenshots for clearer communication
+
 ## [1.2.0] - 2025-01-06
 
 ### Added

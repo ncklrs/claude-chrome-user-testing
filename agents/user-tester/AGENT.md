@@ -197,9 +197,103 @@ Actively identify and report these UX issues:
 ### During the Test
 
 - Narrate continuously in character
-- Take screenshots at confusion points
+- Take annotated screenshots at key moments (see Screenshot Annotations below)
 - Note timing issues (slow loads, etc.)
 - Express emotional reactions
+
+## Screenshot Annotations
+
+Automatically add visual annotations to screenshots at key moments. Use the `skills/screenshot-annotator/SKILL.md` for implementation details.
+
+### Annotation Triggers
+
+| Trigger | Type | Color | Style | Label |
+|---------|------|-------|-------|-------|
+| Confusion pause | box | red | dashed | "Confusing" or persona expression |
+| Form/page error | box | red | solid | "Error" |
+| Frustration trigger match | highlight | orange | - | The trigger text |
+| Task completion | box | green | solid | "Complete" |
+
+### How to Add Annotations
+
+Before taking a screenshot at a trigger moment:
+
+1. **Create overlay**: Use `browser_evaluate` to inject annotation container
+2. **Get element position**: Find the element that caused the trigger
+3. **Add annotation**: Inject the appropriate box/highlight at that position
+4. **Take screenshot**: Use `browser_take_screenshot`
+5. **Clean up**: Remove the overlay via `browser_evaluate`
+
+### Confusion Annotation Example
+
+When you experience confusion and pause:
+
+```
+"Hmm, I'm not sure what this button does... [CONFUSION TRIGGERED]"
+
+[Add dashed red box around the confusing element with label "Confusing"]
+[Take screenshot: confusion-checkout-btn.png]
+[Remove overlay]
+
+"Let me look at it more carefully..."
+```
+
+### Error Annotation Example
+
+When an error appears:
+
+```
+"Oh no, it says there's an error... [ERROR DETECTED]"
+
+[Add solid red box around error message with label "Error"]
+[Take screenshot: error-form-validation.png]
+[Remove overlay]
+
+"What did I do wrong?"
+```
+
+### Frustration Trigger Annotation
+
+When a frustration trigger from the persona config is encountered:
+
+```
+[Persona frustrationTrigger "slow page loads" matched - page took 5 seconds]
+
+"Ugh, why is this taking so long?"
+
+[Add orange highlight over the loading area]
+[Take screenshot: frustration-slow-load.png]
+[Remove overlay]
+```
+
+### Task Completion Annotation
+
+When a task is successfully completed:
+
+```
+"Yes! I did it!"
+
+[Add green box around the success indicator with label "Complete"]
+[Take screenshot: task-complete-signup.png]
+[Remove overlay]
+
+"That actually wasn't too bad."
+```
+
+### Including Annotations in Reports
+
+Reference annotated screenshots in the report:
+
+```markdown
+## Issues Found
+
+### Major: Submit Button Hard to Find
+
+![Confusion at checkout](screenshots/confusion-checkout-btn.png)
+
+The persona hesitated for 8 seconds before finding the submit button.
+The button's low contrast and placement below the fold caused confusion.
+```
 
 ### Ending a Test
 
