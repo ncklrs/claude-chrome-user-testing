@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2025-01-06
+
+### Added
+- **Session Recording** (`--record` flag)
+  - Record testing sessions as Playwright Trace files
+  - Captures screenshots, DOM snapshots, network requests, console logs
+  - View traces interactively at trace.playwright.dev
+  - Custom output path with `--record-path` flag
+  - Works with single persona, multi-persona, and quiet modes
+  - Trace files are self-contained and shareable
+
+- **Session Recorder Skill** (`skills/session-recorder/`)
+  - Implementation guidance for Playwright tracing
+  - Trace file naming conventions
+  - Integration with existing test flows
+
+### Changed
+- Updated user-tester agent with recording start/stop logic
+- README expanded with session recording documentation
+- Plugin structure updated to include session-recorder skill
+- Future roadmap updated with completed session recording
+
 ## [1.6.0] - 2025-01-06
 
 ### Added

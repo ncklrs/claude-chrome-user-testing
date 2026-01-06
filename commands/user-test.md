@@ -19,6 +19,8 @@ Parse the following from `$ARGUMENTS`:
 - `--stripe` (optional): Enable Stripe checkout testing mode
 - `--card <scenario>` (optional): Stripe test card scenario (default: success). Options: success, decline, insufficient, expired, 3ds-required, etc. See `skills/stripe-checkout/test-cards.json` for full list.
 - `--email <email>` (optional): Email address to use for forms and checkout (default: test@example.com)
+- `--record` (optional): Record the session as a Playwright Trace for replay
+- `--record-path <path>` (optional): Custom output path for trace file (default: recordings/)
 
 ## Available Personas
 
@@ -324,6 +326,54 @@ Testing https://example.com as genz-digital-native...
 1. Reduce signup form to essential fields only
 ```
 
+## Session Recording
+
+When `--record` flag is used, capture the entire session as a Playwright Trace:
+
+### How It Works
+
+1. **Load Recording Skill**: Reference `skills/session-recorder/SKILL.md` for guidance
+2. **Start Tracing**: Begin capturing at session start
+3. **Capture Everything**: Screenshots, DOM snapshots, network requests, console logs
+4. **Stop & Save**: Save trace file at session end
+5. **Report Location**: Display trace file path and viewer URL
+
+### Trace Output
+
+```
+recordings/
+├── user-test-genz-digital-native-2025-01-06-143022.zip
+└── user-test-boomer-tech-averse-2025-01-06-150830.zip
+```
+
+### Viewing Traces
+
+1. Open [trace.playwright.dev](https://trace.playwright.dev)
+2. Drag and drop the `.zip` file
+3. Explore timeline, screenshots, network requests, console logs
+
+### Recording Example
+
+```
+/user-test --url https://example.com --persona genz-digital-native --tasks "sign up" --record
+```
+
+Output includes:
+```
+Starting session recording...
+
+[Normal test output...]
+
+Session recorded to: recordings/user-test-genz-digital-native-2025-01-06-143022.zip
+View trace at: https://trace.playwright.dev (drag and drop the file)
+```
+
+### Custom Output Path
+
+```
+/user-test --url https://example.com --persona boomer-tech-averse --record --record-path ./traces/
+```
+
 ## Example Usage
 
 ```
@@ -331,4 +381,5 @@ Testing https://example.com as genz-digital-native...
 /user-test --url https://myapp.com --persona boomer-tech-averse --gender f --verbose
 /user-test --url https://shop.example.com --persona comparison-shopper --stripe --card decline --tasks "find product, checkout"
 /user-test --url https://example.com --personas "boomer-tech-averse,genz-digital-native,screen-reader-user" --tasks "sign up" --quiet
+/user-test --url https://example.com --persona genz-digital-native --tasks "sign up" --record
 ```

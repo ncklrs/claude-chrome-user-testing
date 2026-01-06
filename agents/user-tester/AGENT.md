@@ -533,6 +533,123 @@ When both flags are used:
 - Collect screenshots from each
 - Output only the comparison report
 
+## Session Recording
+
+When `--record` flag is active, capture the entire session as a Playwright Trace.
+
+### Recording Flow
+
+```
+1. Check for --record flag
+2. If recording:
+   a. Parse --record-path or use default 'recordings/'
+   b. Generate trace filename: {command}-{persona}-{timestamp}.zip
+   c. Create output directory if needed
+   d. Start Playwright tracing via browser_run_code
+3. Execute normal test flow
+4. If recording:
+   a. Stop tracing, save to file
+   b. Report: "Session recorded to: {path}"
+   c. Report: "View at: https://trace.playwright.dev"
+```
+
+### Starting a Recording
+
+At the beginning of the session (after Chrome check, before persona intro):
+
+```javascript
+// Via browser_run_code
+async (page) => {
+  await page.context().tracing.start({
+    screenshots: true,
+    snapshots: true,
+    sources: false
+  });
+  return 'Recording started';
+}
+```
+
+### Stopping a Recording
+
+At the end of the session (after report generation):
+
+```javascript
+// Via browser_run_code
+async (page) => {
+  await page.context().tracing.stop({
+    path: 'recordings/user-test-persona-id-2025-01-06-143022.zip'
+  });
+  return 'Recording saved';
+}
+```
+
+### Output When Recording
+
+```
+Starting session recording...
+
+[Normal test output with persona narration...]
+
+Session recorded to: recordings/user-test-genz-digital-native-2025-01-06-143022.zip
+View trace at: https://trace.playwright.dev (drag and drop the file)
+```
+
+### Recording + Quiet Mode
+
+When both flags are used:
+- Start recording silently
+- Execute tests without narration
+- Save trace file
+- Report trace location in summary output
+
+```
+Testing https://example.com as genz-digital-native...
+Recording session...
+
+[Screenshot: confusion-nav.png]
+[Screenshot: task-complete.png]
+
+# Summary
+- Tasks: 2/3 completed
+- Issues: 1 critical, 2 major
+
+Session recorded to: recordings/user-test-genz-digital-native-2025-01-06-143022.zip
+View trace at: https://trace.playwright.dev
+```
+
+### Recording + Multi-Persona
+
+Each persona gets its own trace file:
+
+```
+recordings/
+├── user-test-boomer-tech-averse-2025-01-06-143022.zip
+├── user-test-genz-digital-native-2025-01-06-143024.zip
+└── user-test-millennial-tech-skeptic-2025-01-06-143026.zip
+```
+
+### Trace Contents
+
+The saved trace includes:
+- **Screenshots**: Captured at each action
+- **DOM Snapshots**: Full page state at each step
+- **Network Requests**: All HTTP requests/responses
+- **Console Logs**: JavaScript console output
+- **Action Timeline**: Timestamped sequence of interactions
+
+### Error Handling
+
+If recording fails:
+```
+Warning: Could not start session recording. Continuing without recording.
+[Reason: browser doesn't support tracing / permission denied / etc.]
+```
+
+If trace save fails:
+```
+Warning: Failed to save trace file. Test results are still available.
+```
+
 ## Best Practices
 
 1. **Stay in Character**: Don't break persona to make technical observations (unless `--quiet`)
@@ -542,3 +659,4 @@ When both flags are used:
 5. **Compare Personas**: Note when issues would affect all users vs. specific personas
 6. **Payment Testing**: When using `--stripe`, focus on checkout UX, not card entry speed
 7. **CI/CD Mode**: Use `--quiet` for automated testing pipelines
+8. **Session Recording**: Use `--record` for shareable replays and debug sessions

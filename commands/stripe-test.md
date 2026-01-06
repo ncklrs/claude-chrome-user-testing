@@ -18,6 +18,8 @@ Parse the following from `$ARGUMENTS`:
 - `--email <email>` (optional): Email for checkout (default: test@example.com)
 - `--tasks <tasks>` (optional): Tasks to perform before checkout
 - `--quiet` (optional): Disable narration, show only summary and screenshots
+- `--record` (optional): Record the session as a Playwright Trace for replay
+- `--record-path <path>` (optional): Custom output path for trace file (default: recordings/)
 
 ## Test Card Scenarios
 
@@ -233,6 +235,21 @@ Generate a report with Payment Experience section:
 ### CI/CD Friendly (Quiet + Multi-Persona)
 ```
 /stripe-test --url https://shop.example.com/checkout --personas "impulse-buyer,boomer-tech-averse" --quiet --card success
+```
+
+### Record Session for Replay
+```
+/stripe-test --url https://shop.example.com/checkout --card success --record
+```
+
+Output:
+```
+Starting session recording...
+
+[Normal test output...]
+
+Session recorded to: recordings/stripe-test-impulse-buyer-2025-01-06-143156.zip
+View trace at: https://trace.playwright.dev (drag and drop the file)
 ```
 
 ## Error Handling

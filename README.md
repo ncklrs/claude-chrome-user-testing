@@ -23,6 +23,7 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 - **Dark Pattern Detection** especially with the Millennial Tech-Skeptic persona
 - **Comprehensive Reports** with prioritized findings and recommendations
 - **Chrome Integration** via `claude --chrome` for testing real websites
+- **Session Recording** with Playwright Trace export for replay and sharing
 
 ## Quick Start
 
@@ -103,6 +104,8 @@ Optional:
   --quiet               Summary only, no narration (CI/CD friendly)
   --stripe              Enable Stripe checkout testing
   --card <scenario>     Stripe test card (default: success)
+  --record              Record session as Playwright Trace
+  --record-path <path>  Custom trace output path (default: recordings/)
 ```
 
 ### /stripe-test
@@ -123,6 +126,8 @@ Optional:
   --email <email>       Email for checkout (default: test@example.com)
   --tasks <tasks>       Pre-checkout tasks
   --quiet               Summary only, no narration
+  --record              Record session as Playwright Trace
+  --record-path <path>  Custom trace output path (default: recordings/)
 ```
 
 ### /wcag-audit
@@ -314,6 +319,43 @@ Disable narration for automated testing:
 ```
 /user-test --url https://example.com --personas "boomer-tech-averse,genz-digital-native" --tasks "checkout" --quiet --stripe
 ```
+
+### Session Recording
+
+Record testing sessions as Playwright Traces for replay, sharing, and debugging:
+
+```
+/user-test --url https://example.com --persona genz-digital-native --tasks "sign up" --record
+```
+
+**Output:**
+```
+Starting session recording...
+
+[Normal test output...]
+
+Session recorded to: recordings/user-test-genz-digital-native-2025-01-06-143022.zip
+View trace at: https://trace.playwright.dev (drag and drop the file)
+```
+
+**Trace files include:**
+- Screenshots at each action
+- DOM snapshots at each step
+- Network requests and responses
+- Console logs
+- Full timeline with timing
+
+**Custom output path:**
+```
+/user-test --url https://example.com --persona boomer-tech-averse --record --record-path ./traces/
+```
+
+**Recording checkout tests:**
+```
+/stripe-test --url https://shop.example.com/checkout --card success --record
+```
+
+**View traces at [trace.playwright.dev](https://trace.playwright.dev)** - just drag and drop the `.zip` file.
 
 ## Available Personas
 
@@ -599,6 +641,27 @@ Test the same checkout with different user types:
 /stripe-test --url https://shop.example.com/checkout --persona boomer-tech-averse --card success
 ```
 
+### Record Session for Debugging
+
+Record a session for replay and sharing:
+```
+/user-test --url https://example.com --persona boomer-tech-averse --tasks "checkout" --record
+```
+
+View the trace at [trace.playwright.dev](https://trace.playwright.dev) by dragging and dropping the `.zip` file.
+
+### CI/CD with Recording
+
+Combine quiet mode, multi-persona, and recording for CI/CD:
+```
+/user-test --url https://example.com --personas "boomer-tech-averse,genz-digital-native" --tasks "sign up" --quiet --record
+```
+
+This produces:
+- Summary report with issues
+- Annotated screenshots
+- Trace files for each persona (for debugging failures)
+
 ## Plugin Structure
 
 ```
@@ -625,8 +688,10 @@ user-testing-agent/
 │   ├── wcag-auditor/
 │   │   ├── SKILL.md             # WCAG audit skill
 │   │   └── criteria.json        # WCAG 2.1 criteria
-│   └── screenshot-annotator/
-│       └── SKILL.md             # Annotation guidance
+│   ├── screenshot-annotator/
+│   │   └── SKILL.md             # Annotation guidance
+│   └── session-recorder/
+│       └── SKILL.md             # Session recording guidance
 ├── CONTRIBUTING.md              # How to add personas
 ├── CHANGELOG.md                 # Version history
 ├── LICENSE                      # MIT
@@ -675,7 +740,7 @@ Quick steps:
 - [ ] A/B testing comparison reports
 - [x] Custom persona creation wizard
 - [x] Screenshot annotation
-- [ ] Session recording export
+- [x] Session recording export
 - [x] Multi-persona parallel testing
 - [x] WCAG audit mode with compliance scoring
 - [x] Stripe checkout testing with test cards
