@@ -650,6 +650,197 @@ If trace save fails:
 Warning: Failed to save trace file. Test results are still available.
 ```
 
+## A/B Testing Comparison
+
+When `/ab-test` command is invoked, compare two URL variants with the same persona.
+
+### A/B Testing Flow
+
+```
+1. Parse --url-a and --url-b
+2. Load persona configuration
+3. Test Variant A:
+   a. Navigate to URL A
+   b. Perform all tasks
+   c. Collect results (issues, confusion, completion)
+   d. Capture screenshots
+4. Announce transition: "Now let me try Variant B..."
+5. Test Variant B:
+   a. Navigate to URL B
+   b. Perform same tasks
+   c. Collect results
+   d. Capture screenshots
+6. Compare results and determine winner
+7. Generate A/B comparison report
+```
+
+### Variant Narration
+
+Announce transitions clearly:
+
+```
+"I'm going to test two versions of this site as [Persona Name].
+Variant A (Control): [URL A]
+Variant B (Test): [URL B]
+
+Let me start with Variant A..."
+
+[Complete Variant A test]
+
+"Okay, I've finished testing Variant A. Now let me try Variant B with fresh eyes..."
+
+[Complete Variant B test]
+
+"After testing both versions, Variant [A/B] was definitely [easier/harder] to use.
+[Reason for preference]"
+```
+
+### Winner Determination
+
+For each metric, determine winner:
+
+| Metric | Better When | Winner Logic |
+|--------|-------------|--------------|
+| Tasks Completed | Higher | A wins if A > B |
+| Critical Issues | Lower | A wins if A < B |
+| Major Issues | Lower | A wins if A < B |
+| Minor Issues | Lower | A wins if A < B |
+| Confusion Events | Lower | A wins if A < B |
+
+**Overall Winner:**
+1. Count metric wins for each variant
+2. Variant with more wins is overall winner
+3. If tied, use task completion as tiebreaker
+
+### Issue Categorization
+
+Categorize issues by variant:
+
+```markdown
+### Variant A Only Issues
+[Issues found only in Variant A]
+
+### Variant B Only Issues
+[Issues found only in Variant B]
+
+### Common Issues (Both Variants)
+[Issues in both - baseline problems to fix regardless]
+```
+
+### A/B Comparison Report Format
+
+```markdown
+# A/B Testing Comparison Report
+
+## Test Configuration
+- **Persona**: [Name] ([ID])
+- **Variant A (Control)**: [URL A]
+- **Variant B (Test)**: [URL B]
+- **Tasks**: [tasks]
+- **Date**: [timestamp]
+
+## Results Summary
+
+| Metric | Variant A | Variant B | Winner |
+|--------|-----------|-----------|--------|
+| Tasks Completed | X/Y | X/Y | A/B/Tie |
+| Critical Issues | N | N | A/B/Tie |
+| Major Issues | N | N | A/B/Tie |
+| Minor Issues | N | N | A/B/Tie |
+| Confusion Events | N | N | A/B/Tie |
+
+## Overall Winner: Variant [A/B]
+[1-2 sentence explanation]
+
+## Detailed Comparison
+
+### Variant A Issues
+[List issues]
+
+### Variant B Issues
+[List issues]
+
+### Common Issues
+[Issues in both]
+
+## Screenshots
+
+| Moment | Variant A | Variant B |
+|--------|-----------|-----------|
+| Landing | [screenshot] | [screenshot] |
+| Task | [screenshot] | [screenshot] |
+
+## Recommendations
+[Prioritized action items]
+```
+
+### Multi-Persona A/B Testing
+
+When `--personas` flag is used with A/B testing:
+
+```
+For each persona:
+  1. Test Variant A
+  2. Test Variant B
+  3. Record preference
+Aggregate into consensus report
+```
+
+**Multi-Persona A/B Report:**
+
+```markdown
+# Multi-Persona A/B Comparison
+
+## Results Matrix
+
+| Persona | A Tasks | B Tasks | A Issues | B Issues | Prefers |
+|---------|---------|---------|----------|----------|---------|
+| genz-digital-native | 3/3 | 3/3 | 2 | 1 | B |
+| boomer-tech-averse | 2/3 | 3/3 | 4 | 2 | B |
+
+## Consensus: Variant B preferred by 2/2 personas
+```
+
+### A/B + Quiet Mode
+
+When both flags are used:
+
+```
+A/B Test: genz-digital-native
+Variant A: https://example.com
+Variant B: https://staging.example.com
+
+Testing Variant A...
+[Screenshot: a-landing.png]
+[Screenshot: a-complete.png]
+
+Testing Variant B...
+[Screenshot: b-landing.png]
+[Screenshot: b-complete.png]
+
+# A/B Comparison Summary
+
+**Winner: Variant B**
+
+| Metric | A | B | Winner |
+|--------|---|---|--------|
+| Tasks | 2/3 | 3/3 | B |
+| Critical | 1 | 0 | B |
+| Major | 2 | 1 | B |
+
+Variant B wins with fewer issues and higher completion.
+```
+
+### A/B + Recording
+
+Create separate trace files for each variant:
+
+```
+recordings/
+├── ab-test-genz-digital-native-variant-a-2025-01-06-143022.zip
+├── ab-test-genz-digital-native-variant-b-2025-01-06-143156.zip
+```
+
 ## Best Practices
 
 1. **Stay in Character**: Don't break persona to make technical observations (unless `--quiet`)
@@ -660,3 +851,4 @@ Warning: Failed to save trace file. Test results are still available.
 6. **Payment Testing**: When using `--stripe`, focus on checkout UX, not card entry speed
 7. **CI/CD Mode**: Use `--quiet` for automated testing pipelines
 8. **Session Recording**: Use `--record` for shareable replays and debug sessions
+9. **A/B Testing**: Test identical tasks on both variants for fair comparison

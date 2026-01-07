@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2025-01-06
+
+### Added
+- **A/B Testing Comparison** (`/ab-test` command)
+  - Compare two URL variants with the same persona
+  - Test Variant A (control) vs Variant B (test)
+  - Results matrix with winner determination per metric
+  - Overall winner with explanation
+  - Side-by-side screenshot comparison
+  - Variant-specific and common issue categorization
+  - Multi-persona A/B testing with consensus reports
+  - CI/CD friendly with `--quiet` flag
+  - Session recording with separate traces per variant
+
+- **A/B Testing Skill** (`skills/ab-testing/`)
+  - Winner determination logic
+  - Comparison report templates
+  - Multi-persona consensus calculation
+  - Screenshot strategy for side-by-side comparison
+
+### Changed
+- Updated user-tester agent with A/B testing flow and narration
+- README expanded with A/B testing documentation
+- Plugin structure updated to include ab-testing skill
+- **Roadmap complete!** All 8 planned features now implemented
+
 ## [1.7.0] - 2025-01-06
 
 ### Added

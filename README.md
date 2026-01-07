@@ -24,6 +24,7 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 - **Comprehensive Reports** with prioritized findings and recommendations
 - **Chrome Integration** via `claude --chrome` for testing real websites
 - **Session Recording** with Playwright Trace export for replay and sharing
+- **A/B Testing Comparison** to compare two URL variants and determine which performs better
 
 ## Quick Start
 
@@ -127,6 +128,27 @@ Optional:
   --tasks <tasks>       Pre-checkout tasks
   --quiet               Summary only, no narration
   --record              Record session as Playwright Trace
+  --record-path <path>  Custom trace output path (default: recordings/)
+```
+
+### /ab-test
+
+Compare two URL variants with the same persona:
+
+```
+/ab-test --url-a <url> --url-b <url> --persona <id> [options]
+
+Required:
+  --url-a <url>         Variant A URL (control)
+  --url-b <url>         Variant B URL (test)
+  --persona <id>        Persona to test with (or use --personas)
+
+Optional:
+  --personas <ids>      Test multiple personas on both variants
+  --tasks <tasks>       Comma-separated tasks to perform
+  --gender <m|f|n>      Gender variant
+  --quiet               Summary only, no narration
+  --record              Record sessions as Playwright Traces
   --record-path <path>  Custom trace output path (default: recordings/)
 ```
 
@@ -356,6 +378,47 @@ View trace at: https://trace.playwright.dev (drag and drop the file)
 ```
 
 **View traces at [trace.playwright.dev](https://trace.playwright.dev)** - just drag and drop the `.zip` file.
+
+### A/B Testing Comparison
+
+Compare two URL variants to determine which performs better:
+
+```
+/ab-test --url-a https://example.com --url-b https://staging.example.com --persona genz-digital-native --tasks "sign up"
+```
+
+**Output includes:**
+- Results matrix comparing metrics (tasks, issues, confusion)
+- Winner determination per metric
+- Overall winner with explanation
+- Side-by-side screenshots
+- Variant-specific and common issues
+
+**Example comparison report:**
+```
+## Results Summary
+
+| Metric | Variant A | Variant B | Winner |
+|--------|-----------|-----------|--------|
+| Tasks Completed | 2/3 | 3/3 | B |
+| Critical Issues | 1 | 0 | B |
+| Major Issues | 2 | 1 | B |
+
+## Overall Winner: Variant B
+Variant B provides clearer navigation and faster task completion.
+```
+
+**Multi-persona A/B testing:**
+```
+/ab-test --url-a https://prod.example.com --url-b https://canary.example.com --personas "genz-digital-native,boomer-tech-averse,impulse-buyer" --tasks "checkout"
+```
+
+This generates a consensus report showing which variant each persona prefers.
+
+**CI/CD integration:**
+```
+/ab-test --url-a https://example.com --url-b https://staging.example.com --persona genz-digital-native --quiet
+```
 
 ## Available Personas
 
@@ -662,6 +725,20 @@ This produces:
 - Annotated screenshots
 - Trace files for each persona (for debugging failures)
 
+### A/B Test a Redesign
+
+Compare your current site against a redesign:
+```
+/ab-test --url-a https://shop.example.com --url-b https://shop-redesign.example.com --persona comparison-shopper --tasks "find product, compare prices, checkout"
+```
+
+### Multi-Persona A/B Comparison
+
+Get consensus across multiple user types:
+```
+/ab-test --url-a https://example.com --url-b https://beta.example.com --personas "genz-digital-native,boomer-tech-averse,screen-reader-user" --tasks "sign up" --quiet
+```
+
 ## Plugin Structure
 
 ```
@@ -671,6 +748,7 @@ user-testing-agent/
 ├── commands/
 │   ├── user-test.md             # /user-test command
 │   ├── stripe-test.md           # /stripe-test command
+│   ├── ab-test.md               # /ab-test command
 │   ├── wcag-audit.md            # /wcag-audit command
 │   └── annotate.md              # /annotate command
 ├── agents/
@@ -690,8 +768,10 @@ user-testing-agent/
 │   │   └── criteria.json        # WCAG 2.1 criteria
 │   ├── screenshot-annotator/
 │   │   └── SKILL.md             # Annotation guidance
-│   └── session-recorder/
-│       └── SKILL.md             # Session recording guidance
+│   ├── session-recorder/
+│   │   └── SKILL.md             # Session recording guidance
+│   └── ab-testing/
+│       └── SKILL.md             # A/B comparison guidance
 ├── CONTRIBUTING.md              # How to add personas
 ├── CHANGELOG.md                 # Version history
 ├── LICENSE                      # MIT
@@ -737,7 +817,7 @@ Quick steps:
 ## Future Roadmap
 
 - [x] CI/CD integration with quiet mode
-- [ ] A/B testing comparison reports
+- [x] A/B testing comparison reports
 - [x] Custom persona creation wizard
 - [x] Screenshot annotation
 - [x] Session recording export
