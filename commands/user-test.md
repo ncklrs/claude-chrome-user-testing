@@ -26,10 +26,12 @@ Parse the following from `$ARGUMENTS`:
 - `--output <markdown|json>` (optional): Report output format (default: markdown)
 - `--network <slow-3g|fast-3g|offline>` (optional): Network throttling preset
 - `--pr <number>` (optional): Post results as GitHub PR comment
+- `--fuzz` (optional): Enable form fuzzing for security testing
+- `--fuzz-category <category>` (optional): Fuzz category: xss | sqli | unicode | length | all (default: all)
 
 ## Available Personas
 
-### Built-in Personas (21)
+### Built-in Personas (25)
 
 **Generational**:
 | ID | Description |
@@ -71,6 +73,14 @@ Parse the following from `$ARGUMENTS`:
 | `impulse-buyer` | Fast buyer who needs frictionless checkout |
 | `return-customer` | Customer returning/exchanging, tests return flows |
 | `gift-buyer` | Gift purchaser who needs wrapping and messaging |
+
+**International**:
+| ID | Description |
+|----|-------------|
+| `german-business-user` | German user expecting DD.MM.YYYY dates, EUR, GDPR compliance |
+| `japanese-user` | Japanese user expecting YYYY/MM/DD dates, JPY, polite language |
+| `arabic-rtl-user` | Arabic user expecting RTL layout, mirrored navigation |
+| `brazilian-user` | Brazilian user expecting PIX/boleto payments, R$ currency |
 
 ### Custom Personas
 
@@ -598,6 +608,70 @@ Re-running with the same `--pr` number updates the existing comment instead of c
 /user-test --url https://staging.example.com --persona boomer-tech-averse --quiet --pr 123
 ```
 
+## Form Fuzzing
+
+When `--fuzz` flag is used, test form inputs with security and edge case payloads:
+
+### How It Works
+
+1. **Discovery**: Find all form inputs on visited pages
+2. **Classification**: Identify input types (text, email, password, search, etc.)
+3. **Injection**: For each input, try payloads from selected category
+4. **Observation**: Check response for each payload
+5. **Reporting**: Generate security-focused report section
+
+### Fuzzing Categories
+
+| Category | Payloads | Tests |
+|----------|----------|-------|
+| `xss` | 15 | XSS sanitization and filtering |
+| `sqli` | 12 | SQL injection prevention |
+| `unicode` | 10 | Character encoding handling |
+| `length` | 4 | Input length limits |
+| `all` | 41 | All categories combined (default) |
+
+### Response Classification
+
+| Result | Meaning | Severity |
+|--------|---------|----------|
+| Sanitized | Payload escaped/stripped | PASS |
+| Rejected | Clear error message | PASS |
+| Executed | XSS/SQLi worked | CRITICAL |
+| Error | Application error/crash | MAJOR |
+| Stored | Payload persists in DOM | CRITICAL |
+
+### Fuzz Report Section
+
+When fuzzing is enabled, the report includes:
+
+```markdown
+## Form Fuzz Testing Results
+
+### Summary
+- **Inputs Tested**: 5
+- **Payloads Tried**: 205
+- **Vulnerabilities Found**: 2
+
+### Critical Findings
+
+| Input | Category | Payload | Result |
+|-------|----------|---------|--------|
+| #name | XSS | `<script>alert(1)</script>` | Executed |
+
+### Recommendations
+1. [Critical] Sanitize #name field - XSS vulnerable
+```
+
+### Fuzzing Example
+
+```
+# Fuzz all categories
+/user-test --url https://example.com/signup --persona developer-critic --fuzz
+
+# Fuzz XSS only
+/user-test --url https://example.com/signup --persona genz-digital-native --fuzz --fuzz-category xss
+```
+
 ## Example Usage
 
 ```
@@ -612,4 +686,10 @@ Re-running with the same `--pr` number updates the existing comment instead of c
 /user-test --url https://example.com --persona bad-connection-user --network slow-3g
 /user-test --url https://example.com --persona impulse-buyer --viewport mobile --network fast-3g --output json --quiet
 /user-test --url https://staging.example.com --persona boomer-tech-averse --quiet --pr 123
+/user-test --url https://example.com/signup --persona developer-critic --fuzz
+/user-test --url https://example.com/login --persona genz-digital-native --fuzz --fuzz-category xss
+/user-test --url https://example.de --persona german-business-user --tasks "check date format, find GDPR info"
+/user-test --url https://example.sa --persona arabic-rtl-user --tasks "verify RTL layout"
+/user-test --url https://example.jp --persona japanese-user --tasks "check currency format"
+/user-test --url https://example.com.br --persona brazilian-user --tasks "find PIX payment option"
 ```

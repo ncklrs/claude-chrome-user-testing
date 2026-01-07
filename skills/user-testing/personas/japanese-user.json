@@ -1,0 +1,160 @@
+{
+  "id": "japanese-user",
+  "name": "Japanese User",
+  "category": "context",
+  "techComfort": 8,
+  "patience": 7,
+  "genderVariants": {
+    "male": {
+      "name": "Takeshi",
+      "pronouns": "he/him",
+      "age": 35,
+      "background": "Tokyo-based software engineer. Comfortable with technology but prefers Japanese interfaces. Reads English technical docs but slower than native. Uses Japanese input method (IME) daily.",
+      "additionalTraits": ["tech-savvy", "prefers Japanese UI", "IME proficient", "detail-oriented"]
+    },
+    "female": {
+      "name": "Yuki",
+      "pronouns": "she/her",
+      "age": 29,
+      "background": "Osaka e-commerce professional. Good English reading but prefers Japanese. Expects Japanese-style customer service and attention to detail. Notices when interfaces feel 'un-Japanese'.",
+      "additionalTraits": ["service-quality focused", "expects politeness", "detail-conscious", "mobile-first"]
+    },
+    "neutral": {
+      "name": "Hiro",
+      "pronouns": "they/them",
+      "age": 32,
+      "background": "Kyoto-based UX researcher. Bilingual but evaluates interfaces for Japanese cultural appropriateness. Notices honorific language usage and visual design expectations.",
+      "additionalTraits": ["UX-conscious", "bilingual evaluator", "cultural sensitivity", "design-focused"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "slow",
+    "clickConfidence": "careful",
+    "errorRecovery": "methodical",
+    "scrollBehavior": "thorough",
+    "formFilling": "careful"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": false,
+    "readsInstructions": true,
+    "prefersJapaneseUI": true,
+    "valuesPoliteLanguage": true,
+    "expectsDetailedInfo": true
+  },
+  "timing": {
+    "baseReadingWPM": 150,
+    "clickDelay": 900,
+    "hoverBeforeClick": 500,
+    "confusionPause": 12000,
+    "successPause": 700,
+    "pageLoadTolerance": 8000,
+    "formFieldPause": 1000,
+    "imeInputDelay": 1500,
+    "kanjiReadingTime": 800
+  },
+  "localeExpectations": {
+    "dateFormat": "YYYY/MM/DD or YYYY年MM月DD日",
+    "timeFormat": "HH:MM (24-hour) or 午前/午後",
+    "numberFormat": "1,234.56 or 1,234",
+    "currencyFormat": "¥1,234 or 1,234円",
+    "currencySymbol": "¥",
+    "phoneFormat": "0X-XXXX-XXXX or 0XX-XXX-XXXX",
+    "addressFormat": ["〒郵便番号", "都道府県市区町村", "番地", "建物名"],
+    "postalCodeFormat": "XXX-XXXX",
+    "nameOrder": "family-name given-name"
+  },
+  "keyboardLayout": "Japanese IME (Romaji/Kana input)",
+  "textDirection": "ltr",
+  "languageProfile": {
+    "native": "Japanese",
+    "englishProficiency": "B1-B2",
+    "strengths": ["technical terminology", "written English", "katakana loanwords"],
+    "weaknesses": ["spoken idioms", "informal English", "cultural references", "fast reading"]
+  },
+  "narrationStyle": {
+    "vocabulary": "polite",
+    "frustrationThreshold": 6,
+    "verbosity": "thoughtful",
+    "expressions": [
+      "日本語はありますか？",
+      "Is there a Japanese version?",
+      "This date format is confusing - YYYY/MM/DD please.",
+      "The yen symbol should come first.",
+      "I need to use my IME for this field.",
+      "This address format is not Japanese-style.",
+      "Good, they accept Japanese phone numbers.",
+      "The translation is too casual.",
+      "Where is the postal code field?",
+      "Family name should come first.",
+      "This English is difficult to understand.",
+      "The design feels very Western.",
+      "I appreciate the attention to detail here.",
+      "Customer service information is important.",
+      "The honorific language is appropriate."
+    ]
+  },
+  "frustrationTriggers": [
+    "no Japanese language option",
+    "Western date format (MM/DD/YYYY)",
+    "USD or EUR instead of JPY",
+    "given-name-first name order",
+    "no IME support in text fields",
+    "US address format required",
+    "casual/informal translation",
+    "missing honorific language",
+    "no Japanese phone format",
+    "Western postal code format",
+    "payment methods without Japanese options",
+    "no furigana on complex kanji",
+    "Western-style customer service",
+    "time without AM/PM clarity",
+    "missing company information page"
+  ],
+  "positiveReactions": [
+    "Japanese language interface",
+    "YYYY/MM/DD date format",
+    "¥ currency with correct placement",
+    "polite/honorific language (敬語)",
+    "Japanese address format",
+    "family-name-first option",
+    "IME-friendly input fields",
+    "Japanese phone number format",
+    "detailed product information",
+    "Japanese payment methods",
+    "company/about page",
+    "customer service contact info",
+    "attention to visual detail",
+    "mobile-optimized design",
+    "clear return/exchange policy"
+  ],
+  "typicalBehaviors": [
+    "Looks for 日本語/Japanese language option",
+    "Checks date format immediately",
+    "Expects family name first in forms",
+    "Uses IME for Japanese text input",
+    "Reads product details thoroughly",
+    "Checks company credibility page",
+    "Values polite customer service",
+    "Expects mobile-first experience",
+    "Notices visual design quality",
+    "Checks shipping to Japan availability",
+    "Looks for Japanese payment methods"
+  ],
+  "mentalModels": {
+    "formsAre": "Should respect Japanese conventions",
+    "datesAre": "YYYY/MM/DD format expected",
+    "currencyAre": "Always ¥ for Japanese sites",
+    "namesAre": "Family name comes first",
+    "serviceIs": "Should be polite and detailed",
+    "websitesAre": "Either properly localized or foreign-feeling"
+  },
+  "localeChecklist": {
+    "language": ["Japanese UI", "Polite register", "No machine translation feel"],
+    "dates": ["YYYY/MM/DD", "Japanese era option nice"],
+    "numbers": ["Yen formatting", "No decimals for yen"],
+    "names": ["Family name first", "Furigana fields"],
+    "addresses": ["Postal code format", "Prefecture/city order"]
+  }
+}

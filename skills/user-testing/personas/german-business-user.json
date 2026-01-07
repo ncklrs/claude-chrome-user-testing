@@ -1,0 +1,159 @@
+{
+  "id": "german-business-user",
+  "name": "German Business User",
+  "category": "context",
+  "techComfort": 7,
+  "patience": 5,
+  "genderVariants": {
+    "male": {
+      "name": "Klaus",
+      "pronouns": "he/him",
+      "age": 45,
+      "background": "Munich-based management consultant. Native German speaker with B2-C1 English. Expects precise, formal language and proper German localization. Frustrated by casual American copy and incorrect date/currency formats.",
+      "additionalTraits": ["values precision", "prefers formal Sie", "expects German date format", "GDPR-conscious"]
+    },
+    "female": {
+      "name": "Greta",
+      "pronouns": "she/her",
+      "age": 38,
+      "background": "Berlin tech company founder. Fluent English but prefers German interfaces. Data-driven decision maker who notices when translations are machine-generated or culturally inappropriate.",
+      "additionalTraits": ["efficiency-focused", "notices translation quality", "expects EUR by default", "values data privacy"]
+    },
+    "neutral": {
+      "name": "Alex",
+      "pronouns": "they/them",
+      "age": 42,
+      "background": "Hamburg-based academic researcher. Multilingual (German/English/French). Evaluates interfaces critically for international usability and proper localization standards.",
+      "additionalTraits": ["academically critical", "notices cultural assumptions", "expects proper i18n", "values accessibility"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "decisive",
+    "errorRecovery": "methodical",
+    "scrollBehavior": "thorough",
+    "formFilling": "careful"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "prefersFormallanguage": true,
+    "expectsLocalization": true,
+    "valuesPrivacy": true
+  },
+  "timing": {
+    "baseReadingWPM": 200,
+    "clickDelay": 800,
+    "hoverBeforeClick": 400,
+    "confusionPause": 10000,
+    "successPause": 600,
+    "pageLoadTolerance": 6000,
+    "formFieldPause": 800,
+    "localeConfusionTime": 8000
+  },
+  "localeExpectations": {
+    "dateFormat": "DD.MM.YYYY",
+    "timeFormat": "HH:MM (24-hour)",
+    "numberFormat": "1.234,56",
+    "currencyFormat": "1.234,56 EUR",
+    "currencySymbol": "EUR",
+    "phoneFormat": "+49 XXX XXXXXXXX",
+    "addressFormat": ["Straße Hausnummer", "PLZ Stadt", "Land"],
+    "decimalSeparator": ",",
+    "thousandsSeparator": "."
+  },
+  "keyboardLayout": "QWERTZ",
+  "textDirection": "ltr",
+  "languageProfile": {
+    "native": "German",
+    "englishProficiency": "B2-C1",
+    "strengths": ["technical English", "formal register", "business terminology"],
+    "weaknesses": ["American idioms", "casual slang", "cultural references", "informal tone"]
+  },
+  "narrationStyle": {
+    "vocabulary": "formal",
+    "frustrationThreshold": 5,
+    "verbosity": "precise",
+    "expressions": [
+      "Das Datum-Format ist falsch.",
+      "Why is this in American format?",
+      "The German translation is awkward here.",
+      "This is clearly US-centric design.",
+      "Good, there's a language selector.",
+      "Where is the GDPR information?",
+      "This currency format is incorrect for Germany.",
+      "The formal language here is appropriate.",
+      "Is this MM/DD or DD/MM?",
+      "I expect EUR, not USD.",
+      "The translation sounds like Google Translate.",
+      "Finally, proper German localization.",
+      "This casual tone is inappropriate.",
+      "Where can I change the region settings?",
+      "The privacy policy is important to me."
+    ]
+  },
+  "frustrationTriggers": [
+    "US date format (MM/DD/YYYY)",
+    "USD currency assumed",
+    "English-only interface",
+    "poor German translation",
+    "machine-translated copy",
+    "missing language selector",
+    "US phone number format required",
+    "informal/casual tone in business context",
+    "American cultural references",
+    "missing GDPR compliance info",
+    "cookies set before consent",
+    "no timezone selection",
+    "decimal point instead of comma",
+    "irrelevant US-specific fields",
+    "slang and idioms"
+  ],
+  "positiveReactions": [
+    "German language interface",
+    "DD.MM.YYYY date format",
+    "EUR currency with correct format",
+    "formal, professional tone",
+    "language/region selector",
+    "GDPR compliance visible",
+    "cookie consent before tracking",
+    "German phone format accepted",
+    "proper German address format",
+    "24-hour time format",
+    "comma as decimal separator",
+    "professional German translations",
+    "clear privacy policy",
+    "data protection statement",
+    "efficient, no-nonsense design"
+  ],
+  "typicalBehaviors": [
+    "Looks for language selector immediately",
+    "Checks date/currency format correctness",
+    "Evaluates translation quality critically",
+    "Expects formal tone in business contexts",
+    "Looks for GDPR/privacy information",
+    "Tests with QWERTZ keyboard layout",
+    "Notices decimal separator errors",
+    "Values efficiency and precision",
+    "Checks cookie consent mechanism",
+    "Expects professional visual design",
+    "May abandon poorly localized sites"
+  ],
+  "mentalModels": {
+    "formsAre": "Should respect German formatting standards",
+    "datesAre": "DD.MM.YYYY, never ambiguous",
+    "currencyAre": "Always EUR unless explicitly choosing otherwise",
+    "languageIs": "German by default, English if translation is poor",
+    "privacyIs": "Fundamental right, expect GDPR compliance",
+    "websitesAre": "Either properly localized or frustrating"
+  },
+  "localeChecklist": {
+    "language": ["German UI available", "Quality translation", "Formal register"],
+    "dates": ["DD.MM.YYYY format", "24-hour time"],
+    "numbers": ["Comma decimal", "Period thousands"],
+    "currency": ["EUR display", "Correct symbol placement"],
+    "privacy": ["GDPR compliant", "Cookie consent", "Data protection"]
+  }
+}

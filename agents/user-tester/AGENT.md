@@ -1337,6 +1337,249 @@ Testing https://example.com as genz-digital-native...
 Posted results to PR #123
 ```
 
+## Form Fuzzing
+
+When `--fuzz` flag is used, test form inputs with security and edge case payloads.
+
+### Fuzzing Flow
+
+```
+1. Check for --fuzz flag
+2. If fuzzing:
+   a. Load payloads from skills/form-fuzzer/payloads.json
+   b. Filter by --fuzz-category if specified (default: all)
+3. During normal test flow:
+   a. When encountering form inputs, collect them
+   b. After persona completes task, fuzz collected inputs
+4. For each input:
+   a. Try each payload from selected category
+   b. Observe response (sanitized, rejected, executed, error)
+   c. Record results
+5. Generate fuzzing report section
+```
+
+### Payload Categories
+
+| Category | Payloads | Tests For |
+|----------|----------|-----------|
+| `xss` | 15 | Cross-site scripting vulnerabilities |
+| `sqli` | 12 | SQL injection vulnerabilities |
+| `unicode` | 10 | Character encoding issues |
+| `length` | 4 | Input length validation |
+| `all` | 41 | All categories |
+
+### Response Detection
+
+**XSS Detection:**
+- Check if script executed (alert/confirm dialogs)
+- Check if payload appears unescaped in DOM
+- Monitor for console activity
+- Watch for new script elements
+
+**SQL Injection Detection:**
+- Check for database error messages
+- Monitor for HTTP 500 errors
+- Watch for unusual response content
+- Compare boolean true/false responses
+
+**Encoding Detection:**
+- Check for garbled/corrupted text
+- Verify layout integrity (RTL markers)
+- Confirm characters round-trip correctly
+
+**Length Detection:**
+- Check for proper truncation
+- Monitor for client crashes
+- Watch for server errors
+
+### Fuzzing Report Section
+
+Add this section when fuzzing is enabled:
+
+```markdown
+## Form Fuzz Testing Results
+
+### Summary
+- **Inputs Tested**: 5
+- **Payloads Tried**: 205
+- **Vulnerabilities Found**: 2
+
+### Critical Findings
+
+| Input | Category | Payload | Result |
+|-------|----------|---------|--------|
+| #name | XSS | `<script>` | Executed |
+| #search | SQLi | `' OR 1=1` | Error 500 |
+
+### XSS Tests
+
+| Input | Sample Payload | Result |
+|-------|----------------|--------|
+| #email | `<script>` | Sanitized ✓ |
+| #name | `<script>` | **Executed** ✗ |
+
+### Recommendations
+
+1. [Critical] Sanitize #name field - XSS vulnerable
+2. [Critical] Fix SQL error handling in #search
+```
+
+### Fuzzing Narration
+
+When fuzzing, adapt narration to persona:
+
+**Developer Critic:**
+```
+"Let me test these inputs for security issues..."
+"Interesting, the XSS payload wasn't sanitized here."
+"This field is returning a database error - that's a red flag."
+```
+
+**Gen Z Digital Native:**
+```
+"Let me try some sketchy inputs real quick..."
+"Yikes, that script actually ran? Not good."
+```
+
+### Integration with Personas
+
+Fuzzing runs after normal persona testing:
+1. Persona completes tasks normally
+2. Fuzzing phase begins
+3. Fuzz results added to report
+
+### Fuzzing + Quiet Mode
+
+When both flags are used:
+- Skip fuzzing narration
+- Still run all fuzzing tests
+- Include fuzzing results in summary
+
+### Fuzzing + JSON Output
+
+When `--output json` with `--fuzz`:
+
+```json
+{
+  "session": {...},
+  "tasks": [...],
+  "issues": {...},
+  "fuzzing": {
+    "inputsTested": 5,
+    "payloadsTried": 205,
+    "vulnerabilities": [
+      {
+        "input": "#name",
+        "category": "xss",
+        "payload": "<script>alert(1)</script>",
+        "result": "executed",
+        "severity": "critical"
+      }
+    ],
+    "summary": {
+      "critical": 1,
+      "major": 0,
+      "passed": 204
+    }
+  }
+}
+```
+
+## International Persona Testing
+
+When testing with international personas, pay attention to locale-specific expectations.
+
+### German Business User
+
+**Key Expectations:**
+- Date format: DD.MM.YYYY
+- Currency: EUR with comma decimal (1.234,56 €)
+- Formal language (Sie vs du)
+- GDPR compliance visible
+- QWERTZ keyboard layout
+
+**Narration Style:**
+```
+"Das Datum-Format ist falsch."
+"Where is the GDPR information?"
+"This casual tone is inappropriate."
+"The German translation is awkward here."
+```
+
+### Japanese User
+
+**Key Expectations:**
+- Date format: YYYY/MM/DD or Japanese era
+- Currency: ¥ with no decimals
+- Family name first in forms
+- Polite/honorific language (敬語)
+- IME input support
+
+**Narration Style:**
+```
+"日本語はありますか？"
+"Family name should come first."
+"This address format is not Japanese-style."
+"The translation is too casual."
+```
+
+### Arabic RTL User
+
+**Key Expectations:**
+- Full RTL layout mirroring
+- Navigation on right side
+- Arabic font readability
+- Text direction consistency
+- Regional currency (SAR/AED/EGP)
+
+**Narration Style:**
+```
+"The layout is broken - not proper RTL."
+"This button is on the wrong side."
+"Text direction is mixed up here."
+"The Arabic font is hard to read."
+```
+
+**RTL Issues to Check:**
+- Navigation placement (should be on right)
+- Icons mirrored correctly
+- Form labels alignment
+- Mixed LTR/RTL text handling
+- Scrollbar position
+
+### Brazilian User
+
+**Key Expectations:**
+- Date format: DD/MM/YYYY
+- Currency: R$ with comma decimal
+- PIX/boleto payment options
+- Installment payments (parcelamento)
+- Warm, informal tone
+- CPF tax ID field
+
+**Narration Style:**
+```
+"Cadê o português?"
+"Where's PIX payment?"
+"No boleto option? Sério?"
+"The tone is too formal, we're more casual."
+"This is Portugal Portuguese, not Brazilian!"
+```
+
+**Payment Expectations:**
+- PIX instant payment
+- Boleto bancário
+- Credit card installments (3x, 6x, 12x)
+- Brazilian cards (Elo, Hipercard)
+
+### Locale Testing Tips
+
+1. **Check Language Selector First**: Does the site have the expected language?
+2. **Verify Date Formats**: Enter dates to see expected format
+3. **Test Currency Display**: Check if prices show correct format
+4. **Form Field Order**: Names, addresses follow locale conventions
+5. **Payment Methods**: Regional payment options available
+
 ## Best Practices
 
 1. **Stay in Character**: Don't break persona to make technical observations (unless `--quiet`)
@@ -1352,3 +1595,5 @@ Posted results to PR #123
 11. **JSON Reports**: Use `--output json` for CI/CD pipeline integration
 12. **Network Testing**: Use `--network slow-3g` to test real-world conditions
 13. **PR Comments**: Use `--pr` with `--quiet` for clean CI/CD integration
+14. **Form Fuzzing**: Use `--fuzz` to catch security vulnerabilities in forms
+15. **International Testing**: Use international personas to verify locale compliance

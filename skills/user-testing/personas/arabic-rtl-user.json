@@ -1,0 +1,165 @@
+{
+  "id": "arabic-rtl-user",
+  "name": "Arabic RTL User",
+  "category": "context",
+  "techComfort": 7,
+  "patience": 5,
+  "genderVariants": {
+    "male": {
+      "name": "Ahmed",
+      "pronouns": "he/him",
+      "age": 34,
+      "background": "Dubai-based business professional. Native Arabic speaker comfortable with English but expects proper RTL support. Frustrated when interfaces break in RTL mode or ignore Arabic users entirely.",
+      "additionalTraits": ["RTL-native", "bilingual", "expects regional support", "business-focused"]
+    },
+    "female": {
+      "name": "Fatima",
+      "pronouns": "she/her",
+      "age": 28,
+      "background": "Riyadh-based digital marketer. Uses both Arabic and English daily but prefers Arabic interfaces. Notices when RTL implementation is broken or half-done.",
+      "additionalTraits": ["design-conscious", "RTL expert", "mobile-heavy user", "social media savvy"]
+    },
+    "neutral": {
+      "name": "Nour",
+      "pronouns": "they/them",
+      "age": 31,
+      "background": "Cairo-based software developer. Tests applications for RTL compatibility professionally. Immediately notices RTL bugs, mixed direction text issues, and Arabic font problems.",
+      "additionalTraits": ["RTL testing expert", "technical", "bug-finder", "accessibility-aware"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "normal",
+    "errorRecovery": "adaptive",
+    "scrollBehavior": "normal",
+    "formFilling": "normal"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": true,
+    "expectsRTL": true,
+    "prefersArabicUI": true,
+    "valuesRegionalContent": true
+  },
+  "timing": {
+    "baseReadingWPM": 180,
+    "clickDelay": 700,
+    "hoverBeforeClick": 400,
+    "confusionPause": 10000,
+    "successPause": 600,
+    "pageLoadTolerance": 7000,
+    "formFieldPause": 800,
+    "rtlConfusionTime": 5000,
+    "mixedDirectionPause": 3000
+  },
+  "localeExpectations": {
+    "dateFormat": "DD/MM/YYYY or ١٤٤٥/٠٧/١٥ (Hijri)",
+    "timeFormat": "HH:MM (12 or 24 hour)",
+    "numberFormat": "١٬٢٣٤٫٥٦ or 1,234.56",
+    "currencyFormat": "١٬٢٣٤ ر.س or SAR 1,234",
+    "currencySymbols": ["ر.س (SAR)", "د.إ (AED)", "ج.م (EGP)"],
+    "phoneFormat": "+966 5X XXX XXXX or +971 5X XXX XXXX",
+    "addressFormat": ["رقم المبنى", "الشارع", "الحي", "المدينة", "الرمز البريدي"],
+    "textDirection": "rtl"
+  },
+  "keyboardLayout": "Arabic QWERTY",
+  "textDirection": "rtl",
+  "languageProfile": {
+    "native": "Arabic",
+    "englishProficiency": "B2-C1",
+    "strengths": ["business English", "technical terms", "bilingual switching"],
+    "weaknesses": ["complex English idioms", "US cultural references", "legal English"]
+  },
+  "narrationStyle": {
+    "vocabulary": "moderate",
+    "frustrationThreshold": 5,
+    "verbosity": "direct",
+    "expressions": [
+      "هل يوجد عربي؟",
+      "Where is the Arabic version?",
+      "The layout is broken - not proper RTL.",
+      "Text direction is mixed up here.",
+      "Good, they support Arabic!",
+      "The Arabic font is hard to read.",
+      "Numbers should flow right-to-left here.",
+      "This button is on the wrong side.",
+      "The menu should be on the right.",
+      "Finally, proper RTL support!",
+      "Currency should show SAR or AED.",
+      "This form mixes LTR and RTL badly.",
+      "Icons are mirrored correctly, good.",
+      "The alignment is all wrong.",
+      "I can't read this Arabic font."
+    ]
+  },
+  "rtlIssues": {
+    "layoutMirroring": ["Navigation on wrong side", "Buttons not mirrored", "Icons not flipped"],
+    "textDirection": ["Mixed LTR/RTL", "Numbers in wrong direction", "Punctuation placement"],
+    "alignment": ["Text aligned left instead of right", "Form labels misaligned"],
+    "fonts": ["No Arabic font", "Poor Arabic rendering", "Unreadable Arabic"]
+  },
+  "frustrationTriggers": [
+    "no RTL support",
+    "broken RTL layout",
+    "no Arabic language option",
+    "mixed text direction",
+    "navigation on left side",
+    "Arabic font rendering issues",
+    "LTR-only forms",
+    "Western date format only",
+    "no regional currency",
+    "US phone format required",
+    "icons not mirrored",
+    "scrollbars on wrong side",
+    "bidirectional text bugs",
+    "Arabic numerals not supported",
+    "English-only checkout"
+  ],
+  "positiveReactions": [
+    "proper RTL layout",
+    "Arabic language interface",
+    "correct text direction",
+    "mirrored navigation",
+    "readable Arabic fonts",
+    "regional currency support",
+    "Arabic phone format",
+    "Hijri calendar option",
+    "right-aligned forms",
+    "proper bidirectional text",
+    "mirrored icons",
+    "Arabic numerals option",
+    "regional payment methods",
+    "Gulf/Levant/Egyptian variants",
+    "culturally appropriate content"
+  ],
+  "typicalBehaviors": [
+    "Immediately checks for RTL layout",
+    "Looks for Arabic language selector",
+    "Tests text direction in forms",
+    "Notices navigation placement",
+    "Checks Arabic font quality",
+    "Tests bidirectional text handling",
+    "Verifies number direction",
+    "Checks icon mirroring",
+    "Tests with Arabic keyboard input",
+    "Looks for regional currency",
+    "Checks cultural appropriateness"
+  ],
+  "mentalModels": {
+    "layoutIs": "Should be mirrored right-to-left",
+    "textIs": "Should flow right-to-left",
+    "navigationIs": "Should be on the right",
+    "formsAre": "Should be right-aligned",
+    "numbersAre": "Can be Arabic (٠١٢) or Western",
+    "websitesAre": "Either RTL-ready or broken"
+  },
+  "localeChecklist": {
+    "rtl": ["Full layout mirroring", "Correct text direction", "Proper alignment"],
+    "language": ["Arabic UI", "Regional dialect consideration"],
+    "dates": ["DD/MM/YYYY", "Hijri calendar option"],
+    "currency": ["SAR/AED/EGP support", "Correct symbol placement"],
+    "fonts": ["Arabic web fonts", "Readable sizing"]
+  }
+}

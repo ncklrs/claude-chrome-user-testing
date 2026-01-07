@@ -5,6 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.12.0] - 2025-01-07
+
+### Added
+- **International Personas** (4 new)
+  - `german-business-user` - Tests DD.MM.YYYY dates, EUR currency, GDPR compliance, formal language
+  - `japanese-user` - Tests YYYY/MM/DD dates, yen, family-name-first forms, IME input support
+  - `arabic-rtl-user` - Tests RTL layout mirroring, Arabic fonts, right-side navigation
+  - `brazilian-user` - Tests DD/MM/YYYY dates, R$ currency, PIX/boleto payments, warm tone
+
+- **Cookie Consent Audit** (`/cookie-audit` command)
+  - GDPR compliance checking (6 criteria)
+  - CCPA compliance checking (4 criteria)
+  - Pre-consent cookie detection
+  - Compliance scoring with letter grades (A-F)
+  - Multiple output formats: summary, detailed, JSON
+  - Screenshot annotations for violations
+  - Remediation guidance with legal references
+
+- **Cookie Auditor Skill** (`skills/cookie-auditor/`)
+  - GDPR/CCPA criteria reference (`criteria.json`)
+  - Cookie classification by category (necessary, analytics, marketing, personalization)
+  - Banner detection patterns
+  - Pre-checked checkbox detection
+  - Button prominence comparison
+
+- **Form Fuzzing** (`--fuzz` flag)
+  - Test form inputs for security vulnerabilities
+  - 4 fuzzing categories: xss (15 payloads), sqli (12), unicode (10), length (4)
+  - Category selection with `--fuzz-category` flag
+  - Response classification: sanitized, rejected, executed, error
+  - Fuzz results section in reports
+
+- **Form Fuzzer Skill** (`skills/form-fuzzer/`)
+  - XSS payloads (script tags, event handlers, javascript URLs)
+  - SQL injection payloads (OR injection, UNION, time-based)
+  - Unicode payloads (RTL, zero-width, homoglyphs)
+  - Length payloads (1K, 10K, 100K characters)
+  - Detection methods for each category
+
+### Changed
+- Updated `/user-test` command with `--fuzz` and `--fuzz-category` flags
+- Updated user-tester agent with Form Fuzzing and International Persona Testing sections
+- Added 4 international personas to Available Personas table (now 25 total)
+- Best practices expanded with fuzzing and international testing guidelines
+- README expanded with all three feature documentation
+- Plugin structure updated with new commands and skills
+- Roadmap updated with completed features
+
 ## [1.11.0] - 2025-01-07
 
 ### Added

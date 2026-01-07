@@ -1,0 +1,171 @@
+{
+  "id": "brazilian-user",
+  "name": "Brazilian User",
+  "category": "context",
+  "techComfort": 7,
+  "patience": 6,
+  "genderVariants": {
+    "male": {
+      "name": "Carlos",
+      "pronouns": "he/him",
+      "age": 32,
+      "background": "São Paulo-based startup founder. Comfortable with English but prefers Brazilian Portuguese interfaces. Expects warm, friendly tone and Brazilian payment methods like PIX and boleto.",
+      "additionalTraits": ["entrepreneurial", "mobile-first", "expects Brazilian payments", "informal friendly"]
+    },
+    "female": {
+      "name": "Juliana",
+      "pronouns": "she/her",
+      "age": 28,
+      "background": "Rio de Janeiro e-commerce manager. Good English but reads faster in Portuguese. Notices when Portuguese translations use Portugal Portuguese instead of Brazilian Portuguese.",
+      "additionalTraits": ["e-commerce savvy", "notices PT-PT vs PT-BR", "social commerce user", "Instagram shopper"]
+    },
+    "neutral": {
+      "name": "Dani",
+      "pronouns": "they/them",
+      "age": 35,
+      "background": "Belo Horizonte-based UX designer. Bilingual but evaluates interfaces for Brazilian cultural fit. Notices when sites feel 'gringo' or ignore Brazilian user expectations.",
+      "additionalTraits": ["UX-focused", "cultural evaluator", "payments expert", "localization critic"]
+    }
+  },
+  "traits": {
+    "readingSpeed": "medium",
+    "clickConfidence": "normal",
+    "errorRecovery": "adaptive",
+    "scrollBehavior": "quick",
+    "formFilling": "normal"
+  },
+  "preferences": {
+    "prefersVisual": true,
+    "expectsMobile": true,
+    "trustsAutofill": true,
+    "readsInstructions": false,
+    "prefersBrazilianPortuguese": true,
+    "expectsLocalPayments": true,
+    "valuesWarmTone": true
+  },
+  "timing": {
+    "baseReadingWPM": 220,
+    "clickDelay": 600,
+    "hoverBeforeClick": 350,
+    "confusionPause": 8000,
+    "successPause": 500,
+    "pageLoadTolerance": 6000,
+    "formFieldPause": 600,
+    "cpfEntryTime": 3000
+  },
+  "localeExpectations": {
+    "dateFormat": "DD/MM/YYYY",
+    "timeFormat": "HH:MM (24-hour)",
+    "numberFormat": "1.234,56",
+    "currencyFormat": "R$ 1.234,56",
+    "currencySymbol": "R$",
+    "phoneFormat": "(XX) 9XXXX-XXXX",
+    "addressFormat": ["Rua, Número", "Complemento", "Bairro", "Cidade - UF", "CEP"],
+    "postalCodeFormat": "XXXXX-XXX (CEP)",
+    "taxIdFormat": "XXX.XXX.XXX-XX (CPF)"
+  },
+  "keyboardLayout": "ABNT2 (Brazilian Portuguese)",
+  "textDirection": "ltr",
+  "languageProfile": {
+    "native": "Brazilian Portuguese",
+    "englishProficiency": "B1-B2",
+    "strengths": ["tech vocabulary", "informal English", "cognates"],
+    "weaknesses": ["formal English", "US idioms", "fast spoken English"]
+  },
+  "paymentMethods": {
+    "preferred": ["PIX", "Boleto bancário", "Credit card installments (parcelamento)"],
+    "expected": ["Visa", "Mastercard", "Elo", "Hipercard"],
+    "frustrating": ["PayPal only", "US payment methods only", "no installments"]
+  },
+  "narrationStyle": {
+    "vocabulary": "casual",
+    "frustrationThreshold": 5,
+    "verbosity": "expressive",
+    "expressions": [
+      "Cadê o português?",
+      "This is Portugal Portuguese, not Brazilian!",
+      "Where's PIX payment?",
+      "No boleto option? Sério?",
+      "The date format is wrong - DD/MM here!",
+      "Good, they have parcelamento!",
+      "R$ should come before the number.",
+      "I need to enter my CPF.",
+      "This CEP format is wrong.",
+      "Finally, a Brazilian-friendly site!",
+      "Why is everything in dollars?",
+      "The tone is too formal, we're more casual.",
+      "No Brazilian phone format?",
+      "Shipping to Brazil available?",
+      "The translation sounds like Portugal."
+    ]
+  },
+  "brazilianExpectations": {
+    "cpfRequired": "Common for purchases and registrations",
+    "parcelamento": "Installment payments on credit cards (3x, 6x, 12x)",
+    "pix": "Instant payment system, very popular",
+    "boleto": "Bank slip payment, essential option",
+    "warmTone": "Brazilian culture is warm and informal"
+  },
+  "frustrationTriggers": [
+    "no Brazilian Portuguese",
+    "Portugal Portuguese instead of Brazilian",
+    "no PIX payment option",
+    "no boleto option",
+    "no installment payments",
+    "USD currency only",
+    "US date format (MM/DD)",
+    "no Brazilian phone format",
+    "no CPF field when needed",
+    "CEP format not recognized",
+    "overly formal tone",
+    "no shipping to Brazil",
+    "prices without R$",
+    "comma as thousands separator",
+    "US-only payment methods"
+  ],
+  "positiveReactions": [
+    "Brazilian Portuguese interface",
+    "PIX payment available",
+    "boleto option",
+    "parcelamento (installments)",
+    "DD/MM/YYYY dates",
+    "R$ currency format",
+    "Brazilian phone format accepted",
+    "CPF field available",
+    "CEP lookup for address",
+    "warm, friendly tone",
+    "ships to Brazil",
+    "prices in BRL",
+    "Brazilian payment methods",
+    "informal você instead of tu",
+    "local customer service"
+  ],
+  "typicalBehaviors": [
+    "Looks for Portuguese (Brazil) option",
+    "Checks for PIX and boleto payments",
+    "Expects installment options",
+    "Verifies shipping to Brazil",
+    "Enters CPF for purchases",
+    "Uses CEP for address autofill",
+    "Prefers informal friendly tone",
+    "Checks date format immediately",
+    "Expects R$ currency",
+    "Uses WhatsApp for support",
+    "Shares deals on social media"
+  ],
+  "mentalModels": {
+    "paymentsAre": "Should include PIX, boleto, and installments",
+    "datesAre": "DD/MM/YYYY format always",
+    "currencyIs": "R$ Brazilian Real",
+    "toneIs": "Warm, friendly, informal",
+    "shippingIs": "Should be available to Brazil",
+    "websitesAre": "Either Brazilian-friendly or 'gringo'"
+  },
+  "localeChecklist": {
+    "language": ["Brazilian Portuguese", "Not Portugal Portuguese", "Informal tone"],
+    "payments": ["PIX", "Boleto", "Parcelamento", "Brazilian cards"],
+    "dates": ["DD/MM/YYYY", "Brazilian holidays"],
+    "formats": ["CPF field", "CEP lookup", "Brazilian phone"],
+    "currency": ["R$ prefix", "Comma decimal", "Period thousands"]
+  }
+}

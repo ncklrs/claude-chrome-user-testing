@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "description": "GDPR and CCPA cookie consent compliance criteria",
+  "gdpr": {
+    "name": "General Data Protection Regulation",
+    "region": "EU/EEA",
+    "criteria": [
+      {
+        "id": "GDPR-1",
+        "title": "Banner Before Cookies",
+        "description": "Non-essential cookies must not be set before user consent",
+        "severity": "critical",
+        "checkMethod": "pre-consent-cookies",
+        "passCondition": "Only necessary cookies exist on initial page load",
+        "failCondition": "Analytics, marketing, or personalization cookies set before any user interaction",
+        "remediation": "Configure cookie tools to wait for consent before setting non-essential cookies",
+        "reference": "GDPR Article 6, ePrivacy Directive Article 5(3)"
+      },
+      {
+        "id": "GDPR-2",
+        "title": "No Pre-Checked Consent Boxes",
+        "description": "Consent checkboxes must not be pre-selected for non-essential cookies",
+        "severity": "critical",
+        "checkMethod": "checkbox-state",
+        "passCondition": "All non-essential cookie category checkboxes are unchecked by default",
+        "failCondition": "Marketing, analytics, or personalization checkboxes are checked by default",
+        "remediation": "Set all non-essential cookie category checkboxes to unchecked by default",
+        "reference": "GDPR Recital 32, Planet49 ruling (C-673/17)"
+      },
+      {
+        "id": "GDPR-3",
+        "title": "Equally Prominent Reject Option",
+        "description": "The option to reject non-essential cookies must be as easy to access as accepting",
+        "severity": "major",
+        "checkMethod": "button-prominence",
+        "passCondition": "Reject/Decline button is similar size, color prominence, and placement as Accept button",
+        "failCondition": "Reject option is a small link, hidden in settings, or visually less prominent than Accept",
+        "remediation": "Add a 'Reject All' button with equal visual weight next to 'Accept All'",
+        "reference": "CNIL Guidelines, EDPB Guidelines 05/2020"
+      },
+      {
+        "id": "GDPR-4",
+        "title": "Granular Consent Options",
+        "description": "Users must be able to consent to specific cookie categories, not just accept all",
+        "severity": "major",
+        "checkMethod": "category-options",
+        "passCondition": "User can select individual cookie categories (analytics, marketing, etc.)",
+        "failCondition": "Only 'Accept All' or 'Reject All' options available with no category selection",
+        "remediation": "Add category-level consent toggles in cookie preferences",
+        "reference": "GDPR Article 7, EDPB Guidelines 05/2020"
+      },
+      {
+        "id": "GDPR-5",
+        "title": "Consent Withdrawal Mechanism",
+        "description": "Users must be able to withdraw consent as easily as they gave it",
+        "severity": "major",
+        "checkMethod": "withdrawal-access",
+        "passCondition": "Cookie preferences can be changed via accessible link (e.g., footer)",
+        "failCondition": "No way to change cookie preferences after initial consent",
+        "remediation": "Add persistent 'Cookie Settings' link in footer or visible location",
+        "reference": "GDPR Article 7(3)"
+      },
+      {
+        "id": "GDPR-6",
+        "title": "Cookie Policy Accessibility",
+        "description": "A detailed cookie policy must be easily accessible",
+        "severity": "minor",
+        "checkMethod": "policy-link",
+        "passCondition": "Cookie policy link is present in banner or easily found on page",
+        "failCondition": "No cookie policy link or policy is difficult to find",
+        "remediation": "Add 'Cookie Policy' or 'Learn More' link in consent banner",
+        "reference": "GDPR Article 13, ePrivacy Directive"
+      }
+    ]
+  },
+  "ccpa": {
+    "name": "California Consumer Privacy Act",
+    "region": "California, USA",
+    "criteria": [
+      {
+        "id": "CCPA-1",
+        "title": "Do Not Sell Link",
+        "description": "Clear and conspicuous 'Do Not Sell My Personal Information' link required",
+        "severity": "critical",
+        "checkMethod": "dns-link-presence",
+        "passCondition": "'Do Not Sell My Personal Information' or equivalent link is visible (usually in footer)",
+        "failCondition": "No CCPA opt-out link found on page",
+        "remediation": "Add 'Do Not Sell My Personal Information' link to page footer",
+        "reference": "CCPA Section 1798.135(a)(1)"
+      },
+      {
+        "id": "CCPA-2",
+        "title": "Functional Opt-Out Mechanism",
+        "description": "The opt-out process must actually work and not require account creation",
+        "severity": "critical",
+        "checkMethod": "opt-out-functional",
+        "passCondition": "Clicking opt-out link leads to functional opt-out without barriers",
+        "failCondition": "Opt-out requires account creation, is broken, or has excessive steps",
+        "remediation": "Implement frictionless opt-out mechanism that works for all visitors",
+        "reference": "CCPA Section 1798.135(a)(2)"
+      },
+      {
+        "id": "CCPA-3",
+        "title": "Privacy Policy Accessibility",
+        "description": "Privacy policy must be accessible and describe data practices",
+        "severity": "major",
+        "checkMethod": "privacy-policy-link",
+        "passCondition": "Privacy policy link is present and describes data collection/sharing",
+        "failCondition": "No privacy policy link or policy doesn't describe data practices",
+        "remediation": "Add privacy policy link and ensure it covers CCPA requirements",
+        "reference": "CCPA Section 1798.130(a)(5)"
+      },
+      {
+        "id": "CCPA-4",
+        "title": "Consumer Rights Disclosure",
+        "description": "Must disclose consumer rights under CCPA",
+        "severity": "minor",
+        "checkMethod": "rights-disclosure",
+        "passCondition": "Privacy policy describes right to know, delete, and opt-out",
+        "failCondition": "Consumer rights not clearly described",
+        "remediation": "Add section to privacy policy describing CCPA consumer rights",
+        "reference": "CCPA Section 1798.130(a)(2)"
+      }
+    ]
+  },
+  "cookieCategories": {
+    "necessary": {
+      "description": "Essential for website functionality",
+      "examples": ["session", "csrf", "auth", "cart"],
+      "requiresConsent": false
+    },
+    "analytics": {
+      "description": "Track usage and performance",
+      "examples": ["_ga", "_gid", "_gat", "amplitude", "mixpanel", "segment"],
+      "requiresConsent": true
+    },
+    "marketing": {
+      "description": "Advertising and retargeting",
+      "examples": ["_fbp", "_gcl", "ads", "pixel", "doubleclick", "criteo"],
+      "requiresConsent": true
+    },
+    "personalization": {
+      "description": "User preferences and customization",
+      "examples": ["theme", "lang", "prefs", "ab_test"],
+      "requiresConsent": true
+    }
+  },
+  "scoring": {
+    "weights": {
+      "critical": 3,
+      "major": 2,
+      "minor": 1
+    },
+    "grades": {
+      "A": { "min": 90, "label": "Excellent compliance" },
+      "B": { "min": 80, "label": "Good compliance" },
+      "C": { "min": 70, "label": "Needs improvement" },
+      "D": { "min": 60, "label": "Poor compliance" },
+      "F": { "min": 0, "label": "Non-compliant" }
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2025-01-07",
+    "sources": [
+      "GDPR (EU Regulation 2016/679)",
+      "ePrivacy Directive (2002/58/EC)",
+      "CCPA (California Civil Code 1798.100-199)",
+      "EDPB Guidelines 05/2020",
+      "CNIL Cookie Guidelines"
+    ],
+    "disclaimer": "This tool provides technical compliance checks. For legal compliance advice, consult a qualified privacy attorney."
+  }
+}
