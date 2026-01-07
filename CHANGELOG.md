@@ -5,6 +5,49 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0] - 2025-01-07
+
+### Added
+- **Mobile Viewport Testing** (`--viewport` flag)
+  - Test on mobile (375x667), tablet (768x1024), or desktop (1280x720) viewports
+  - Uses `browser_resize` tool for viewport configuration
+  - Mobile-specific narration ("Let me tap this...", "This button is small on my phone...")
+  - Automatically adjusts persona patience for mobile interactions
+  - Viewport included in report session overview
+
+- **JSON Report Export** (`--output json` flag)
+  - Machine-readable JSON output for CI/CD pipelines
+  - Includes session metadata, task results, issues, and summary
+  - Compatible with `--quiet` mode
+  - Enables dashboard integration and trend analysis
+  - Full schema with persona, viewport, network, screenshots, and trace paths
+
+- **Network Throttling** (`--network` flag)
+  - Simulate slow-3g (400 Kbps, 400ms latency), fast-3g (1.6 Mbps, 100ms), or offline
+  - Uses Chrome DevTools Protocol for realistic throttling
+  - Automatically adjusts persona patience thresholds
+  - Network-specific narration for slow loading and offline states
+  - Test offline/PWA functionality with `--network offline`
+
+- **Network Throttling Skill** (`skills/network-throttling/`)
+  - CDP implementation for network emulation
+  - Preset configurations and throughput calculations
+  - Patience adjustment guidelines
+  - Combined testing patterns (mobile + slow network)
+
+### Changed
+- Updated all commands with `--viewport`, `--output`, and `--network` flags:
+  - `/user-test` - All three flags
+  - `/smoke-test` - All three flags
+  - `/critical-path` - All three flags
+  - `/ab-test` - All three flags
+  - `/check-links` - `--output` flag only
+- User-tester agent updated with viewport setup, network throttling, and JSON output sections
+- Best practices expanded with mobile, JSON, and network testing guidelines
+- README expanded with all three feature documentation
+- Plugin structure updated to include network-throttling skill
+- Roadmap updated with completed features
+
 ## [1.9.0] - 2025-01-07
 
 ### Added

@@ -22,6 +22,9 @@ Parse the following from `$ARGUMENTS`:
 - `--record` (optional): Record the session as a Playwright Trace for replay
 - `--record-path <path>` (optional): Custom output path for trace file (default: recordings/)
 - `--check-links` (optional): Check all encountered links for broken URLs after testing
+- `--viewport <mobile|tablet|desktop>` (optional): Device viewport size (default: desktop)
+- `--output <markdown|json>` (optional): Report output format (default: markdown)
+- `--network <slow-3g|fast-3g|offline>` (optional): Network throttling preset
 
 ## Available Personas
 
@@ -412,6 +415,138 @@ Broken links encountered during the user journey may cause confusion.
 /user-test --url https://example.com --persona boomer-tech-averse --tasks "browse site" --check-links
 ```
 
+## Mobile Viewport Testing
+
+When `--viewport` flag is used, resize the browser to simulate different device sizes:
+
+### Viewport Presets
+
+| Preset | Width | Height | Use Case |
+|--------|-------|--------|----------|
+| `desktop` | 1280 | 720 | Standard desktop (default) |
+| `tablet` | 768 | 1024 | iPad-sized tablet |
+| `mobile` | 375 | 667 | iPhone 12/13 mobile |
+
+### How It Works
+
+1. **Before Navigation**: Call `browser_resize` with preset dimensions
+2. **Persona Adjustment**: Slightly reduce patience for mobile (smaller screen = more impatient)
+3. **Touch Behaviors**: On mobile, expect tap-based interactions
+4. **Report Header**: Include viewport in session overview
+
+### Mobile-Specific Narration
+
+Personas may comment on mobile experience:
+- "This button is pretty small on my phone..."
+- "Hard to tap this on a touchscreen..."
+- "The menu is hidden behind a hamburger icon..."
+
+### Viewport Example
+
+```
+/user-test --url https://example.com --persona genz-digital-native --viewport mobile --tasks "sign up"
+```
+
+## JSON Report Export
+
+When `--output json` flag is used, generate machine-readable JSON instead of markdown:
+
+### JSON Schema
+
+```json
+{
+  "session": {
+    "url": "https://example.com",
+    "persona": {
+      "id": "genz-digital-native",
+      "name": "Zara",
+      "gender": "f"
+    },
+    "viewport": "mobile",
+    "network": "normal",
+    "timestamp": "2025-01-07T14:30:00Z",
+    "duration": 85
+  },
+  "tasks": [
+    {
+      "name": "sign up",
+      "status": "completed",
+      "duration": 45,
+      "confusionPoints": ["form validation unclear"]
+    }
+  ],
+  "issues": {
+    "critical": [],
+    "major": [
+      {
+        "description": "Form has 8 fields",
+        "location": "/signup",
+        "recommendation": "Reduce to essential fields"
+      }
+    ],
+    "minor": []
+  },
+  "summary": {
+    "tasksCompleted": "1/1",
+    "criticalIssues": 0,
+    "majorIssues": 1,
+    "minorIssues": 0,
+    "overallStatus": "pass"
+  },
+  "screenshots": ["screenshot-1.png"],
+  "trace": null
+}
+```
+
+### Use Cases
+
+- **CI/CD Pipelines**: Parse results programmatically
+- **Dashboards**: Feed data to monitoring tools
+- **Trend Analysis**: Store and compare over time
+- **Alerts**: Trigger notifications on critical issues
+
+### JSON Export Example
+
+```
+/user-test --url https://example.com --persona genz-digital-native --output json --quiet
+```
+
+## Network Throttling
+
+When `--network` flag is used, simulate slow or offline network conditions:
+
+### Network Presets
+
+| Preset | Download | Upload | Latency | Use Case |
+|--------|----------|--------|---------|----------|
+| `slow-3g` | 400 Kbps | 400 Kbps | 400ms | Poor mobile connection |
+| `fast-3g` | 1.6 Mbps | 750 Kbps | 100ms | Good mobile connection |
+| `offline` | 0 | 0 | N/A | No network (test offline mode) |
+
+### How It Works
+
+1. **Before Navigation**: Apply network throttling via Chrome DevTools Protocol
+2. **Persona Adjustment**: Automatically increase patience thresholds
+3. **Loading Narration**: Comment on slow loading ("Still loading...", "This is taking a while...")
+4. **Offline Handling**: Test service worker / offline fallbacks
+
+### Network-Specific Narration
+
+- **Slow Connection**: "This is loading pretty slowly... I'll wait a bit more..."
+- **Offline**: "Hmm, nothing's loading. Is there no internet?"
+
+### Network Throttling Example
+
+```
+/user-test --url https://example.com --persona bad-connection-user --network slow-3g
+```
+
+### Testing Offline Mode
+
+```
+/user-test --url https://pwa.example.com --persona genz-digital-native --network offline --tasks "browse cached content"
+```
+
 ## Example Usage
 
 ```
@@ -421,4 +556,8 @@ Broken links encountered during the user journey may cause confusion.
 /user-test --url https://example.com --personas "boomer-tech-averse,genz-digital-native,screen-reader-user" --tasks "sign up" --quiet
 /user-test --url https://example.com --persona genz-digital-native --tasks "sign up" --record
 /user-test --url https://example.com --persona boomer-tech-averse --tasks "explore site" --check-links
+/user-test --url https://example.com --persona genz-digital-native --viewport mobile --tasks "checkout"
+/user-test --url https://example.com --persona boomer-tech-averse --output json --quiet
+/user-test --url https://example.com --persona bad-connection-user --network slow-3g
+/user-test --url https://example.com --persona impulse-buyer --viewport mobile --network fast-3g --output json --quiet
 ```

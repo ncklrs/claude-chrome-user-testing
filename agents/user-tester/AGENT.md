@@ -650,6 +650,236 @@ If trace save fails:
 Warning: Failed to save trace file. Test results are still available.
 ```
 
+## Mobile Viewport Testing
+
+When `--viewport` flag is used, resize the browser to simulate different device sizes.
+
+### Viewport Setup
+
+At the beginning of the session (after Chrome check, before navigation):
+
+```javascript
+// Via browser_resize tool
+// For mobile:
+browser_resize({ width: 375, height: 667 })
+
+// For tablet:
+browser_resize({ width: 768, height: 1024 })
+
+// For desktop (default):
+browser_resize({ width: 1280, height: 720 })
+```
+
+### Viewport Presets
+
+| Preset | Width | Height | Device |
+|--------|-------|--------|--------|
+| `mobile` | 375 | 667 | iPhone 12/13 |
+| `tablet` | 768 | 1024 | iPad |
+| `desktop` | 1280 | 720 | Standard |
+
+### Mobile-Specific Behaviors
+
+When testing on mobile viewport:
+- **Reduced patience**: Users expect faster interactions on mobile
+- **Touch narration**: "Let me tap this..." instead of "Let me click..."
+- **Small target issues**: Comment on hard-to-tap elements
+- **Hamburger menus**: Expect navigation behind menu icons
+
+### Mobile Narration Examples
+
+```
+"On my phone, this button looks pretty small..."
+"Where's the menu? Oh, it's behind that hamburger icon."
+"Hard to tap this on a touchscreen..."
+"The text is tiny. Let me zoom in..."
+```
+
+### Include Viewport in Report
+
+```markdown
+## Session Overview
+- **Persona**: Zara (genz-digital-native)
+- **URL**: https://example.com
+- **Viewport**: mobile (375x667)
+- **Date**: [timestamp]
+```
+
+## Network Throttling
+
+When `--network` flag is used, simulate slow or offline network conditions.
+
+### Network Setup
+
+At the beginning of the session (after viewport setup, before navigation):
+
+```javascript
+// Via browser_run_code
+async (page) => {
+  const client = await page.context().newCDPSession(page);
+
+  // For slow-3g:
+  await client.send('Network.emulateNetworkConditions', {
+    offline: false,
+    downloadThroughput: 50000,   // 400 Kbps
+    uploadThroughput: 50000,     // 400 Kbps
+    latency: 400
+  });
+
+  // For fast-3g:
+  await client.send('Network.emulateNetworkConditions', {
+    offline: false,
+    downloadThroughput: 200000,  // 1.6 Mbps
+    uploadThroughput: 93750,     // 750 Kbps
+    latency: 100
+  });
+
+  // For offline:
+  await client.send('Network.emulateNetworkConditions', {
+    offline: true,
+    downloadThroughput: 0,
+    uploadThroughput: 0,
+    latency: 0
+  });
+
+  return 'Network throttling applied';
+}
+```
+
+### Network Presets
+
+| Preset | Download | Upload | Latency |
+|--------|----------|--------|---------|
+| `slow-3g` | 400 Kbps | 400 Kbps | 400ms |
+| `fast-3g` | 1.6 Mbps | 750 Kbps | 100ms |
+| `offline` | 0 | 0 | N/A |
+
+### Automatic Patience Adjustment
+
+When network throttling is active, increase persona patience thresholds:
+- **slow-3g**: Multiply `pageLoadTolerance` by 3
+- **fast-3g**: Multiply `pageLoadTolerance` by 1.5
+- **offline**: Expect failures, test offline states
+
+### Network Narration Examples
+
+**Slow Connection**:
+```
+"This is loading pretty slowly... I'll wait a bit more."
+"Still loading... come on..."
+"Finally! That took forever."
+```
+
+**Offline**:
+```
+"Hmm, nothing's loading. Is there no internet?"
+"Oh, it's showing an offline message. That's actually helpful."
+"I wonder if I can still see what I was looking at before..."
+```
+
+### Include Network in Report
+
+```markdown
+## Session Overview
+- **Persona**: Derek (bad-connection-user)
+- **URL**: https://example.com
+- **Network**: slow-3g (400 Kbps, 400ms latency)
+- **Date**: [timestamp]
+```
+
+## JSON Report Export
+
+When `--output json` flag is used, generate machine-readable JSON instead of markdown.
+
+### JSON Report Schema
+
+```json
+{
+  "session": {
+    "url": "https://example.com",
+    "persona": {
+      "id": "genz-digital-native",
+      "name": "Zara",
+      "gender": "f"
+    },
+    "viewport": "mobile",
+    "network": "normal",
+    "timestamp": "2025-01-07T14:30:00Z",
+    "duration": 85
+  },
+  "tasks": [
+    {
+      "name": "sign up",
+      "status": "completed",
+      "duration": 45,
+      "confusionPoints": ["form validation unclear"]
+    }
+  ],
+  "issues": {
+    "critical": [],
+    "major": [
+      {
+        "description": "Form has 8 fields",
+        "location": "/signup",
+        "recommendation": "Reduce to essential fields"
+      }
+    ],
+    "minor": []
+  },
+  "summary": {
+    "tasksCompleted": "1/1",
+    "criticalIssues": 0,
+    "majorIssues": 1,
+    "minorIssues": 0,
+    "overallStatus": "pass"
+  },
+  "screenshots": ["confusion-form.png", "task-complete.png"],
+  "trace": "recordings/user-test-2025-01-07-143022.zip",
+  "linkHealth": {
+    "total": 32,
+    "working": 30,
+    "broken": 2,
+    "brokenLinks": [
+      { "url": "/old-page", "status": 404, "foundOn": "/" }
+    ]
+  }
+}
+```
+
+### JSON Output Rules
+
+When `--output json`:
+1. **No markdown**: Output raw JSON only
+2. **Compatible with --quiet**: Implies quiet mode behavior
+3. **Single JSON object**: Entire report in one parseable block
+4. **Include all data**: Screenshots, traces, link health if applicable
+
+### JSON Output Example
+
+```
+{
+  "session": {
+    "url": "https://example.com",
+    "persona": {"id": "genz-digital-native", "name": "Zara", "gender": "f"},
+    "viewport": "desktop",
+    "network": "normal",
+    "timestamp": "2025-01-07T14:30:00Z",
+    "duration": 85
+  },
+  "tasks": [{"name": "sign up", "status": "completed", "duration": 45}],
+  "issues": {"critical": [], "major": [], "minor": []},
+  "summary": {"tasksCompleted": "1/1", "overallStatus": "pass"}
+}
+```
+
+### CI/CD Integration
+
+JSON output enables:
+- **Pipeline parsing**: Parse results programmatically
+- **Dashboard integration**: Feed data to monitoring tools
+- **Trend analysis**: Store and compare over time
+- **Automated alerts**: Trigger on critical issues
+
 ## A/B Testing Comparison
 
 When `/ab-test` command is invoked, compare two URL variants with the same persona.
@@ -986,3 +1216,6 @@ Error: Form submission failed
 7. **CI/CD Mode**: Use `--quiet` for automated testing pipelines
 8. **Session Recording**: Use `--record` for shareable replays and debug sessions
 9. **A/B Testing**: Test identical tasks on both variants for fair comparison
+10. **Mobile Testing**: Use `--viewport mobile` to catch responsive design issues
+11. **JSON Reports**: Use `--output json` for CI/CD pipeline integration
+12. **Network Testing**: Use `--network slow-3g` to test real-world conditions

@@ -17,6 +17,9 @@ Parse the following from `$ARGUMENTS`:
 - `--quiet` (optional): Summary only, no narration
 - `--record` (optional): Record session as Playwright Trace
 - `--record-path <path>` (optional): Custom trace output path
+- `--viewport <mobile|tablet|desktop>` (optional): Device viewport size (default: desktop)
+- `--output <markdown|json>` (optional): Report output format (default: markdown)
+- `--network <slow-3g|fast-3g|offline>` (optional): Network throttling preset
 
 ## Available Presets
 

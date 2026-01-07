@@ -16,6 +16,7 @@ Parse the following from `$ARGUMENTS`:
 - `--external-only` (optional): Only check external links
 - `--exclude <pattern>` (optional): Exclude URLs matching this pattern
 - `--quiet` (optional): Summary only output
+- `--output <markdown|json>` (optional): Report output format (default: markdown)
 
 ## How It Works
 

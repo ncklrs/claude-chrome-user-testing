@@ -17,6 +17,9 @@ Parse the following from `$ARGUMENTS`:
 - `--fail-fast` (optional): Stop on first failure
 - `--record` (optional): Record sessions as Playwright Traces
 - `--record-path <path>` (optional): Custom trace output path
+- `--viewport <mobile|tablet|desktop>` (optional): Device viewport size (default: desktop)
+- `--output <markdown|json>` (optional): Report output format (default: markdown)
+- `--network <slow-3g|fast-3g|offline>` (optional): Network throttling preset
 
 ## Defining Critical Paths
 

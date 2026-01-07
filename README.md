@@ -28,6 +28,9 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 - **Smoke Test Presets** for quick validation of common flows (login, signup, checkout, navigation, search)
 - **Critical Path Testing** to validate must-work user journeys defined in JSON
 - **Link Checker** to find broken links during testing or as standalone validation
+- **Mobile Viewport Testing** with `--viewport mobile/tablet/desktop` for responsive design testing
+- **JSON Report Export** with `--output json` for CI/CD pipeline integration
+- **Network Throttling** with `--network slow-3g/fast-3g/offline` for real-world conditions
 
 ## Quick Start
 
@@ -111,6 +114,9 @@ Optional:
   --record              Record session as Playwright Trace
   --record-path <path>  Custom trace output path (default: recordings/)
   --check-links         Check all links encountered during testing
+  --viewport <size>     Device viewport: mobile | tablet | desktop (default: desktop)
+  --output <format>     Report format: markdown | json (default: markdown)
+  --network <preset>    Network throttling: slow-3g | fast-3g | offline
 ```
 
 ### /stripe-test
@@ -590,6 +596,73 @@ Find broken links during testing or as standalone validation:
 - Redirect warnings (301s that should be updated)
 - Impact assessment on user experience
 
+### Mobile Viewport Testing
+
+Test responsive designs with different device viewports:
+
+```
+/user-test --url https://example.com --persona genz-digital-native --viewport mobile
+```
+
+**Viewport Presets:**
+
+| Preset | Size | Device |
+|--------|------|--------|
+| `mobile` | 375x667 | iPhone 12/13 |
+| `tablet` | 768x1024 | iPad |
+| `desktop` | 1280x720 | Standard (default) |
+
+**Mobile + Tasks:**
+```
+/user-test --url https://shop.example.com --persona impulse-buyer --viewport mobile --tasks "checkout"
+```
+
+### JSON Report Export
+
+Generate machine-readable JSON reports for CI/CD integration:
+
+```
+/user-test --url https://example.com --persona genz-digital-native --output json --quiet
+```
+
+**JSON output includes:**
+- Session metadata (url, persona, viewport, network, duration)
+- Task results with status and duration
+- Issues categorized by severity (critical/major/minor)
+- Summary with overall status
+- Screenshots and trace file paths
+
+**CI/CD Pipeline Integration:**
+```
+/critical-path --url https://staging.example.com --output json --quiet --fail-fast
+```
+
+### Network Throttling
+
+Simulate slow or offline network conditions:
+
+```
+/user-test --url https://example.com --persona bad-connection-user --network slow-3g
+```
+
+**Network Presets:**
+
+| Preset | Download | Latency | Use Case |
+|--------|----------|---------|----------|
+| `slow-3g` | 400 Kbps | 400ms | Poor mobile |
+| `fast-3g` | 1.6 Mbps | 100ms | Good mobile |
+| `offline` | 0 | N/A | No network |
+
+**Test Offline/PWA Mode:**
+```
+/user-test --url https://pwa.example.com --persona genz-digital-native --network offline
+```
+
+**Combined Testing (Mobile + Slow Network):**
+```
+/user-test --url https://example.com --persona impulse-buyer --viewport mobile --network slow-3g --output json --quiet
+```
+
 ## Available Personas
 
 ### Generational Personas (5)
@@ -950,8 +1023,10 @@ user-testing-agent/
 │   │   └── presets/             # 5 preset JSON files
 │   ├── critical-paths/
 │   │   └── SKILL.md             # Critical path guidance
-│   └── link-checker/
-│       └── SKILL.md             # Link checking guidance
+│   ├── link-checker/
+│   │   └── SKILL.md             # Link checking guidance
+│   └── network-throttling/
+│       └── SKILL.md             # Network throttling guidance
 ├── CONTRIBUTING.md              # How to add personas
 ├── CHANGELOG.md                 # Version history
 ├── LICENSE                      # MIT
@@ -1007,6 +1082,9 @@ Quick steps:
 - [x] Smoke test presets for common flows
 - [x] Critical path definitions
 - [x] Link checker integration
+- [x] Mobile viewport testing
+- [x] JSON report export for CI/CD
+- [x] Network throttling presets
 
 ## License
 
