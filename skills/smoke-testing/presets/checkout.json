@@ -1,0 +1,20 @@
+{
+  "name": "checkout",
+  "description": "Quick validation of purchase flow initialization",
+  "defaultPersona": "impulse-buyer",
+  "tasks": [
+    "find any product on the site",
+    "add product to cart",
+    "navigate to shopping cart",
+    "proceed to checkout",
+    "verify checkout page loads"
+  ],
+  "successCriteria": [
+    "Products are findable",
+    "Add to cart works",
+    "Cart is accessible",
+    "Checkout page loads"
+  ],
+  "timeout": 120,
+  "notes": "Does not complete payment - use /stripe-test for full payment testing"
+}

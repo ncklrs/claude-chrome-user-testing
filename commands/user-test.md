@@ -21,6 +21,7 @@ Parse the following from `$ARGUMENTS`:
 - `--email <email>` (optional): Email address to use for forms and checkout (default: test@example.com)
 - `--record` (optional): Record the session as a Playwright Trace for replay
 - `--record-path <path>` (optional): Custom output path for trace file (default: recordings/)
+- `--check-links` (optional): Check all encountered links for broken URLs after testing
 
 ## Available Personas
 
@@ -374,6 +375,43 @@ View trace at: https://trace.playwright.dev (drag and drop the file)
 /user-test --url https://example.com --persona boomer-tech-averse --record --record-path ./traces/
 ```
 
+## Link Checking
+
+When `--check-links` flag is used, validate all links encountered during testing:
+
+### How It Works
+
+1. During testing, collect all unique links seen on visited pages
+2. After testing completes, validate each link via HEAD request
+3. Add "Link Health" section to the final report
+
+### Link Health Report Section
+
+```markdown
+## Link Health
+
+### Summary
+- **Links Encountered**: 32
+- **Working**: 30 (94%)
+- **Broken**: 2 (6%)
+
+### Broken Links Found
+
+| Link | Found On | Status |
+|------|----------|--------|
+| /products/old-item | /shop | 404 |
+| /team/john | /about | 404 |
+
+### Impact
+Broken links encountered during the user journey may cause confusion.
+```
+
+### Link Check Example
+
+```
+/user-test --url https://example.com --persona boomer-tech-averse --tasks "browse site" --check-links
+```
+
 ## Example Usage
 
 ```
@@ -382,4 +420,5 @@ View trace at: https://trace.playwright.dev (drag and drop the file)
 /user-test --url https://shop.example.com --persona comparison-shopper --stripe --card decline --tasks "find product, checkout"
 /user-test --url https://example.com --personas "boomer-tech-averse,genz-digital-native,screen-reader-user" --tasks "sign up" --quiet
 /user-test --url https://example.com --persona genz-digital-native --tasks "sign up" --record
+/user-test --url https://example.com --persona boomer-tech-averse --tasks "explore site" --check-links
 ```

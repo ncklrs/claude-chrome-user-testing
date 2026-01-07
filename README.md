@@ -25,6 +25,9 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 - **Chrome Integration** via `claude --chrome` for testing real websites
 - **Session Recording** with Playwright Trace export for replay and sharing
 - **A/B Testing Comparison** to compare two URL variants and determine which performs better
+- **Smoke Test Presets** for quick validation of common flows (login, signup, checkout, navigation, search)
+- **Critical Path Testing** to validate must-work user journeys defined in JSON
+- **Link Checker** to find broken links during testing or as standalone validation
 
 ## Quick Start
 
@@ -107,6 +110,7 @@ Optional:
   --card <scenario>     Stripe test card (default: success)
   --record              Record session as Playwright Trace
   --record-path <path>  Custom trace output path (default: recordings/)
+  --check-links         Check all links encountered during testing
 ```
 
 ### /stripe-test
@@ -150,6 +154,68 @@ Optional:
   --quiet               Summary only, no narration
   --record              Record sessions as Playwright Traces
   --record-path <path>  Custom trace output path (default: recordings/)
+```
+
+### /smoke-test
+
+Quick validation of common user flows with pre-built presets:
+
+```
+/smoke-test --url <url> --preset <preset> [options]
+
+Required:
+  --url <url>           Target URL to test
+  --preset <preset>     Test preset to run
+
+Available Presets:
+  login                 Validate authentication flow
+  signup                Test registration process
+  checkout              Verify purchase flow
+  navigation            Test main navigation structure
+  search                Validate search functionality
+
+Optional:
+  --persona <id>        Override default persona
+  --email <email>       Email for forms (default: test@example.com)
+  --quiet               Summary only, no narration
+  --record              Record session as Playwright Trace
+  --record-path <path>  Custom trace output path (default: recordings/)
+```
+
+### /critical-path
+
+Test must-work user journeys defined in your project:
+
+```
+/critical-path --url <url> [options]
+
+Required:
+  --url <url>           Base URL for testing
+
+Optional:
+  --path <name>         Run specific path only (default: all)
+  --persona <id>        Override default persona for all paths
+  --quiet               Summary only output
+  --fail-fast           Stop on first failure
+  --record              Record sessions as Playwright Traces
+  --record-path <path>  Custom trace output path (default: recordings/)
+```
+
+### /check-links
+
+Find broken links on a page or site:
+
+```
+/check-links --url <url> [options]
+
+Required:
+  --url <url>           URL to check
+
+Optional:
+  --depth <n>           How deep to crawl (default: 1, max: 3)
+  --internal-only       Only check internal links
+  --exclude <pattern>   Exclude URLs matching pattern
+  --quiet               Summary only output
 ```
 
 ### /wcag-audit
@@ -419,6 +485,110 @@ This generates a consensus report showing which variant each persona prefers.
 ```
 /ab-test --url-a https://example.com --url-b https://staging.example.com --persona genz-digital-native --quiet
 ```
+
+### Smoke Test Presets
+
+Quick validation of common user flows with pre-built test configurations:
+
+```
+/smoke-test --url https://example.com --preset login
+```
+
+**Built-in Presets:**
+
+| Preset | Default Persona | Tests |
+|--------|-----------------|-------|
+| `login` | busy-executive | Find login, enter credentials, submit, verify success |
+| `signup` | genz-digital-native | Find signup, complete form, submit, verify welcome |
+| `checkout` | impulse-buyer | Find product, add to cart, go to cart, start checkout |
+| `navigation` | boomer-tech-averse | Click main nav items, verify pages load |
+| `search` | power-user | Find search, enter term, filter results, click result |
+
+**Override default persona:**
+```
+/smoke-test --url https://example.com --preset checkout --persona boomer-tech-averse
+```
+
+**CI/CD integration:**
+```
+/smoke-test --url https://staging.example.com --preset login --quiet
+```
+
+### Critical Path Testing
+
+Test must-work user journeys defined in your project's `.claude/critical-paths.json`:
+
+```json
+{
+  "paths": [
+    {
+      "name": "purchase-flow",
+      "description": "Complete purchase from browse to confirmation",
+      "persona": "impulse-buyer",
+      "priority": "critical",
+      "steps": [
+        { "action": "navigate", "to": "/" },
+        { "action": "task", "do": "find and select a product" },
+        { "action": "task", "do": "add to cart" },
+        { "action": "task", "do": "proceed to checkout" },
+        { "action": "verify", "element": "checkout form" }
+      ]
+    }
+  ]
+}
+```
+
+**Run all critical paths:**
+```
+/critical-path --url https://example.com
+```
+
+**Run specific path:**
+```
+/critical-path --url https://example.com --path purchase-flow
+```
+
+**CI/CD mode (stop on first failure):**
+```
+/critical-path --url https://example.com --quiet --fail-fast
+```
+
+**Step Types:**
+- `navigate` - Go to a URL path
+- `task` - Perform an action as the persona would
+- `verify` - Confirm element, text, or URL exists
+- `wait` - Wait for a condition
+- `input` - Enter specific data in a field
+
+### Link Checker
+
+Find broken links during testing or as standalone validation:
+
+**Standalone check:**
+```
+/check-links --url https://example.com
+```
+
+**During user testing:**
+```
+/user-test --url https://example.com --persona boomer-tech-averse --tasks "browse site" --check-links
+```
+
+**Crawl multiple pages:**
+```
+/check-links --url https://example.com --depth 2
+```
+
+**Internal links only:**
+```
+/check-links --url https://example.com --internal-only
+```
+
+**Output includes:**
+- Total links found vs working vs broken
+- Broken link details (URL, found on page, status code)
+- Redirect warnings (301s that should be updated)
+- Impact assessment on user experience
 
 ## Available Personas
 
@@ -749,6 +919,9 @@ user-testing-agent/
 │   ├── user-test.md             # /user-test command
 │   ├── stripe-test.md           # /stripe-test command
 │   ├── ab-test.md               # /ab-test command
+│   ├── smoke-test.md            # /smoke-test command
+│   ├── critical-path.md         # /critical-path command
+│   ├── check-links.md           # /check-links command
 │   ├── wcag-audit.md            # /wcag-audit command
 │   └── annotate.md              # /annotate command
 ├── agents/
@@ -770,8 +943,15 @@ user-testing-agent/
 │   │   └── SKILL.md             # Annotation guidance
 │   ├── session-recorder/
 │   │   └── SKILL.md             # Session recording guidance
-│   └── ab-testing/
-│       └── SKILL.md             # A/B comparison guidance
+│   ├── ab-testing/
+│   │   └── SKILL.md             # A/B comparison guidance
+│   ├── smoke-testing/
+│   │   ├── SKILL.md             # Smoke test guidance
+│   │   └── presets/             # 5 preset JSON files
+│   ├── critical-paths/
+│   │   └── SKILL.md             # Critical path guidance
+│   └── link-checker/
+│       └── SKILL.md             # Link checking guidance
 ├── CONTRIBUTING.md              # How to add personas
 ├── CHANGELOG.md                 # Version history
 ├── LICENSE                      # MIT
@@ -824,6 +1004,9 @@ Quick steps:
 - [x] Multi-persona parallel testing
 - [x] WCAG audit mode with compliance scoring
 - [x] Stripe checkout testing with test cards
+- [x] Smoke test presets for common flows
+- [x] Critical path definitions
+- [x] Link checker integration
 
 ## License
 

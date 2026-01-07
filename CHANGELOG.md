@@ -5,6 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2025-01-07
+
+### Added
+- **Smoke Test Presets** (`/smoke-test` command)
+  - Quick validation of common flows with pre-built configurations
+  - 5 built-in presets: login, signup, checkout, navigation, search
+  - Each preset has default persona optimized for that flow
+  - Override persona with `--persona` flag
+  - Full CI/CD support with `--quiet` and `--record` flags
+
+- **Critical Path Testing** (`/critical-path` command)
+  - Test must-work user journeys defined in `.claude/critical-paths.json`
+  - JSON schema with step types: navigate, task, verify, wait, input
+  - Priority levels: critical, high, medium, low
+  - Run specific paths or all paths
+  - Fail-fast mode for CI/CD (`--fail-fast`)
+  - Detailed reports with pass/fail per step
+
+- **Link Checker** (`/check-links` command + `--check-links` flag)
+  - Standalone link validation with `/check-links`
+  - Integrated testing with `--check-links` on `/user-test`
+  - Depth crawling (1-3 levels)
+  - Internal-only mode to skip external links
+  - Exclusion patterns
+  - Reports broken links, redirects, and impact
+
+- **Smoke Testing Skill** (`skills/smoke-testing/`)
+  - Preset execution logic
+  - 5 preset JSON configurations
+  - Success criteria validation
+
+- **Critical Paths Skill** (`skills/critical-paths/`)
+  - Path execution algorithm
+  - Step type handling
+  - Report generation
+
+- **Link Checker Skill** (`skills/link-checker/`)
+  - Link extraction from pages
+  - HEAD request validation
+  - Status code interpretation
+  - Redirect chain tracking
+
+### Changed
+- Updated user-tester agent with smoke test, critical path, and link checking flows
+- README expanded with all three quick wins documentation
+- Plugin structure updated with new commands and skills
+- Roadmap updated with completed quick wins
+
 ## [1.8.0] - 2025-01-06
 
 ### Added

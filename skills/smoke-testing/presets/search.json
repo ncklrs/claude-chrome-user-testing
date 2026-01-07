@@ -1,0 +1,23 @@
+{
+  "name": "search",
+  "description": "Quick validation of search functionality",
+  "defaultPersona": "power-user",
+  "tasks": [
+    "find search input field",
+    "enter a generic search term",
+    "submit search",
+    "verify search results appear",
+    "click first search result",
+    "verify result page loads"
+  ],
+  "successCriteria": [
+    "Search input is discoverable",
+    "Search accepts input and submits",
+    "Results page loads with results",
+    "Results are clickable and lead to valid pages"
+  ],
+  "timeout": 60,
+  "testData": {
+    "searchTerms": ["test", "product", "help", "about"]
+  }
+}

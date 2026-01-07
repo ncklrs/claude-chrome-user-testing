@@ -1,0 +1,23 @@
+{
+  "name": "signup",
+  "description": "Quick validation of registration flow",
+  "defaultPersona": "genz-digital-native",
+  "tasks": [
+    "find signup or register link",
+    "navigate to registration page",
+    "complete registration form with test data",
+    "submit registration",
+    "verify account creation"
+  ],
+  "successCriteria": [
+    "Registration form is accessible",
+    "All required fields can be filled",
+    "Account creation succeeds or shows confirmation"
+  ],
+  "timeout": 90,
+  "testData": {
+    "name": "Test User",
+    "email": "test-{timestamp}@example.com",
+    "password": "TestPassword123!"
+  }
+}

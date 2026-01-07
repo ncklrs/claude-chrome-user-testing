@@ -841,6 +841,140 @@ recordings/
 ├── ab-test-genz-digital-native-variant-b-2025-01-06-143156.zip
 ```
 
+## Smoke Test Presets
+
+When `/smoke-test` command is invoked, run pre-configured test flows.
+
+### Available Presets
+
+| Preset | Default Persona | What It Tests |
+|--------|-----------------|---------------|
+| `login` | busy-executive | Authentication flow |
+| `signup` | genz-digital-native | Registration flow |
+| `checkout` | impulse-buyer | Purchase flow initiation |
+| `navigation` | boomer-tech-averse | Site navigation |
+| `search` | power-user | Search functionality |
+
+### Smoke Test Flow
+
+```
+1. Load preset from skills/smoke-testing/presets/
+2. Load default persona (or override with --persona)
+3. Execute each task in preset
+4. Record pass/fail for each step
+5. Generate quick summary report
+```
+
+### Output Format
+
+```
+Smoke Test: login @ https://example.com
+Persona: busy-executive
+
+[1/5] Find login.......... PASS
+[2/5] Navigate............ PASS
+[3/5] Enter credentials... PASS
+[4/5] Submit form......... PASS
+[5/5] Verify login........ PASS
+
+Result: PASS (5/5 steps)
+Duration: 12s
+```
+
+## Link Checking
+
+When `--check-links` flag is used on `/user-test`, or `/check-links` command is run.
+
+### Link Check Flow
+
+```
+1. During testing: Collect all unique links encountered
+2. After testing: Validate each link via HEAD request
+3. Categorize: working, broken, redirects
+4. Generate Link Health report section
+```
+
+### Link Health Report Section
+
+```markdown
+## Link Health
+
+### Summary
+- **Links Encountered**: 32
+- **Working**: 30 (94%)
+- **Broken**: 2 (6%)
+
+### Broken Links
+
+| Link | Found On | Status |
+|------|----------|--------|
+| /products/old | /shop | 404 |
+| /team/john | /about | 404 |
+```
+
+### Standalone Link Check
+
+For `/check-links` command:
+- Crawl page to find all links
+- Check each link status
+- Support `--depth` for deeper crawling
+- Support `--internal-only` to skip external links
+
+## Critical Path Testing
+
+When `/critical-path` command is invoked, test must-work user journeys.
+
+### Path Loading
+
+```
+1. Read .claude/critical-paths.json from project
+2. If --path specified, filter to that path
+3. Sort by priority (critical first)
+```
+
+### Path Execution
+
+```
+For each path:
+  1. Load specified persona
+  2. Execute each step in order
+  3. On failure: capture screenshot, record error
+  4. Record pass/fail status
+```
+
+### Critical Path Report
+
+```markdown
+# Critical Path Report
+
+## Summary
+- **Paths Tested**: 3
+- **Passed**: 2
+- **Failed**: 1
+
+## Results
+
+### PASS: purchase-flow (45s)
+All 6 steps completed
+
+### PASS: account-creation (28s)
+All 4 steps completed
+
+### FAIL: password-reset
+Failed at: Step 4 - submit reset request
+Error: Form submission failed
+```
+
+### Step Types
+
+| Action | Purpose |
+|--------|---------|
+| `navigate` | Go to URL path |
+| `task` | Perform task as persona |
+| `verify` | Confirm element/text exists |
+| `wait` | Wait for condition |
+| `input` | Enter specific data |
+
 ## Best Practices
 
 1. **Stay in Character**: Don't break persona to make technical observations (unless `--quiet`)

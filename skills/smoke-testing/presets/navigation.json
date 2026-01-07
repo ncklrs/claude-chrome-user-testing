@@ -1,0 +1,20 @@
+{
+  "name": "navigation",
+  "description": "Quick validation of site navigation structure",
+  "defaultPersona": "boomer-tech-averse",
+  "tasks": [
+    "identify main navigation menu",
+    "list all primary navigation items",
+    "visit first main section",
+    "visit second main section",
+    "visit third main section",
+    "verify can return to home"
+  ],
+  "successCriteria": [
+    "Navigation is visible and clear",
+    "All main links work (no 404s)",
+    "Pages load with content",
+    "No dead-end pages"
+  ],
+  "timeout": 90
+}

@@ -1,0 +1,22 @@
+{
+  "name": "login",
+  "description": "Quick validation of authentication flow",
+  "defaultPersona": "busy-executive",
+  "tasks": [
+    "find login link or button",
+    "navigate to login page",
+    "enter test credentials in form",
+    "submit login form",
+    "verify successful login"
+  ],
+  "successCriteria": [
+    "Login form is accessible",
+    "Form accepts input",
+    "User appears logged in after submission"
+  ],
+  "timeout": 60,
+  "testData": {
+    "email": "test@example.com",
+    "password": "testpassword123"
+  }
+}
