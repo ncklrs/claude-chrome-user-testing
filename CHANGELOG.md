@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2025-01-07
+
+### Added
+- **GitHub PR Comments** (`--pr` flag)
+  - Auto-post test results as GitHub PR comments
+  - Uses `gh` CLI for authentication (works with GitHub Actions `GITHUB_TOKEN`)
+  - Status badges (PASS / FAIL / ISSUES)
+  - Collapsible issue details by severity
+  - Update existing comments instead of creating duplicates
+  - Multi-persona support with separate comments per persona
+  - GitHub Actions workflow example
+
+- **GitHub PR Skill** (`skills/github-pr/`)
+  - PR comment formatting and posting guidance
+  - Update vs create logic with HTML comment markers
+  - Error handling for missing `gh` CLI
+
+### Changed
+- Updated all applicable commands with `--pr` flag:
+  - `/user-test` - Full support
+  - `/smoke-test` - Full support
+  - `/critical-path` - Full support
+  - `/ab-test` - Full support
+- User-tester agent updated with GitHub PR Comments section
+- Best practices expanded with PR comment guidelines
+- README expanded with PR integration documentation
+- Plugin structure updated to include github-pr skill
+- Roadmap updated with completed PR comments feature
+
 ## [1.10.0] - 2025-01-07
 
 ### Added

@@ -1205,6 +1205,138 @@ Error: Form submission failed
 | `wait` | Wait for condition |
 | `input` | Enter specific data |
 
+## GitHub PR Comments
+
+When `--pr <number>` flag is used, post test results as a GitHub PR comment.
+
+### PR Comment Flow
+
+```
+1. Check for --pr flag with PR number
+2. Run test normally (all other flags work as expected)
+3. Generate report (markdown format works best)
+4. Format for GitHub:
+   a. Add HTML comment marker for update detection
+   b. Add status badge
+   c. Create summary table
+   d. Use collapsible sections for details
+5. Post via: gh pr comment <number> --body "$COMMENT_BODY"
+6. Output confirmation: "Posted results to PR #<number>"
+```
+
+### PR Comment Format
+
+```markdown
+<!-- user-test-results:[persona-id] -->
+## User Test Results: [Persona Name]
+
+**Status:** ✅ PASS | ❌ FAIL | ⚠️ ISSUES FOUND
+
+| Metric | Value |
+|--------|-------|
+| URL | `https://example.com` |
+| Persona | [Name] ([ID]) |
+| Viewport | [viewport] |
+| Network | [network] |
+| Duration | [duration]s |
+
+### Summary
+- Tasks: X/Y completed
+- Critical Issues: N
+- Major Issues: N
+- Minor Issues: N
+
+<details>
+<summary>📋 Issues Found (N)</summary>
+
+#### Critical
+[List critical issues]
+
+#### Major
+[List major issues]
+
+#### Minor
+[List minor issues]
+
+</details>
+
+<details>
+<summary>📸 Screenshots</summary>
+
+[Links to screenshots/trace if --record used]
+
+</details>
+
+---
+*Tested with [user-testing-agent](https://github.com/ncklrs/claude-chrome-user-testing)*
+```
+
+### Status Badge Logic
+
+| Status | Badge | When |
+|--------|-------|------|
+| PASS | ✅ PASS | All tasks completed, no critical issues |
+| FAIL | ❌ FAIL | Critical issues or tasks failed |
+| ISSUES | ⚠️ ISSUES | Tasks completed but has major/minor issues |
+
+### Posting via gh CLI
+
+```bash
+# Simple post
+gh pr comment $PR_NUMBER --body "$COMMENT_BODY"
+```
+
+### Update Existing Comment
+
+To avoid comment spam on re-runs, update existing comments:
+
+```bash
+# Marker includes persona ID for multi-persona support
+MARKER="<!-- user-test-results:$PERSONA_ID -->"
+
+# Check for existing comment with this marker
+EXISTING=$(gh pr view $PR_NUMBER --json comments \
+  --jq ".comments[] | select(.body | contains(\"$MARKER\")) | .databaseId" \
+  | head -1)
+
+if [ -n "$EXISTING" ]; then
+  # Update existing comment
+  gh api repos/{owner}/{repo}/issues/comments/$EXISTING \
+    -X PATCH -f body="$COMMENT_BODY"
+else
+  # Create new comment
+  gh pr comment $PR_NUMBER --body "$COMMENT_BODY"
+fi
+```
+
+### Multi-Persona PR Comments
+
+When `--personas` is used with `--pr`:
+- Each persona gets its own comment (separate markers)
+- Each comment is independently updatable
+
+### Error Handling
+
+If `gh` CLI is unavailable or authentication fails:
+```
+Warning: Could not post to PR. Ensure 'gh' CLI is authenticated.
+Results displayed below instead.
+[Normal report output]
+```
+
+### PR Comment Output Example
+
+```
+Testing https://example.com as genz-digital-native...
+
+[Normal test execution...]
+
+# Summary Report
+[Full report displayed]
+
+Posted results to PR #123
+```
+
 ## Best Practices
 
 1. **Stay in Character**: Don't break persona to make technical observations (unless `--quiet`)
@@ -1219,3 +1351,4 @@ Error: Form submission failed
 10. **Mobile Testing**: Use `--viewport mobile` to catch responsive design issues
 11. **JSON Reports**: Use `--output json` for CI/CD pipeline integration
 12. **Network Testing**: Use `--network slow-3g` to test real-world conditions
+13. **PR Comments**: Use `--pr` with `--quiet` for clean CI/CD integration

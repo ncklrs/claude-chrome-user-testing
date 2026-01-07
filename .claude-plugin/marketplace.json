@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "user-testing-agent",
-  "version": "1.10.0",
-  "description": "Persona-based user testing agent with 21+ realistic user archetypes, mobile/tablet/desktop viewport testing, network throttling (slow-3g/fast-3g/offline), JSON report export for CI/CD, smoke test presets, critical path testing, link checker, A/B testing comparison, multi-persona parallel testing, session recording export, custom persona wizard, screenshot annotations, WCAG audit mode, and Stripe checkout testing. Simulates Boomers, Millennials, Gen Z, Gen Alpha, accessibility users, and more to find UX issues before real users do.",
+  "version": "1.11.0",
+  "description": "Persona-based user testing agent with 21+ realistic user archetypes, GitHub PR comments integration, mobile/tablet/desktop viewport testing, network throttling (slow-3g/fast-3g/offline), JSON report export for CI/CD, smoke test presets, critical path testing, link checker, A/B testing comparison, multi-persona parallel testing, session recording export, custom persona wizard, screenshot annotations, WCAG audit mode, and Stripe checkout testing. Simulates Boomers, Millennials, Gen Z, Gen Alpha, accessibility users, and more to find UX issues before real users do.",
   "owner": {
     "name": "Nick Jensen",
     "github": "ncklrs"
@@ -10,8 +10,8 @@
   "plugins": [
     {
       "name": "user-testing-agent",
-      "description": "Persona-based user testing with Chrome automation. 21+ personas, mobile viewport testing, network throttling, JSON export, smoke test presets, critical path testing, link checker, A/B testing, session recording, custom wizard, screenshot annotations, WCAG audit, and Stripe checkout testing.",
-      "version": "1.10.0",
+      "description": "Persona-based user testing with Chrome automation. 21+ personas, GitHub PR comments, mobile viewport testing, network throttling, JSON export, smoke test presets, critical path testing, link checker, A/B testing, session recording, custom wizard, screenshot annotations, WCAG audit, and Stripe checkout testing.",
+      "version": "1.11.0",
       "source": "./",
       "category": "testing"
     }

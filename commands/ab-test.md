@@ -22,6 +22,7 @@ Parse the following from `$ARGUMENTS`:
 - `--viewport <mobile|tablet|desktop>` (optional): Device viewport size (default: desktop)
 - `--output <markdown|json>` (optional): Report output format (default: markdown)
 - `--network <slow-3g|fast-3g|offline>` (optional): Network throttling preset
+- `--pr <number>` (optional): Post results as GitHub PR comment
 
 ## Pre-Flight Checklist
 

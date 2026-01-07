@@ -31,6 +31,7 @@ Watch Barbara (Boomer Tech-Averse persona) navigate a website with realistic hes
 - **Mobile Viewport Testing** with `--viewport mobile/tablet/desktop` for responsive design testing
 - **JSON Report Export** with `--output json` for CI/CD pipeline integration
 - **Network Throttling** with `--network slow-3g/fast-3g/offline` for real-world conditions
+- **GitHub PR Comments** with `--pr` to auto-post results to pull requests
 
 ## Quick Start
 
@@ -117,6 +118,7 @@ Optional:
   --viewport <size>     Device viewport: mobile | tablet | desktop (default: desktop)
   --output <format>     Report format: markdown | json (default: markdown)
   --network <preset>    Network throttling: slow-3g | fast-3g | offline
+  --pr <number>         Post results as GitHub PR comment
 ```
 
 ### /stripe-test
@@ -663,6 +665,64 @@ Simulate slow or offline network conditions:
 /user-test --url https://example.com --persona impulse-buyer --viewport mobile --network slow-3g --output json --quiet
 ```
 
+### GitHub PR Comments
+
+Auto-post test results to GitHub pull requests for CI/CD integration:
+
+```
+/user-test --url https://staging.example.com --persona genz-digital-native --quiet --pr 123
+```
+
+**PR Comment Includes:**
+- Status badge (PASS / FAIL / ISSUES)
+- Session metadata (URL, persona, viewport, network)
+- Summary with issue counts
+- Collapsible issue details by severity
+- Link to trace file if `--record` was used
+
+**Update Behavior:**
+Re-running with the same `--pr` number updates the existing comment instead of creating duplicates. Each persona gets its own comment when using `--personas`.
+
+**GitHub Actions Example:**
+```yaml
+name: User Testing
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  user-test:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy Preview
+        id: deploy
+        run: echo "url=https://preview-${{ github.event.pull_request.number }}.example.com" >> $GITHUB_OUTPUT
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run User Tests
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          claude --chrome "/user-test \
+            --url ${{ steps.deploy.outputs.url }} \
+            --persona genz-digital-native \
+            --quiet \
+            --pr ${{ github.event.pull_request.number }}"
+```
+
+**Multi-Persona PR Comments:**
+```
+/user-test --url https://staging.example.com --personas "boomer-tech-averse,genz-digital-native" --quiet --pr 456
+```
+
+Each persona gets its own PR comment, making it easy to see results per user type.
+
 ## Available Personas
 
 ### Generational Personas (5)
@@ -1025,8 +1085,10 @@ user-testing-agent/
 │   │   └── SKILL.md             # Critical path guidance
 │   ├── link-checker/
 │   │   └── SKILL.md             # Link checking guidance
-│   └── network-throttling/
-│       └── SKILL.md             # Network throttling guidance
+│   ├── network-throttling/
+│   │   └── SKILL.md             # Network throttling guidance
+│   └── github-pr/
+│       └── SKILL.md             # PR comment posting guidance
 ├── CONTRIBUTING.md              # How to add personas
 ├── CHANGELOG.md                 # Version history
 ├── LICENSE                      # MIT
@@ -1085,6 +1147,7 @@ Quick steps:
 - [x] Mobile viewport testing
 - [x] JSON report export for CI/CD
 - [x] Network throttling presets
+- [x] GitHub PR comments integration
 
 ## License
 

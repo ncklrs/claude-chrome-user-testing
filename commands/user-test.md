@@ -25,6 +25,7 @@ Parse the following from `$ARGUMENTS`:
 - `--viewport <mobile|tablet|desktop>` (optional): Device viewport size (default: desktop)
 - `--output <markdown|json>` (optional): Report output format (default: markdown)
 - `--network <slow-3g|fast-3g|offline>` (optional): Network throttling preset
+- `--pr <number>` (optional): Post results as GitHub PR comment
 
 ## Available Personas
 
@@ -547,6 +548,56 @@ When `--network` flag is used, simulate slow or offline network conditions:
 /user-test --url https://pwa.example.com --persona genz-digital-native --network offline --tasks "browse cached content"
 ```
 
+## GitHub PR Comments
+
+When `--pr <number>` flag is used, post test results as a GitHub PR comment:
+
+### How It Works
+
+1. Run test normally (all other flags work as expected)
+2. Generate report in markdown format (optimized for GitHub)
+3. Post to PR via `gh pr comment <number> --body "..."`
+4. Output confirmation: "Posted results to PR #<number>"
+
+### Prerequisites
+
+- `gh` CLI installed and authenticated
+- In GitHub Actions: `GITHUB_TOKEN` is automatically available
+- PR write permissions (`pull-requests: write` in workflow)
+
+### PR Comment Format
+
+The comment includes:
+- Status badge (PASS / FAIL / ISSUES)
+- Session metadata table (URL, persona, viewport, etc.)
+- Summary with issue counts
+- Collapsible issue details by severity
+- Link to trace file if `--record` was used
+
+### Update Behavior
+
+Re-running with the same `--pr` number updates the existing comment instead of creating duplicates. Each persona gets its own comment when using `--personas`.
+
+### GitHub Actions Example
+
+```yaml
+- name: Run User Tests
+  env:
+    ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  run: |
+    claude --chrome "/user-test \
+      --url ${{ env.PREVIEW_URL }} \
+      --persona genz-digital-native \
+      --quiet \
+      --pr ${{ github.event.pull_request.number }}"
+```
+
+### PR Comment Example
+
+```
+/user-test --url https://staging.example.com --persona boomer-tech-averse --quiet --pr 123
+```
+
 ## Example Usage
 
 ```
@@ -560,4 +611,5 @@ When `--network` flag is used, simulate slow or offline network conditions:
 /user-test --url https://example.com --persona boomer-tech-averse --output json --quiet
 /user-test --url https://example.com --persona bad-connection-user --network slow-3g
 /user-test --url https://example.com --persona impulse-buyer --viewport mobile --network fast-3g --output json --quiet
+/user-test --url https://staging.example.com --persona boomer-tech-averse --quiet --pr 123
 ```
